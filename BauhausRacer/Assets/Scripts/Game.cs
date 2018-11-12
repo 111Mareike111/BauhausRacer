@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BauhausRacer
 {
-
+    public enum SelectColor {Red, Yellow, Blue, Orange, Green, Violet};
     public class Game : MonoBehaviour
     {
         public static Game instance = null;

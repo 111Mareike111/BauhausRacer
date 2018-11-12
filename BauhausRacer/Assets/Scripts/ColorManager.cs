@@ -10,18 +10,24 @@ namespace BauhausRacer
         [Header("Red")]
         public Material carMaterialRed;
         public Material colorShowerMaterialRed;
+        public Material colorBarrierMaterialRed;
         [Header("Blue")]
         public Material carMaterialBlue;
         public Material colorShowerMaterialBlue;
+        public Material colorBarrierMaterialBlue;
         [Header("Yellow")]
         public Material carMaterialYellow;
         public Material colorShowerMaterialYellow;
+        public Material colorBarrierMaterialYellow;
         [Header("Green")]
         public Material carMaterialGreen;
+        public Material colorBarrierMaterialGreen;
         [Header("Violet")]
         public Material carMaterialViolet;
+        public Material colorBarrierMaterialViolet;
         [Header("Orange")]
         public Material carMaterialOrange;
+        public Material colorBarrierMaterialOrange;
         [Header("NoColor")]
         public Material carMaterialNoColor;
         public Material colorShowerMaterialNoColor;
@@ -33,13 +39,16 @@ namespace BauhausRacer
         void Awake()
         {
             //initializing colors and adding them to color-list
-            colors.Add("Red", new ColorData("Red", colorShowerMaterialRed, carMaterialRed));
-            colors.Add("Blue", new ColorData("Blue", colorShowerMaterialBlue, carMaterialBlue));
-            colors.Add("Yellow", new ColorData("Yellow", colorShowerMaterialYellow, carMaterialYellow));
-            colors.Add("Orange", new ColorData("Orange", carMaterialOrange));
-            colors.Add("Green", new ColorData("Green", carMaterialGreen));
-            colors.Add("Violet", new ColorData("Violet", carMaterialViolet));
-            colors.Add("NoColor", new ColorData("NoColor", colorShowerMaterialNoColor, carMaterialNoColor));
+            var red = new ColorData("Red", colorShowerMaterialRed, carMaterialRed, colorBarrierMaterialRed);
+            var blue = new ColorData("Blue", colorShowerMaterialBlue, carMaterialBlue, colorBarrierMaterialBlue);
+            var yellow =  new ColorData("Yellow", colorShowerMaterialYellow, carMaterialYellow, colorBarrierMaterialYellow);
+            colors.Add("Red", red);
+            colors.Add("Blue", blue);
+            colors.Add("Yellow", yellow);
+            colors.Add("Orange", new ColorData("Orange", carMaterialOrange, colorBarrierMaterialOrange, new ColorData[]{red, yellow}));
+            colors.Add("Green", new ColorData("Green", carMaterialGreen, colorBarrierMaterialGreen, new ColorData[]{yellow, blue}));
+            colors.Add("Violet", new ColorData("Violet", carMaterialViolet, colorBarrierMaterialViolet, new ColorData[]{blue, red}));
+            colors.Add("NoColor", new ColorData("NoColor", colorShowerMaterialNoColor, carMaterialNoColor, colorShowerMaterialNoColor));
 
             CurrentColor = GetColorByName("NoColor"); //no color in the beginning
         }
@@ -58,40 +67,40 @@ namespace BauhausRacer
         //mix colors
         public ColorData MixColors(ColorData colorToMix)
         {
-            if(colorToMix.colorName == "NoColor")
+            if(colorToMix.ColorName == "NoColor")
             {
                 CurrentColor = GetColorByName("NoColor");
             }
             else
             {
-                switch (CurrentColor.colorName)
+                switch (CurrentColor.ColorName)
                 {
                     case "Red":
-                        if (colorToMix.colorName == "Blue")
+                        if (colorToMix.ColorName == "Blue")
                         {
                             CurrentColor = GetColorByName("Violet");
                         }
-                        else if(colorToMix.colorName == "Yellow")
+                        else if(colorToMix.ColorName == "Yellow")
                         {
                             CurrentColor = GetColorByName("Orange");
                         }
                         break;
                     case "Blue":
-                        if (colorToMix.colorName == "Red")
+                        if (colorToMix.ColorName == "Red")
                         {
                             CurrentColor = GetColorByName("Violet");
                         }
-                        else if (colorToMix.colorName == "Yellow")
+                        else if (colorToMix.ColorName == "Yellow")
                         {
                             CurrentColor = GetColorByName("Green");
                         }
                         break;
                     case "Yellow":
-                        if (colorToMix.colorName == "Blue")
+                        if (colorToMix.ColorName == "Blue")
                         {
                             CurrentColor = GetColorByName("Green");
                         }
-                        else if (colorToMix.colorName == "Red")
+                        else if (colorToMix.ColorName == "Red")
                         {
                             CurrentColor = GetColorByName("Orange");
                         }
@@ -99,13 +108,10 @@ namespace BauhausRacer
                     case "NoColor":
                         CurrentColor = colorToMix;
                         break;
-                    default:
-                        CurrentColor = null;
-                        break;
+                    
                 }
             }
             
-            Debug.Log(CurrentColor.colorName);
             return CurrentColor;
         }          
     }

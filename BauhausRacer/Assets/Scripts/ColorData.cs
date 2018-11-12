@@ -6,21 +6,26 @@ namespace BauhausRacer
 {
     public class ColorData
     {
-        public string colorName;
+        public string ColorName;
         public Material CarTexture; 
         public Material ColorShowerMaterial;
+        public Material ColorBarrierMaterial;
 
-        public ColorData(string name, Material colorShowerMaterial, Material carTexture)
+        public ColorData[] MixingParents {get; set;}
+        public ColorData(string name, Material colorShowerMaterial, Material carTexture, Material colorBarrierMaterial)
         {
-            colorName = name;
+            ColorName = name;
             ColorShowerMaterial = colorShowerMaterial;
             CarTexture = carTexture;
+            ColorBarrierMaterial = colorBarrierMaterial;
         }
 
-        public ColorData(string name, Material carTexture)
+        public ColorData(string name, Material carTexture, Material colorBarrierMaterial, ColorData[] mixingParents)
         {
-            colorName = name;
+            ColorName = name;
             CarTexture = carTexture;
+            ColorBarrierMaterial = colorBarrierMaterial;
+            MixingParents = mixingParents;
         }
     }
 }
