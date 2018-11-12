@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace UnityStandardAssets.Vehicles.Car
+namespace BauhausRacer
 {
     public class SkidTrail : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityStandardAssets.Vehicles.Car
+namespace BauhausRacer
 {
     internal enum CarDriveType
     {
@@ -362,6 +362,11 @@ namespace UnityStandardAssets.Vehicles.Car
                 }
             }
             return false;
+        }
+
+        public string GetSpeedType(){
+            
+            return m_SpeedType.ToString().ToLower();
         }
     }
 }

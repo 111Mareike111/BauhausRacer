@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityStandardAssets.Vehicles.Car
+namespace BauhausRacer
 {
     // this script is specific to the car supplied in the the assets
     // it controls the suspension hub to make it move with the wheel are it goes over bumps

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace UnityStandardAssets.Vehicles.Car
+namespace BauhausRacer
 {
     [RequireComponent(typeof (AudioSource))]
     public class WheelEffects : MonoBehaviour
