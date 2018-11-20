@@ -8,13 +8,18 @@ namespace BauhausRacer {
 	public class GuiController : MonoBehaviour {
 		public TextMeshProUGUI textTime;
 		public TextMeshProUGUI textSpeed;
+
+		public TextMeshProUGUI textRounds;
 		public CarController carController;
+		public GameObject finishPanel;
 		//
 		private float timer;
 
+
 		// Use this for initialization
-		void Start () {
+		void Awake () {
 			timer = 0f;
+			finishPanel.SetActive(false);
 		}
 		
 		// Update is called once per frame
@@ -36,6 +41,14 @@ namespace BauhausRacer {
 			int minutes = (int)time / 60;
 			int seconds = (int)time % 60; //rest von der Teilung
 			return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+		}
+
+		public void DisplayRounds(int currentRound){
+			textRounds.text = currentRound.ToString()+"/"+Game.Instance.rounds.ToString();
+		}
+
+		public void showFinish(){
+			finishPanel.SetActive(true);
 		}
 	}
 }

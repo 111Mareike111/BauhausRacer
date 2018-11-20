@@ -14,7 +14,7 @@ namespace BauhausRacer{
 	
 		// Use this for initialization
 		void Awake(){
-			colorManager = Game.instance.ColorManager; 
+			colorManager = Game.Instance.ColorManager; 
             colorBarrier = colorManager.GetColorByName(selectColor.ToString()); //color gets color selected in inspector
             GetComponent<Renderer>().material = colorBarrier.ColorBarrierMaterial;
 		}

@@ -7,18 +7,20 @@ namespace BauhausRacer
     public enum SelectColor {Red, Yellow, Blue, Orange, Green, Violet};
     public class Game : MonoBehaviour
     {
-        public static Game instance = null;
+        public static Game Instance = null;
         public ColorManager ColorManager { get; private set; }
 
         public GameObject carBody;
 
+        public int rounds =3;
+
 
         void Awake()
         {
-            if(instance == null)
+            if(Instance == null)
             {
-                instance = this;
-            } else if(instance != this)
+                Instance = this;
+            } else if(Instance != this)
             {
                 Destroy(gameObject);
             }
@@ -36,6 +38,10 @@ namespace BauhausRacer
         void Update()
         {
 
+        }
+
+        public void EndGame(){
+            Debug.Log("Ende");
         }
     }
 

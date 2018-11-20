@@ -13,7 +13,7 @@ public class Boost : MonoBehaviour {
 	private ColorManager colorManager;
 
 	void Awake(){
-			colorManager = Game.instance.ColorManager; 
+			colorManager = Game.Instance.ColorManager; 
             colorBoost = colorManager.GetColorByName(selectColor.ToString()); //color gets color selected in inspector
 			foreach(Renderer r in GetComponentsInChildren<Renderer>()){
 				r.material = colorBoost.ColorBarrierMaterial;

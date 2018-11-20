@@ -16,7 +16,7 @@ namespace BauhausRacer
 
         void Awake()
         {
-            colorManager = Game.instance.ColorManager; 
+            colorManager = Game.Instance.ColorManager; 
             colorShower = colorManager.GetColorByName(selectColor.ToString()); //colorShower gets color selected in inspector
             GetComponent<Renderer>().material = colorShower.ColorShowerMaterial;
         }
@@ -26,7 +26,7 @@ namespace BauhausRacer
         {
             if (col.tag == "Player")
             {
-                Game.instance.carBody.GetComponent<Renderer>().material = colorManager.MixColors(colorShower).CarTexture;
+                Game.Instance.carBody.GetComponent<Renderer>().material = colorManager.MixColors(colorShower).CarTexture;
             }
         }
     }
