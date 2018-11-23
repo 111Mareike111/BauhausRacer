@@ -59,7 +59,6 @@ namespace BauhausRacer {
             else if (checkpointIndex == checkpoints.Length)
             {
                 if(_currentRound == Game.Instance.rounds){
-                    Debug.Log("HAAA");
                     Game.Instance.EndGame();
                     guiController.showFinish();
                     return;
