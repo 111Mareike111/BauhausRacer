@@ -9,11 +9,19 @@ namespace BauhausRacer{
         private void OnTriggerEnter(Collider other)
         {
             
-            if (other.tag != "Player" || this != CheckpointManager.Instance.NextCheckpoint)
+            if (other.tag != "Player")
             {
                 return;
+            } 
+            if(this == CheckpointManager.Instance.NextCheckpoint)
+            {
+                CheckpointManager.Instance.NextCheckpointArrived();
             }
-            CheckpointManager.Instance.NextCheckpointArrived();
+            else if(this == CheckpointManager.Instance.LastCheckpoint)
+            {
+                CheckpointManager.Instance.WrongDirection();
+            }
+            
         }
     }
 }
