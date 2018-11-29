@@ -10,7 +10,7 @@ namespace BauhausRacer {
 		public TextMeshProUGUI textSpeed;
 
 		public TextMeshProUGUI textRounds;
-		public CarController carController;
+		public MyCarController carController;
 		public GameObject finishPanel;
 		//
 		private float timer;
@@ -33,7 +33,8 @@ namespace BauhausRacer {
 
 		// get rounded speed and speedtype
 		public string GetSpeedDisplay(){
-			return (Mathf.Round(carController.CurrentSpeed)).ToString() + " "+carController.GetSpeedType();
+		//	return (Mathf.Round(carController.currentSpeed)).ToString() + " kph";
+		return "";
 		}
 
 		//Display Time in minutes and seconds

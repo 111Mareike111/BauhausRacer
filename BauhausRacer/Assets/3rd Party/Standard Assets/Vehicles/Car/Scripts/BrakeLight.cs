@@ -5,7 +5,7 @@ namespace BauhausRacer
 {
     public class BrakeLight : MonoBehaviour
     {
-        public CarController car; // reference to the car controller, must be dragged in inspector
+        public MyCarController car; // reference to the car controller, must be dragged in inspector
 
         private Renderer m_Renderer;
 
@@ -19,7 +19,7 @@ namespace BauhausRacer
         private void Update()
         {
             // enable the Renderer when the car is braking, disable it otherwise.
-            m_Renderer.enabled = car.BrakeInput > 0f;
+        //    m_Renderer.enabled = car.Forward < 0f;
         }
     }
 }
