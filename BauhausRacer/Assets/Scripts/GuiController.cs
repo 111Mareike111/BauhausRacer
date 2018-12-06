@@ -7,11 +7,18 @@ using TMPro;
 namespace BauhausRacer {
 	public class GuiController : MonoBehaviour {
 		public TextMeshProUGUI textTime;
-		public TextMeshProUGUI textSpeed;
 
 		public TextMeshProUGUI textRounds;
-		public MyCarController carController;
+		public Driving carController;
 		public GameObject finishPanel;
+
+		[Header("Speed")]
+		private float kmh = 0f;
+
+		public RectTransform KMHNeedle;
+
+		private float orgKMHNeedleAngle = 0f;
+
 		//
 		private float timer;
 
@@ -20,6 +27,7 @@ namespace BauhausRacer {
 		void Awake () {
 			timer = 0f;
 			finishPanel.SetActive(false);
+			orgKMHNeedleAngle = KMHNeedle.transform.localEulerAngles.z;
 		}
 		
 		// Update is called once per frame
@@ -27,15 +35,8 @@ namespace BauhausRacer {
         {
             timer += Time.deltaTime;
             textTime.text = "Time: " + GetMinutesDisplay(timer);
-
-            textSpeed.text = GetSpeedDisplay();
+			DisplaySpeed();
         }
-
-		// get rounded speed and speedtype
-		public string GetSpeedDisplay(){
-		//	return (Mathf.Round(carController.currentSpeed)).ToString() + " kph";
-		return "";
-		}
 
 		//Display Time in minutes and seconds
         public static string GetMinutesDisplay(float time){
@@ -50,6 +51,20 @@ namespace BauhausRacer {
 
 		public void showFinish(){
 			finishPanel.SetActive(true);
+		}
+
+		public void DisplaySpeed(){
+			if (!carController) {
+					Debug.LogError ("Car is not selected on your UI Canvas " + gameObject.name);
+					enabled = false;
+					return;
+			}
+
+			kmh = carController.speed * 1.2f;
+
+			Quaternion target = Quaternion.Euler (0f, 0f, orgKMHNeedleAngle - kmh);
+			KMHNeedle.rotation = Quaternion.Slerp(KMHNeedle.rotation, target,  Time.deltaTime * 2f);
+				
 		}
 	}
 }
