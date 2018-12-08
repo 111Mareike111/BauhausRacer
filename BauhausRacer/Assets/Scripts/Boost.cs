@@ -35,8 +35,8 @@ public class Boost : MonoBehaviour {
 		if(collider.tag == "Player"){
 			//same color as the car
 				if(colorManager.CurrentColor.ColorName == colorBoost.ColorName){
-					car.GetComponent<Rigidbody>().AddForce(car.transform.forward*accleration);
-					StartCoroutine(DeleteForce());
+					Debug.Log("hi2");
+					car.GetComponent<Rigidbody>().AddForce(car.transform.forward*Time.deltaTime*accleration, ForceMode.Acceleration);
 					return;
 				}
 				//color of the car was mixed with color of barrier
