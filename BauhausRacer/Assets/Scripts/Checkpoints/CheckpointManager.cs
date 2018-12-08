@@ -13,7 +13,7 @@ namespace BauhausRacer {
         private Checkpoint _nextCheckpoint;
         private Checkpoint _lastCheckpoint;
 
-        private bool wrongDirection = false;
+        private bool wrongDirection = true;
         public GameObject turnBack_img;
 
         public Checkpoint NextCheckpoint { get { return _nextCheckpoint; } }
@@ -48,28 +48,26 @@ namespace BauhausRacer {
                 Debug.LogError("Missing Refernece: In the CheckpointManager is no Car");
             }
             checkpointIndex = 0;
-            _currentRound = 0;
+            _currentRound = 1;
             checkpoints = gameObject.GetComponentsInChildren<Checkpoint>();
-            _currentCheckpoint = checkpoints[checkpoints.Length-1];
+            _currentCheckpoint = null;
             _nextCheckpoint = checkpoints[checkpointIndex];
-            _lastCheckpoint = checkpoints[checkpoints.Length-2];
+            _lastCheckpoint = checkpoints[checkpoints.Length-1];
             visualAid();
 
         }
 
         public void NextCheckpointArrived()
         {
-            //checkpointIndex++;
+            checkpointIndex++;
             Debug.Log("checkpointIndex " + checkpointIndex);
-            if (checkpointIndex+1 == checkpoints.Length)
+            if (checkpointIndex == checkpoints.Length-1)
             {
                 _currentCheckpoint = checkpoints[checkpointIndex];
                 _nextCheckpoint = checkpoints[0];
-                _lastCheckpoint = checkpoints[checkpointIndex-1];
-                checkpointIndex=0;
+                _lastCheckpoint = checkpoints[checkpointIndex - 1];
             }
-            else
-            if (checkpointIndex == 0)
+            else if (checkpointIndex == checkpoints.Length)
             {
                 if(_currentRound == Game.Instance.rounds){
                     Game.Instance.EndGame();
@@ -78,26 +76,18 @@ namespace BauhausRacer {
                 }
                 _currentRound++;
                 guiController.DisplayRounds(_currentRound);
-        
+                checkpointIndex = 0;
                 _currentCheckpoint = checkpoints[checkpointIndex];
                 _nextCheckpoint = checkpoints[checkpointIndex + 1];
                 _lastCheckpoint = checkpoints[checkpoints.Length-1];
-                checkpointIndex++;
       
             }
             else
             {
                 _currentCheckpoint = checkpoints[checkpointIndex];
                 _nextCheckpoint = checkpoints[checkpointIndex + 1];
-                if(checkpointIndex != 0){
-                    _lastCheckpoint = checkpoints[checkpointIndex - 1];
-                }
-                else {
-                     _lastCheckpoint = checkpoints[checkpoints.Length-1];
-                }
-                checkpointIndex++;
+                _lastCheckpoint = checkpoints[checkpointIndex - 1];
             }
-            
             visualAid();
             //Debug.Log(_currentRound);
         }
@@ -110,9 +100,7 @@ namespace BauhausRacer {
         private void visualAid()
         {
             _nextCheckpoint.GetComponent<Renderer>().material = materialNextCheckpoint;
-           if(_currentCheckpoint != null) {
-                 _currentCheckpoint.GetComponent<Renderer>().material = materialOtherCeckpoint;
-           }
+            _currentCheckpoint.GetComponent<Renderer>().material = materialOtherCeckpoint;
             _lastCheckpoint.GetComponent<Renderer>().material = materialLastCeckpoint;
         }
 
