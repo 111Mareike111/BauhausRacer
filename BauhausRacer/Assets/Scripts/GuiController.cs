@@ -66,5 +66,9 @@ namespace BauhausRacer {
 			KMHNeedle.rotation = Quaternion.Slerp(KMHNeedle.rotation, target,  Time.deltaTime * 2f);
 				
 		}
+
+		public void Respawn_Player(){
+			CheckpointManager.Instance.ResetPlayerToCurrentCheckpoint();
+		}
 	}
 }

@@ -104,7 +104,8 @@ namespace BauhausRacer {
 
         public void ResetPlayerToCurrentCheckpoint()
         {
-            _playerTranform = _currentCheckpoint.SpawnPosition;
+            _playerTranform.position = _currentCheckpoint.SpawnPosition.position;
+            Debug.Log("CHECK");
         }
         
         private void visualAid()

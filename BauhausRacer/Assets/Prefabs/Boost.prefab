@@ -82,16 +82,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1749849022534446}
-  m_LocalRotation: {x: -0, y: 0.5960935, z: -0, w: 0.8029151}
-  m_LocalPosition: {x: -53, y: 0.15661478, z: -148.9}
-  m_LocalScale: {x: 4.383102, y: 1, z: 3.0792012}
+  m_LocalRotation: {x: -0, y: 0.42753896, z: -0, w: 0.90399694}
+  m_LocalPosition: {x: -573.3, y: -2.45, z: 492}
+  m_LocalScale: {x: 4.3831034, y: 1, z: 3.0792022}
   m_Children:
   - {fileID: 4735291265831582}
   - {fileID: 4680282085727626}
   - {fileID: 4815026682686836}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 73.181, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 50.623, z: 0}
 --- !u!4 &4680282085727626
 Transform:
   m_ObjectHideFlags: 1
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 0}
-  accleration: 100000
-  selectColor: 4
+  accleration: 10000
+  selectColor: 0
 --- !u!212 &212232795238488536
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -264,7 +264,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: c4e19a425b8d9a64081b64c0017a87f9, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

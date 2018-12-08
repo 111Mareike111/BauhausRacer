@@ -7,7 +7,9 @@ namespace BauhausRacer{
         [SerializeField] private Transform _spawn;
         public Transform SpawnPosition { get { return _spawn; } }
 
-        
+        private void Start(){
+            _spawn = transform;
+        }
         private void OnTriggerExit(Collider other)
         {
             
