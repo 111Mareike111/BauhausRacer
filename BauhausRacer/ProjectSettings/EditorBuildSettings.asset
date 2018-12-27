@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Level/BahausRacer.unity
     guid: bae55b01f8a25ba45a8689b5e6a12598
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 75491f8bf177afb488fa530d0ac6b74a
+  - enabled: 1
     path: Assets/Scenes/Level/Course1_Test.unity
     guid: 0340b9e9cc5d5974bb8d9b8fdb28eedf
+  - enabled: 1
+    path: Assets/Scenes/Controls.unity
+    guid: f162f3bbbba67894ca2e87c3b72a72a3
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 567b4ee7155127744b45c75c42a55ea1
   m_configObjects: {}

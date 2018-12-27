@@ -35,18 +35,25 @@ public class Inputs : MonoBehaviour {
 			return;
 		}
 
-		ReceiveInputs ();
-		FeedDrivetrain ();
+		if(!Game.Instance.gameStopped){ 	//stop game without setting timescale to 0
+			ReceiveInputs ();
+			FeedDrivetrain ();
+		}
 
 	}
 
-	void ReceiveInputs () {
-
-		gas = Mathf.Clamp01(Input.GetAxis ("Vertical"));
-		brake = Mathf.Abs(Mathf.Clamp(Input.GetAxis ("Vertical"), -1f, 0f));
-		steering = Input.GetAxis ("Horizontal");
-		handbrake = Input.GetKey (KeyCode.Space) ? 1f : 0f;
-	 
+	void ReceiveInputs () {	
+		if(Input.GetJoystickNames().Length == 0) {
+			gas = Mathf.Clamp01(Input.GetAxis ("Vertical"));
+			brake = Mathf.Abs(Mathf.Clamp(Input.GetAxis ("Vertical"), -1f, 0f));
+			steering = Input.GetAxis ("Horizontal");
+			handbrake = Input.GetKey (KeyCode.Space) ? 1f : 0f;
+		} else {
+			gas = Mathf.Clamp01(Input.GetAxis ("Vertical2"));
+			brake = Mathf.Abs(Mathf.Clamp(Input.GetAxis ("Vertical2"), -1f, 0f));
+			steering = Input.GetAxis ("Horizontal2");
+			handbrake = Input.GetKey (KeyCode.Space) ? 1f : 0f;
+		}
 	}
 
 	void FeedDrivetrain(){
