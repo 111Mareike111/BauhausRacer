@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: 54ee5efaf6d5ed441a18522b5284bbdf, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.92365533, g: 0.7506203, b: 0.6325547, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -113,6 +113,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &88423037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114695210854636302, guid: c15458713d6231d4aadbcf6659b2b812,
+    type: 2}
+  m_PrefabInternal: {fileID: 1100359359}
+  m_Script: {fileID: 11500000, guid: c6f98508cf908ae40b2e15b685956a7c, type: 3}
 --- !u!1001 &239532692
 Prefab:
   m_ObjectHideFlags: 0
@@ -91987,6 +91993,12 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 65839875983898824, guid: 129b45dba6bcb114687d351574af02ab,
     type: 2}
   m_PrefabInternal: {fileID: 1366410384}
+--- !u!114 &632894553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114062174478177600, guid: c15458713d6231d4aadbcf6659b2b812,
+    type: 2}
+  m_PrefabInternal: {fileID: 1100359359}
+  m_Script: {fileID: 11500000, guid: c6f98508cf908ae40b2e15b685956a7c, type: 3}
 --- !u!43 &645440082
 Mesh:
   m_ObjectHideFlags: 0
@@ -92631,6 +92643,26 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114408758356284636, guid: c15458713d6231d4aadbcf6659b2b812,
+        type: 2}
+      propertyPath: nextCheckpoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114695210854636302, guid: c15458713d6231d4aadbcf6659b2b812,
+        type: 2}
+      propertyPath: nextCheckpoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114062174478177600, guid: c15458713d6231d4aadbcf6659b2b812,
+        type: 2}
+      propertyPath: nextCheckpoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114599799939272136, guid: c15458713d6231d4aadbcf6659b2b812,
+        type: 2}
+      propertyPath: nextCheckpoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4124292112761282, guid: c15458713d6231d4aadbcf6659b2b812, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -92691,6 +92723,56 @@ Prefab:
       value: 
       objectReference: {fileID: 1533059628179274, guid: 5efcf31d91111544c8ce516ce45281cf,
         type: 2}
+    - target: {fileID: 4342154450868804, guid: c15458713d6231d4aadbcf6659b2b812, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 89.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342154450868804, guid: c15458713d6231d4aadbcf6659b2b812, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -34.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342154450868804, guid: c15458713d6231d4aadbcf6659b2b812, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114408758356284636, guid: c15458713d6231d4aadbcf6659b2b812,
+        type: 2}
+      propertyPath: nextCheckpoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 88423037}
+    - target: {fileID: 114695210854636302, guid: c15458713d6231d4aadbcf6659b2b812,
+        type: 2}
+      propertyPath: nextCheckpoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 632894553}
+    - target: {fileID: 114062174478177600, guid: c15458713d6231d4aadbcf6659b2b812,
+        type: 2}
+      propertyPath: nextCheckpoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 2103093356}
+    - target: {fileID: 114599799939272136, guid: c15458713d6231d4aadbcf6659b2b812,
+        type: 2}
+      propertyPath: nextCheckpoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1654138826}
+    - target: {fileID: 1802930746102032, guid: c15458713d6231d4aadbcf6659b2b812, type: 2}
+      propertyPath: m_Name
+      value: LastCheckpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338574502617384, guid: c15458713d6231d4aadbcf6659b2b812, type: 2}
+      propertyPath: m_Name
+      value: FirstCheckpoint (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114612546510588986, guid: c15458713d6231d4aadbcf6659b2b812,
+        type: 2}
+      propertyPath: _firstCheckpiont
+      value: 
+      objectReference: {fileID: 88423037}
+    - target: {fileID: 114612546510588986, guid: c15458713d6231d4aadbcf6659b2b812,
+        type: 2}
+      propertyPath: _lastCheckpoint
+      value: 
+      objectReference: {fileID: 1654138826}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c15458713d6231d4aadbcf6659b2b812, type: 2}
   m_IsPrefabAsset: 0
@@ -93499,6 +93581,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1654138826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114408758356284636, guid: c15458713d6231d4aadbcf6659b2b812,
+    type: 2}
+  m_PrefabInternal: {fileID: 1100359359}
+  m_Script: {fileID: 11500000, guid: c6f98508cf908ae40b2e15b685956a7c, type: 3}
 --- !u!1 &1756317532
 GameObject:
   m_ObjectHideFlags: 0
@@ -93984,6 +94072,10 @@ MonoBehaviour:
   carController: {fileID: 1253459054}
   finishPanel: {fileID: 1623117308}
   pausePanel: {fileID: 0}
+  highScorePanel: {fileID: 0}
+  wheelInput: {fileID: 0}
+  keyboardInput: {fileID: 0}
+  nameInput: {fileID: 0}
   KMHNeedle: {fileID: 560560293}
 --- !u!1 &1951649898
 GameObject:
@@ -94027,6 +94119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carBody: {fileID: 1891608372}
+  horizontal: 0
+  vertical: 0
   rounds: 3
 --- !u!114 &1951649901
 MonoBehaviour:
@@ -94256,6 +94350,12 @@ Transform:
   m_Father: {fileID: 759558554}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2103093356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114599799939272136, guid: c15458713d6231d4aadbcf6659b2b812,
+    type: 2}
+  m_PrefabInternal: {fileID: 1100359359}
+  m_Script: {fileID: 11500000, guid: c6f98508cf908ae40b2e15b685956a7c, type: 3}
 --- !u!1 &2105245628
 GameObject:
   m_ObjectHideFlags: 0
