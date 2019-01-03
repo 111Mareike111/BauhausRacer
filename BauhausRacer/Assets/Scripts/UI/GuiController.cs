@@ -53,14 +53,23 @@ namespace BauhausRacer {
 			}
            
 			DisplaySpeed();
-			if(Input.GetKeyDown(KeyCode.Joystick1Button15)){
+			if(Input.GetKeyDown(KeyCode.Joystick1Button13)){
 				PauseGame();
 			}
-			if(Input.GetKeyDown(KeyCode.Joystick1Button14)){
+			if(Input.GetKeyDown(KeyCode.Joystick1Button6)){
 				Resume();
 			}
-			if(Input.GetKeyDown(KeyCode.Joystick1Button12)){
-				
+			if(Input.GetKeyDown(KeyCode.Joystick1Button5)){
+				Menu();
+			}
+			if(Input.GetKeyDown(KeyCode.Joystick1Button3)){
+				Controls();
+			}
+
+			if(highScorePanel.activeSelf){
+				if(Input.GetKeyDown(KeyCode.Joystick1Button6)){
+					HighscoreEntry();
+				}
 			}
         }
 
@@ -114,9 +123,13 @@ namespace BauhausRacer {
 		}
 
 		public void HighscoreEntry(){
-			Game.Instance.PlayerName = nameInput.text;
-			SceneManager.LoadScene(0);
+			if(nameInput.text != ""){
+				Game.Instance.PlayerName = nameInput.text;
+				SceneManager.LoadScene(0);
+			} 
 		}
+
+	
 
 		public void ShowHighscorePanel(){
 			Game.Instance.gameStopped = true;

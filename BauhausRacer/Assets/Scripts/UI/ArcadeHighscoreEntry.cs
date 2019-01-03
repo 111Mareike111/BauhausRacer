@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +24,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
  
         void Update ()
         {
-                if (Input.GetKey ("up") && readyToMove) {
+                if (Input.GetKey ("up") && readyToMove || Input.GetAxis("Vertical")>0 && readyToMove) {
                         if (stepper < alphabet.Length - 1) {
                                 stepper++;
 						}else{
@@ -33,7 +34,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
                 }
-                if (Input.GetKey ("down") && readyToMove) {
+                if (Input.GetKey ("down") && readyToMove || Input.GetAxis("Vertical")<0 && readyToMove) {
                         if (stepper > 0) {
                                 stepper--;
 						}else{
@@ -43,7 +44,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 						readyToMove = false;
 						Invoke ("ResetReadyToMove", moveDelay);
                 }
-                if (Input.GetKey("right") && readyToMove) { //next Letter
+                if (Input.GetKey("right") && readyToMove || Input.GetAxis("Horizontal")>0 && readyToMove) { //next Letter
                     
 					if (letterSelect < Letters.Length - 1) {
 							letterSelect++;
@@ -57,9 +58,9 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 							readyToMove = false;
 							Invoke ("ResetReadyToMove", moveDelay+1);
 					}
-                        
+                    
                 }
-				if (Input.GetKey("left") && readyToMove) { //next Letter
+				if (Input.GetKey("left") && readyToMove || Input.GetAxis("Horizontal")<0 && readyToMove) { //next Letter
                     
 					if (letterSelect > 0) {
 							letterSelect--;
@@ -88,6 +89,9 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 			Game.Instance.PlayerName = name;
 			Debug.Log("name: "+name);
 		}
+
+
+	
 	}
 }
 
