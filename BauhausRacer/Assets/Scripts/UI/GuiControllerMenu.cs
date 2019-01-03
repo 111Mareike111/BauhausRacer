@@ -13,13 +13,13 @@ namespace BauhausRacer{
 		
 		// Update is called once per frame
 		void Update () {
-			if(Input.GetKeyDown(KeyCode.Joystick1Button0)){
+			if(Input.GetKeyDown(KeyCode.Joystick1Button6)){
 				Play();
 			}
-			if(Input.GetKeyDown(KeyCode.Joystick1Button3)){
+			if(Input.GetKeyDown(KeyCode.Joystick1Button4)){
 				Credits();
 			}
-			if(Input.GetKeyDown(KeyCode.Joystick1Button4)){
+			if(Input.GetKeyDown(KeyCode.Joystick1Button3)){
 				Controls();
 			}
 			if(Input.GetKeyDown(KeyCode.Joystick1Button5)){
