@@ -168,12 +168,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    m_Font: {fileID: 12800000, guid: 49f4ff56a87bb95418bdc5c6678bcfa0, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 42
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 253217460}
   - component: {fileID: 253217459}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    m_Font: {fileID: 12800000, guid: 49f4ff56a87bb95418bdc5c6678bcfa0, type: 3}
     m_FontSize: 39
     m_FontStyle: 0
     m_BestFit: 0
@@ -353,31 +353,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '140:22
-
-    140:22
-
-    140:22
-
-    140:22
-
-    140:22
-
-    140:22
-
-    140:22
-
-    140:22
-
-    140:22
-
-    140:22
-
-    140:22
-
-    140:22
-
-    140:22'
+  m_Text: 
 --- !u!222 &253217460
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -499,7 +475,7 @@ GameObject:
   - component: {fileID: 295282351}
   - component: {fileID: 295282350}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,7 +588,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    m_Font: {fileID: 12800000, guid: 49f4ff56a87bb95418bdc5c6678bcfa0, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -766,7 +742,7 @@ GameObject:
   - component: {fileID: 448938176}
   - component: {fileID: 448938175}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -810,7 +786,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    m_Font: {fileID: 12800000, guid: 49f4ff56a87bb95418bdc5c6678bcfa0, type: 3}
     m_FontSize: 39
     m_FontStyle: 0
     m_BestFit: 0
@@ -822,29 +798,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'mareike
-
-    mareike
-
-    mareike
-
-    mareike
-
-    mareike
-
-    mareike
-
-    mareike
-
-    mareike
-
-    mareike
-
-    mareike
-
-    mareike
-
-'
+  m_Text: 
 --- !u!222 &448938176
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -973,7 +927,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    m_Font: {fileID: 12800000, guid: 49f4ff56a87bb95418bdc5c6678bcfa0, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -1165,7 +1119,7 @@ GameObject:
   - component: {fileID: 682152435}
   - component: {fileID: 682152434}
   m_Layer: 5
-  m_Name: Text (3)
+  m_Name: Headline Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1209,7 +1163,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    m_Font: {fileID: 12800000, guid: 49f4ff56a87bb95418bdc5c6678bcfa0, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -1274,7 +1228,7 @@ GameObject:
   - component: {fileID: 751153374}
   - component: {fileID: 751153373}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Backgorund
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1343,7 +1297,7 @@ GameObject:
   - component: {fileID: 979176690}
   - component: {fileID: 979176689}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Headline Rank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1387,7 +1341,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    m_Font: {fileID: 12800000, guid: 49f4ff56a87bb95418bdc5c6678bcfa0, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -1418,7 +1372,7 @@ GameObject:
   - component: {fileID: 1189843410}
   - component: {fileID: 1189843409}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Headline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1462,12 +1416,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
-    m_FontSize: 47
+    m_Font: {fileID: 12800000, guid: 49f4ff56a87bb95418bdc5c6678bcfa0, type: 3}
+    m_FontSize: 61
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 47
+    m_MaxSize: 61
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1620,12 +1574,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    m_Font: {fileID: 12800000, guid: 49f4ff56a87bb95418bdc5c6678bcfa0, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 44
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1798,6 +1752,7 @@ GameObject:
   - component: {fileID: 1428709224}
   - component: {fileID: 1428709223}
   - component: {fileID: 1428709227}
+  - component: {fileID: 1428709228}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1896,6 +1851,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd21cc608b39db14bac14a2d91d20428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placeText: {fileID: 1966245907}
+  nameText: {fileID: 448938175}
+  timeText: {fileID: 253217459}
+--- !u!114 &1428709228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1428709222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98abf978c5b02a4abc99eddef39dffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highscoreDatabase:
+    list: []
 --- !u!1 &1656140699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,7 +1878,7 @@ GameObject:
   - component: {fileID: 1656140702}
   - component: {fileID: 1656140701}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: Headline Time
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1951,7 +1922,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    m_Font: {fileID: 12800000, guid: 49f4ff56a87bb95418bdc5c6678bcfa0, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -2046,8 +2017,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1350614583}
   m_HandleRect: {fileID: 1350614582}
   m_Direction: 2
-  m_Value: 0.99999976
-  m_Size: 0.4846
+  m_Value: 0.9999999
+  m_Size: 0.48460004
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2222,7 +2193,7 @@ GameObject:
   - component: {fileID: 1966245908}
   - component: {fileID: 1966245907}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Rank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2266,7 +2237,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 997a43b767814dd0a7642ec9b78cba41, type: 3}
+    m_Font: {fileID: 12800000, guid: 49f4ff56a87bb95418bdc5c6678bcfa0, type: 3}
     m_FontSize: 39
     m_FontStyle: 0
     m_BestFit: 0
@@ -2278,37 +2249,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '1
-
-    2
-
-    3
-
-    4
-
-    5
-
-    6
-
-    7
-
-    8
-
-    9
-
-    9
-
-    9
-
-    9
-
-    9
-
-    9
-
-    99
-
-'
+  m_Text: 
 --- !u!222 &1966245908
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2327,7 +2268,7 @@ GameObject:
   - component: {fileID: 1990660734}
   - component: {fileID: 1990660733}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: Headline Bauhausracer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2374,8 +2315,9 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
-  m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 40eab58029a529c45ad7e11591d34d2a, type: 2}
+  m_sharedMaterial: {fileID: 21852063637985256, guid: 40eab58029a529c45ad7e11591d34d2a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2417,7 +2359,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0

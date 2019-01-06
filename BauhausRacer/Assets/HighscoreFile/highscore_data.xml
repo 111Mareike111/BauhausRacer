@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<HighscoreDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Highscore>
+    <HighScoreEntry>
+      <name>B</name>
+      <time>1.90791118</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>C</name>
+      <time>3.349868</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>A</name>
+      <time>3.453785</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>C</name>
+      <time>4.94185972</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>J</name>
+      <time>6.34801054</time>
+    </HighScoreEntry>
+  </Highscore>
+</HighscoreDatabase>

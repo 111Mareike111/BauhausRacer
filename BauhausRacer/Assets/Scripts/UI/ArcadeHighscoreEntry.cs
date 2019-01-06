@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace BauhausRacer{
 public class ArcadeHighscoreEntry : MonoBehaviour
@@ -66,7 +67,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 							letterSelect--;
 							Letters [letterSelect].color = Color.white; // selected Letter is white
 							
-							Letters [letterSelect + 1].color = Color.black;
+							Letters [letterSelect + 1].text = "";
 							arrows.transform.position = new Vector3(arrows.transform.position.x-18.7f, arrows.transform.position.y, 0);
 							readyToMove = false;
 							Invoke ("ResetReadyToMove", moveDelay+1);
@@ -88,6 +89,10 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 			}
 			Game.Instance.PlayerName = name;
 			Debug.Log("name: "+name);
+			
+			XMLManager.instance.highscoreDatabase.AddEntry(Game.Instance.PlayerName, Game.Instance.timer);
+	
+			SceneManager.LoadScene(0);
 		}
 
 

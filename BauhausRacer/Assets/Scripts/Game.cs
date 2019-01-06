@@ -19,6 +19,8 @@ namespace BauhausRacer
 
         public bool gameStopped {get; set;}
 
+        public float timer;
+
 
         void Awake()
         {
@@ -32,6 +34,7 @@ namespace BauhausRacer
 
             ColorManager = GetComponent<ColorManager>();
 
+            timer = 0f;
             Time.timeScale = 1.5f;
             PlayerName="";
             gameStopped = false;
@@ -52,6 +55,9 @@ namespace BauhausRacer
         {
             horizontal = Input.GetAxis("Horizontal2");
             vertical = Input.GetAxis("Vertical2");
+            if(!gameStopped){
+                 timer += (Time.deltaTime/1.5f);
+            }
         }
 
         public void EndGame(){

@@ -7,7 +7,7 @@ namespace BauhausRacer {
 
         public static CheckpointManager Instance;
 
-        public GuiController guiController;
+        public GuiControllerGame guiController;
 
         private Checkpoint _currentCheckpoint;
         private Checkpoint[] _nextCheckpoints;
