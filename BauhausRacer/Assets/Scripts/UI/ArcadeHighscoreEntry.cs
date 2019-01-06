@@ -90,9 +90,6 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 			Game.Instance.PlayerName = name;
 			Debug.Log("name: "+name);
 			
-			XMLManager.instance.highscoreDatabase.AddEntry(Game.Instance.PlayerName, Game.Instance.timer);
-	
-			SceneManager.LoadScene(0);
 		}
 
 

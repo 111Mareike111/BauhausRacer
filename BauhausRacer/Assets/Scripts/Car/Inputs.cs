@@ -22,18 +22,10 @@ public class Inputs : MonoBehaviour {
 	internal float steering;
 	internal float handbrake;
 
-	private bool wheel = false;
 
 	void Start(){
 
 		drivetrain = GetComponent<Driving> ();
-
-		for(int i = 0; i<Input.GetJoystickNames().Length; i++){
-			if(Input.GetJoystickNames()[i].Equals("B677")){
-				wheel = true;
-				break;
-			}
-		}
 
 	}
 
@@ -52,7 +44,7 @@ public class Inputs : MonoBehaviour {
 	}
 
 	void ReceiveInputs () {	
-		if(!wheel) {
+		if(!Game.Instance.wheel) {
 			gas = Mathf.Clamp01(Input.GetAxis ("Vertical"));
 			brake = Mathf.Abs(Mathf.Clamp(Input.GetAxis ("Vertical"), -1f, 0f));
 			steering = Input.GetAxis ("Horizontal");

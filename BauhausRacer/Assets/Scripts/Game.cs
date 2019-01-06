@@ -19,7 +19,8 @@ namespace BauhausRacer
 
         public bool gameStopped {get; set;}
 
-        public float timer;
+        public float timer {get;set;}
+        public bool wheel{get;set;}
 
 
         void Awake()
@@ -38,6 +39,14 @@ namespace BauhausRacer
             Time.timeScale = 1.5f;
             PlayerName="";
             gameStopped = false;
+            wheel = false;
+
+            for(int i = 0; i<Input.GetJoystickNames().Length; i++){
+                if(Input.GetJoystickNames()[i].Equals("B677")){
+                    wheel = true;
+                    break;
+                }
+            }
         }
 
         // Use this for initialization
