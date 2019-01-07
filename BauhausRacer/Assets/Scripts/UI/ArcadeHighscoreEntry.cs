@@ -11,7 +11,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
         private string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.-";
         private int stepper = 0;
         private int letterSelect = 0;
-        public Text[] Letters = null;
+        public Text[] Letters = new Text[8];
         public float moveDelay = 0.2f;
         private bool readyToMove = true;
 
@@ -19,7 +19,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
  
         void Start ()
         {
-                Letters [letterSelect].text = alphabet [stepper].ToString ();
+                Letters[letterSelect].text = alphabet[stepper].ToString ();
 				Letters[letterSelect].color = Color.white;
         }
  
@@ -74,6 +74,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 					}
                         
                 }
+				
 
         }
  

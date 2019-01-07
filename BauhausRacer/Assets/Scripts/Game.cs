@@ -42,7 +42,7 @@ namespace BauhausRacer
             wheel = false;
 
             for(int i = 0; i<Input.GetJoystickNames().Length; i++){
-                if(Input.GetJoystickNames()[i].Equals("B677")){
+                if(Input.GetJoystickNames()[i].Equals("B677") || Input.GetJoystickNames()[i].Equals("Thrustmaster Racing Wheel FFB")){
                     wheel = true;
                     break;
                 }

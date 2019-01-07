@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace BauhausRacer {
 	public class GuiControllerGame : MonoBehaviour {
-		
+
 		[Header("Ingame")]
 		public TextMeshProUGUI textTime;
 		public TextMeshProUGUI textRounds;
@@ -26,6 +26,7 @@ namespace BauhausRacer {
 		public Text m_timeText;
 		public GameObject controlsPanel;
 		public GameObject creditsPanel;
+		public ScrollRect highscoreScrollrect;
 
 
 		[Header("Highscore")]
@@ -41,8 +42,16 @@ namespace BauhausRacer {
 		//Speed
 		private float kmh = 0f;
 		private float orgKMHNeedleAngle = 0f;
-
 		//
+		private enum ActiveScreen
+		{
+			MENU, CREDITS, CONTROLS, GAME, PAUSE, HIGHSCORE
+		}
+
+		private ActiveScreen activeScreen;
+
+		private ArcadeHighscoreEntry arcadeHighscoreEntry;
+		
 
 
 		//menu is active, game is paused
@@ -55,10 +64,14 @@ namespace BauhausRacer {
 			creditsPanel.SetActive(false);
 			controlsPanel.SetActive(false);
 			orgKMHNeedleAngle = KMHNeedle.transform.localEulerAngles.z;
+			activeScreen = ActiveScreen.MENU;
+			
 			LoadHighscore();
 			PauseGame();
 			
 		}
+		
+
 		
 		// Update is called once per frame
 		void Update ()
@@ -66,27 +79,67 @@ namespace BauhausRacer {
 			if(!Game.Instance.gameStopped){
            		 textTime.text = "Time: " + GetMinutesDisplay(Game.Instance.timer);
 			}
+
+			
+			// if(Input.GetAxis("DPadY")<0){
+			// 	highscoreScrollrect.verticalScrollbar.value++;
+			// }
            
 			DisplaySpeed();
+			
+			switch (activeScreen) {
+				case ActiveScreen.MENU:
+					if(Input.GetButtonDown("Controls")){
+						Controls();
+					}
+					if(Input.GetButtonDown("Credits")){
+						Credits();
+					}
+					if(Input.GetButtonDown("Menu")){
+						Exit();
+					}
+					if(Input.GetButtonDown("Play")){
+						Play();
+					}
+				break;
+				case ActiveScreen.CONTROLS:
+					if(Input.GetButtonDown("Menu")){
+						Back(controlsPanel);
+					} 
+					break;
+				case ActiveScreen.CREDITS:
+					if(Input.GetButtonDown("Menu")){
+						Back(creditsPanel);
+					} 
+				break;
+				case ActiveScreen.PAUSE:
+					if(Input.GetButtonDown("Play")){
+						Resume();
+					}
+					if(Input.GetButtonDown("Menu")){
+						Menu();
+					}
+					if(Input.GetButtonDown("Controls")){
+						Controls();
+					}
+				break;
+				case ActiveScreen.GAME:
+					if(Input.GetButtonDown("Pause")){
+						PauseGame();
+					}
+					if(Input.GetButtonDown("Respawn")){
+						Respawn_Player();
+					}
+				break;
+				case ActiveScreen.HIGHSCORE:
+					if(Input.GetButtonDown("Play")){
+						arcadeHighscoreEntry = wheelInput.GetComponent<ArcadeHighscoreEntry>();
+						arcadeHighscoreEntry.SubmitName();
+						HighscoreEntry();
+					}
+				break;
+			}
 
-			if(Input.GetButtonDown("Pause")){
-				PauseGame();
-			}
-			if(Input.GetButtonDown("Play")){
-				Resume();
-			}
-			if(Input.GetButtonDown("Menu")){
-				Menu();
-			}
-			if(Input.GetButtonDown("Controls")){
-				Controls();
-			}
-
-			if(highScorePanel.activeSelf){
-				if(Input.GetButtonDown("Play")){
-					HighscoreEntry();
-				}
-			}
         }
 
 		//Display Time in minutes and seconds
@@ -123,18 +176,21 @@ namespace BauhausRacer {
 		//begin game
 		public void Play(){
 			menuPanel.SetActive(false);
+			activeScreen = ActiveScreen.GAME;
 			Resume();
 		}
 
 		//pause game
 		public void PauseGame(){
 			pausePanel.SetActive(true);
+			activeScreen = ActiveScreen.PAUSE;
 			Game.Instance.gameStopped = true; //timer mustn't count during pause
 			Time.timeScale = 0f;
 		}
 
 		//resume game after pause
 		public void Resume(){
+			activeScreen = ActiveScreen.GAME;
 			Time.timeScale = 1.5f;
 			pausePanel.SetActive(false);
 			Game.Instance.gameStopped= false;
@@ -148,21 +204,29 @@ namespace BauhausRacer {
 		//back from controls or credits to menu or game
 		public void Back(GameObject panel){
 			panel.SetActive(false);
+			if(menuPanel.activeSelf){
+				activeScreen = ActiveScreen.MENU;
+			} else {		//if controls is called from the paused game
+				activeScreen = ActiveScreen.PAUSE;
+			}
 		}
 
 		//show controls panel
 		public void Controls(){
 			//PauseGame(); 
+			activeScreen = ActiveScreen.CONTROLS;
 			controlsPanel.SetActive(true);
 		}
 
 		//show menu panel 
 		public void Menu(){
+			activeScreen =ActiveScreen.MENU;
 			SceneManager.LoadScene(0); //load scene to reset everything and to reload highscore
 		}
 
 		//show credits panel
 		public void Credits(){
+			activeScreen = ActiveScreen.CREDITS;
 			creditsPanel.SetActive(true);
 		}
 
@@ -223,6 +287,7 @@ namespace BauhausRacer {
 
 			//show the current player's rank and time in highlighted field, show the entry above and below
 			if(highscore.Count >=3){
+				activeScreen = ActiveScreen.HIGHSCORE;
 				if(index == highscore.Count-1){ 		//new entry is the last one
 					h_rankText.text = index.ToString()+"\n"+ (index+1).ToString();
 					h_nameText.text = highscore[index-1].name+"\n";
