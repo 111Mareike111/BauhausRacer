@@ -14,19 +14,22 @@ namespace BauhausRacer {
         [SerializeField] private Checkpoint _firstCheckpiont;
         [SerializeField] private Checkpoint _lastCheckpoint;
 
-        private bool wrongDirection = false;
+        private bool _wrongDirection;
         public GameObject turnBack_img;
 
         public Checkpoint[] NextCheckpoints { get { return _nextCheckpoints; } }
         public Checkpoint LastCheckpoint { get { return _currentCheckpoint; } }
-
+        public bool WrongDirection {get { return _wrongDirection;}}
+        
+        public Checkpoint FirstCheckpoint { get { return _firstCheckpiont; } }
         private int checkpointIndex;
 
         [SerializeField] private Transform _playerTranform;
         [SerializeField] private Material materialNextCheckpoint;
         [SerializeField] private Material materialOtherCeckpoint;
         [SerializeField] private Material materialLastCeckpoint;
-        private int _currentRound;
+        [SerializeField] private Material materialCurrentCeckpoint;
+        private int _currentRound =0;
         private Checkpoint[] checkpoints;
 
         void Awake()
@@ -40,12 +43,15 @@ namespace BauhausRacer {
                 Destroy(gameObject);
             }
             turnBack_img.SetActive(false);
+           _wrongDirection = false;
         }
 
         // Use this for initialization
         void Start () {
             _nextCheckpoints = new Checkpoint[1];
             _nextCheckpoints[0] = _firstCheckpiont;
+            _firstCheckpiont.SetNextCheckpoint(true);
+            _currentCheckpoint = _lastCheckpoint;
             visualAid(true);
 
         }
@@ -55,6 +61,11 @@ namespace BauhausRacer {
             _currentCheckpoint = currentCheckpoint;
             if(_currentCheckpoint == _lastCheckpoint)
             {
+                _currentRound++;
+                guiController.DisplayRounds(_currentRound);
+                if(_currentRound == Game.Instance.rounds){
+                    guiController.ShowHighscorePanel();
+                }
                 //Todo Increment course rounds
             }
             foreach(Checkpoint cp in _nextCheckpoints)
@@ -68,11 +79,13 @@ namespace BauhausRacer {
             {
                 cp.SetNextCheckpoint(true);
             }
+            Debug.Log("Round: "+_currentRound);
         }
 
         public void ResetPlayerToCurrentCheckpoint()
         {
             _playerTranform.position = _currentCheckpoint.SpawnPosition.position;
+            _playerTranform.rotation = _currentCheckpoint.SpawnPosition.rotation;
             Debug.Log("CHECK");
         }
         
@@ -93,21 +106,19 @@ namespace BauhausRacer {
                 }
             }
             _lastCheckpoint.GetComponent<Renderer>().material = materialLastCeckpoint;
+            _currentCheckpoint.GetComponent<Renderer>().material = materialCurrentCeckpoint;
         }
 
-        public void WrongDirection()
+        public void ShowWrongDirection()
         {
-            if (wrongDirection)
-            {
-                wrongDirection = false;
-                turnBack_img.SetActive(false);
-            } else
-            {
-                wrongDirection = true;
+                _wrongDirection = true;
                 turnBack_img.SetActive(true);
                 Debug.Log("wrong direction");
-            }
-            
+        }
+
+        public void HideWrongDirection(){
+            _wrongDirection = false;
+            turnBack_img.SetActive(false);
         }
 
     }
