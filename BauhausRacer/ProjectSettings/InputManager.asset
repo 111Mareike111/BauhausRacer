@@ -173,8 +173,8 @@ InputManager:
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 3
-    dead: 3
+    gravity: 0
+    dead: 0.19
     sensitivity: 1
     snap: 0
     invert: 0
@@ -371,7 +371,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 0
+    axis: 4
     joyNum: 0
   - serializedVersion: 3
     m_Name: DPadY
@@ -387,7 +387,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 1
+    axis: 3
     joyNum: 0
   - serializedVersion: 3
     m_Name: Cancel

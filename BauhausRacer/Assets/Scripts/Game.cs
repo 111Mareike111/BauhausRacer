@@ -38,7 +38,6 @@ namespace BauhausRacer
             timer = 0f;
             Time.timeScale = 1.5f;
             PlayerName="";
-            gameStopped = false;
             wheel = false;
 
             for(int i = 0; i<Input.GetJoystickNames().Length; i++){

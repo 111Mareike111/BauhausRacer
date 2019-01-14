@@ -50,7 +50,7 @@ public class Inputs : MonoBehaviour {
 			steering = Input.GetAxis ("Horizontal");
 			handbrake = Input.GetKey (KeyCode.Space) ? 1f : 0f;
 		} else {
-			gas = Mathf.Clamp01(Input.GetAxis ("Vertical2"));
+			gas = Mathf.Abs( Mathf.Clamp(Input.GetAxis ("Vertical2"), 0, 1f));
 			brake = Mathf.Abs(Mathf.Clamp(Input.GetAxis ("Vertical2"), -1f, 0f));
 			steering = Input.GetAxis ("Horizontal2");
 			handbrake = Input.GetKey (KeyCode.Space) ? 1f : 0f;
