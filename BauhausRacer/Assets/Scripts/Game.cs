@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -66,6 +67,14 @@ namespace BauhausRacer
             if(!gameStopped){
                  timer += (Time.deltaTime/1.5f);
             }
+
+           
+                    foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+                    {
+                        if (Input.GetKeyDown(kcode))
+                            Debug.Log("KeyCode down: " + kcode);
+                    }
+                
         }
 
         public void EndGame(){

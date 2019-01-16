@@ -10,9 +10,12 @@ namespace BauhausRacer {
 
 		[Header("Ingame")]
 		public TextMeshProUGUI textTime;
-		public TextMeshProUGUI textRounds;
+		public Image[] roundDisplay;
+		public Sprite roundSprite;
 		public RectTransform KMHNeedle;
 		public GameObject pausePanel;
+
+		public Image[] carColorDisplay;
 		
 		//
 
@@ -52,6 +55,8 @@ namespace BauhausRacer {
 
 		private ArcadeHighscoreEntry arcadeHighscoreEntry;
 		
+		private Color red, blue, yellow, orange, green, violet;
+		private Color blue_h, red_h, yellow_h, orange_h, green_h, violet_h;
 
 
 		//menu is active, game is paused
@@ -69,6 +74,18 @@ namespace BauhausRacer {
 			LoadHighscore();
 			PauseGame();
 			
+			ColorUtility.TryParseHtmlString("#92A1E7", out blue);
+			ColorUtility.TryParseHtmlString("#2339E7", out blue_h);
+			ColorUtility.TryParseHtmlString("#FF7E7E", out red);
+			ColorUtility.TryParseHtmlString("#FF1B11", out red_h);
+			ColorUtility.TryParseHtmlString("#FFF068", out yellow);
+			ColorUtility.TryParseHtmlString("#FFE516", out yellow_h);
+			ColorUtility.TryParseHtmlString("#83E78E", out green);
+			ColorUtility.TryParseHtmlString("#16E708", out green_h);
+			ColorUtility.TryParseHtmlString("#AE87E7", out violet);
+			ColorUtility.TryParseHtmlString("#BD27E7", out violet_h);
+			ColorUtility.TryParseHtmlString("#FFAB6C", out orange);
+			ColorUtility.TryParseHtmlString("#FF7600", out orange_h);
 		}
 		
 
@@ -77,7 +94,7 @@ namespace BauhausRacer {
 		void Update ()
         {
 			if(!Game.Instance.gameStopped){
-           		 textTime.text = "Time: " + GetMinutesDisplay(Game.Instance.timer);
+           		 textTime.text = GetMinutesDisplay(Game.Instance.timer);
 			}
 
 			
@@ -86,7 +103,8 @@ namespace BauhausRacer {
 			// }
            
 			DisplaySpeed();
-			
+			DisplayCarColor();
+
 			switch (activeScreen) {
 				case ActiveScreen.MENU:
 					if(Input.GetButtonDown("Controls")){
@@ -142,6 +160,63 @@ namespace BauhausRacer {
 
         }
 
+		public void DisplayCarColor(){
+			switch(Game.Instance.ColorManager.CurrentColor.ColorName){
+				case "Red":
+					carColorDisplay[0].enabled = true;
+					carColorDisplay[0].color = red_h;
+					break;
+
+				case "Yellow":
+					carColorDisplay[1].enabled = true;
+					carColorDisplay[1].color = yellow_h;
+					break;
+
+				case "Blue":
+					carColorDisplay[0].enabled = true;
+					carColorDisplay[0].color = blue_h;
+					break;
+
+				case "Orange":
+					carColorDisplay[0].enabled = true;
+					carColorDisplay[1].enabled = true;
+					carColorDisplay[2].enabled = true;
+					carColorDisplay[0].color = red;
+					carColorDisplay[1].color = yellow;
+					carColorDisplay[2].color = orange_h;
+					break;
+
+				case "Green":
+					carColorDisplay[0].enabled = true;
+					carColorDisplay[1].enabled = true;
+					carColorDisplay[2].enabled = true;
+					carColorDisplay[0].color = blue;
+					carColorDisplay[2].color = green_h;
+					carColorDisplay[1].color = yellow;
+					break;
+
+				case "Violet":
+					if(carColorDisplay[0].color == red_h){
+						carColorDisplay[0].color = red;
+						carColorDisplay[1].color = blue;
+					} else {
+						carColorDisplay[1].color = red;
+						carColorDisplay[0].color = blue;
+					}
+					carColorDisplay[0].enabled = true;
+					carColorDisplay[1].enabled = true;
+					carColorDisplay[2].enabled = true;
+	
+					carColorDisplay[2].color = violet_h;
+					break;
+				case "NoColor":
+					carColorDisplay[0].enabled = false;
+					carColorDisplay[1].enabled = false;
+					carColorDisplay[2].enabled = false;
+					break;
+			}
+		}
+
 		//Display Time in minutes and seconds
         public static string GetMinutesDisplay(float time){
 			int minutes = (int)time / 60;
@@ -151,7 +226,7 @@ namespace BauhausRacer {
 
 		//display rounds
 		public void DisplayRounds(int currentRound){
-			textRounds.text = currentRound.ToString()+"/"+Game.Instance.rounds.ToString();
+			roundDisplay[currentRound].sprite = roundSprite;
 		}
 
 		//Display speed as kmh-needle
