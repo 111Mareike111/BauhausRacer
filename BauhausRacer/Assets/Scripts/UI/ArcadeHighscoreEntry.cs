@@ -25,7 +25,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
  
         void Update ()
         {
-                if (Input.GetKey ("up") && readyToMove || Input.GetAxis("Vertical")>0 && readyToMove) {
+                if (Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove) {
                         if (stepper < alphabet.Length - 1) {
                                 stepper++;
 						}else{
@@ -35,7 +35,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
                 }
-                if (Input.GetKey ("down") && readyToMove || Input.GetAxis("Vertical")<0 && readyToMove) {
+                if (Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove) {
                         if (stepper > 0) {
                                 stepper--;
 						}else{
@@ -45,7 +45,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 						readyToMove = false;
 						Invoke ("ResetReadyToMove", moveDelay);
                 }
-                if (Input.GetKey("right") && readyToMove || Input.GetAxis("Horizontal")>0 && readyToMove) { //next Letter
+                if (Input.GetKey("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove) { //next Letter
                     
 					if (letterSelect < Letters.Length - 1) {
 							letterSelect++;
@@ -61,7 +61,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 					}
                     
                 }
-				if (Input.GetKey("left") && readyToMove || Input.GetAxis("Horizontal")<0 && readyToMove) { //next Letter
+				if (Input.GetKey("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove) { //next Letter
                     
 					if (letterSelect > 0) {
 							letterSelect--;

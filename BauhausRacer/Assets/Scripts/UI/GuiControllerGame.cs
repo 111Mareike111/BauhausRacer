@@ -46,7 +46,7 @@ namespace BauhausRacer {
 		private float kmh = 0f;
 		private float orgKMHNeedleAngle = 0f;
 		//
-		private enum ActiveScreen
+		public enum ActiveScreen
 		{
 			MENU, CREDITS, CONTROLS, GAME, PAUSE, HIGHSCORE
 		}
@@ -159,6 +159,10 @@ namespace BauhausRacer {
 			}
 
         }
+
+		public ActiveScreen GetActiveScreen(){
+			return activeScreen;
+		}
 
 		public void DisplayCarColor(){
 			switch(Game.Instance.ColorManager.CurrentColor.ColorName){

@@ -292,7 +292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &419589420
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -92004,7 +92004,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-282398
+  m_Name: pb_Mesh27068
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -92962,12 +92962,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1379831539938896, guid: dce3bd6f7688de846b0f4f261f4b6a15,
     type: 2}
   m_PrefabInternal: {fileID: 1213297414}
---- !u!114 &1253459054 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114387424868382950, guid: dce3bd6f7688de846b0f4f261f4b6a15,
-    type: 2}
-  m_PrefabInternal: {fileID: 1213297414}
-  m_Script: {fileID: 11500000, guid: e0193981fd0682a4ab29bfaa78840cfe, type: 3}
 --- !u!1001 &1257500287
 Prefab:
   m_ObjectHideFlags: 0
@@ -93390,6 +93384,10 @@ Prefab:
     - target: {fileID: 54803388588620430, guid: dce3bd6f7688de846b0f4f261f4b6a15,
         type: 2}
       propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1379831539938896, guid: dce3bd6f7688de846b0f4f261f4b6a15, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -93976,7 +93974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1940890996
 RectTransform:
   m_ObjectHideFlags: 0
@@ -94067,16 +94065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0887d4b8d1324774e9869f7f31355209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textTime: {fileID: 1815428713}
-  textRounds: {fileID: 2141459439}
-  carController: {fileID: 1253459054}
-  finishPanel: {fileID: 1623117308}
-  pausePanel: {fileID: 0}
-  highScorePanel: {fileID: 0}
-  wheelInput: {fileID: 0}
-  keyboardInput: {fileID: 0}
-  nameInput: {fileID: 0}
-  KMHNeedle: {fileID: 560560293}
 --- !u!1 &1951649898
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+namespace BauhausRacer{
 public class MainMenuBehaviour : MonoBehaviour {
 
-    [SerializeField] private float waitingdelay = 10;
+    [SerializeField] private float waitingdelay = 40;
     [SerializeField] private GameObject[] MenuWindows;
     [SerializeField] private GameObject videoWindow;
     [SerializeField] private GameObject playButton;
+
+    public GuiControllerGame controller;
     private float timer;
 	// Use this for initialization
 	void Start () {
@@ -20,7 +23,12 @@ public class MainMenuBehaviour : MonoBehaviour {
         if (Input.anyKey)
             SetInitiolSituation();
         else
-            CheckTimer();
+            if(controller.GetActiveScreen() != GuiControllerGame.ActiveScreen.HIGHSCORE 
+            && controller.GetActiveScreen() != GuiControllerGame.ActiveScreen.GAME
+            && controller.GetActiveScreen() != GuiControllerGame.ActiveScreen.PAUSE){
+                CheckTimer();
+            }
+            
 	}
 
     void SetInitiolSituation()
@@ -58,4 +66,5 @@ public class MainMenuBehaviour : MonoBehaviour {
             gobj.SetActive(false);
         }
     }
+}
 }
