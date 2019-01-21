@@ -70,7 +70,7 @@ namespace BauhausRacer {
 			controlsPanel.SetActive(false);
 			orgKMHNeedleAngle = KMHNeedle.transform.localEulerAngles.z;
 			activeScreen = ActiveScreen.MENU;
-			
+			Debug.Log(activeScreen);
 			LoadHighscore();
 			PauseGame();
 			
@@ -150,7 +150,7 @@ namespace BauhausRacer {
 					}
 				break;
 				case ActiveScreen.HIGHSCORE:
-					if(Input.GetButtonDown("Play")){
+					if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.KeypadEnter)){
 						arcadeHighscoreEntry = wheelInput.GetComponent<ArcadeHighscoreEntry>();
 						arcadeHighscoreEntry.SubmitName();
 						HighscoreEntry();
@@ -167,33 +167,30 @@ namespace BauhausRacer {
 		public void DisplayCarColor(){
 			switch(Game.Instance.ColorManager.CurrentColor.ColorName){
 				case "Red":
-					carColorDisplay[0].enabled = true;
 					carColorDisplay[0].color = red_h;
+					carColorDisplay[1].color = Color.white;
+					carColorDisplay[2].color = Color.white;
 					break;
 
 				case "Yellow":
-					carColorDisplay[1].enabled = true;
 					carColorDisplay[1].color = yellow_h;
+					carColorDisplay[0].color = Color.white;
+					carColorDisplay[2].color = Color.white;
 					break;
 
 				case "Blue":
-					carColorDisplay[0].enabled = true;
+					carColorDisplay[1].color = Color.white;
+					carColorDisplay[2].color = Color.white;
 					carColorDisplay[0].color = blue_h;
 					break;
 
 				case "Orange":
-					carColorDisplay[0].enabled = true;
-					carColorDisplay[1].enabled = true;
-					carColorDisplay[2].enabled = true;
 					carColorDisplay[0].color = red;
 					carColorDisplay[1].color = yellow;
 					carColorDisplay[2].color = orange_h;
 					break;
 
 				case "Green":
-					carColorDisplay[0].enabled = true;
-					carColorDisplay[1].enabled = true;
-					carColorDisplay[2].enabled = true;
 					carColorDisplay[0].color = blue;
 					carColorDisplay[2].color = green_h;
 					carColorDisplay[1].color = yellow;
@@ -207,16 +204,13 @@ namespace BauhausRacer {
 						carColorDisplay[1].color = red;
 						carColorDisplay[0].color = blue;
 					}
-					carColorDisplay[0].enabled = true;
-					carColorDisplay[1].enabled = true;
-					carColorDisplay[2].enabled = true;
 	
 					carColorDisplay[2].color = violet_h;
 					break;
 				case "NoColor":
-					carColorDisplay[0].enabled = false;
-					carColorDisplay[1].enabled = false;
-					carColorDisplay[2].enabled = false;
+					carColorDisplay[0].color = Color.white;
+					carColorDisplay[1].color = Color.white;
+					carColorDisplay[2].color = Color.white;
 					break;
 			}
 		}
@@ -299,7 +293,7 @@ namespace BauhausRacer {
 
 		//show menu panel 
 		public void Menu(){
-			activeScreen =ActiveScreen.MENU;
+			activeScreen = ActiveScreen.MENU;
 			SceneManager.LoadScene(0); //load scene to reset everything and to reload highscore
 		}
 
