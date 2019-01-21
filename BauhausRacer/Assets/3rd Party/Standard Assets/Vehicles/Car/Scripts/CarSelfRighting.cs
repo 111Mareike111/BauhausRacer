@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace BauhausRacer
+namespace UnityStandardAssets.Vehicles.Car
 {
     public class CarSelfRighting : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace BauhausRacer
+namespace UnityStandardAssets.Vehicles.Car
 {
     internal enum CarDriveType
     {
@@ -69,7 +69,6 @@ namespace BauhausRacer
 
             m_Rigidbody = GetComponent<Rigidbody>();
             m_CurrentTorque = m_FullTorqueOverAllWheels - (m_TractionControl*m_FullTorqueOverAllWheels);
-
         }
 
 
@@ -363,11 +362,6 @@ namespace BauhausRacer
                 }
             }
             return false;
-        }
-
-        public string GetSpeedType(){
-            
-            return m_SpeedType.ToString().ToLower();
         }
     }
 }
