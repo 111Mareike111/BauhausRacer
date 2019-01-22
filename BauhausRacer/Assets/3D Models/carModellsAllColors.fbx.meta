@@ -388,7 +388,117 @@ ModelImporter:
     4300140: carPurpleVariation2
     4300142: carPurpleVariation1
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blankcolorCar
+    second: {fileID: 2100000, guid: 440581e680d3de2428027c2ac2acb2d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blankcolorCarDark
+    second: {fileID: 2100000, guid: a67f7b84dd453964fb64708dccd6fb40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blankcolorCarlight
+    second: {fileID: 2100000, guid: 87f059c7ebbb643458b20ef80e333a75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bluehighlightCar
+    second: {fileID: 2100000, guid: 91cba82e1c415ce4b9ad8521899f1d9d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bluehighlightCarDark
+    second: {fileID: 2100000, guid: a40c2d0af54463444b5939ef86bf4647, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bluehighlightCarLight
+    second: {fileID: 2100000, guid: bd9ccbd34388c6746b0d24e277b53853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: carBase
+    second: {fileID: 2100000, guid: e49ca81fa808b9446af96de209fd4350, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greenhighlightCar
+    second: {fileID: 2100000, guid: 65bb1024101820f4485d2a753295f052, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greenhighlightCarDark
+    second: {fileID: 2100000, guid: 6ac9c05e0b076bf49950f0ed881de324, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greenhighlightCarLight
+    second: {fileID: 2100000, guid: 38eb97d7374f0b843b5f7a325556378e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orangehighlightcar
+    second: {fileID: 2100000, guid: c4bc74842d2a31f40867ba98f867b530, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orangehighlightcarDark
+    second: {fileID: 2100000, guid: f0811d8056d086e4482057510abe6f38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orangehighlightcarLight
+    second: {fileID: 2100000, guid: 1aa5943a4ab0c254ab031888b372d7a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purplehighlightCar
+    second: {fileID: 2100000, guid: c5f25b13c6473da4aaf3c6cf07fe84c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purplehighlightCarDark
+    second: {fileID: 2100000, guid: 39da61e16aa8e78469ea16d246424c10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purplehighlightCarLight
+    second: {fileID: 2100000, guid: 4408bb61ee022b641be97dfe4af9d3f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: redhighlightcar
+    second: {fileID: 2100000, guid: 458ec2ae19bd33e42a6bd4f33fdab748, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: redhighlightcarDark
+    second: {fileID: 2100000, guid: 71ff80297431bb542947638018161e6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: redhighlightcarLight
+    second: {fileID: 2100000, guid: 485e2826416cc25438bbcf79d0cc7f92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellowhighlightCar
+    second: {fileID: 2100000, guid: 7b9b0f5c9d6c2b148a564161c433b3d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellowhighlightCarDark
+    second: {fileID: 2100000, guid: 7a2d42e548298c746ade007a7994fd60, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellowhighlightCarLight
+    second: {fileID: 2100000, guid: 0bf970c88b032454aaefe094afd1188d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

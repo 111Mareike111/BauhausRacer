@@ -8,28 +8,28 @@ namespace BauhausRacer
     {
         //inspector variables, assign Materials 
         [Header("Red")]
-        public Material carMaterialRed;
+        public Material[] carMaterialRed;
         public Material colorShowerMaterialRed;
         public Material colorBarrierMaterialRed;
         [Header("Blue")]
-        public Material carMaterialBlue;
+        public Material[] carMaterialBlue;
         public Material colorShowerMaterialBlue;
         public Material colorBarrierMaterialBlue;
         [Header("Yellow")]
-        public Material carMaterialYellow;
+        public Material[] carMaterialYellow;
         public Material colorShowerMaterialYellow;
         public Material colorBarrierMaterialYellow;
         [Header("Green")]
-        public Material carMaterialGreen;
+        public Material[] carMaterialGreen;
         public Material colorBarrierMaterialGreen;
         [Header("Violet")]
-        public Material carMaterialViolet;
+        public Material[] carMaterialViolet;
         public Material colorBarrierMaterialViolet;
         [Header("Orange")]
-        public Material carMaterialOrange;
+        public Material[] carMaterialOrange;
         public Material colorBarrierMaterialOrange;
         [Header("NoColor")]
-        public Material carMaterialNoColor;
+        public Material[] carMaterialNoColor;
         public Material colorShowerMaterialNoColor;
 
         Dictionary<string, ColorData> colors = new Dictionary<string, ColorData>();    //contains data of all available colors
