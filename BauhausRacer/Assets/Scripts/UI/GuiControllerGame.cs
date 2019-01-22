@@ -51,6 +51,8 @@ namespace BauhausRacer {
 			MENU, CREDITS, CONTROLS, GAME, PAUSE, HIGHSCORE
 		}
 
+		public bool isInMainMenu = true;
+
 		private ActiveScreen activeScreen;
 
 		private ArcadeHighscoreEntry arcadeHighscoreEntry;
@@ -70,9 +72,10 @@ namespace BauhausRacer {
 			controlsPanel.SetActive(false);
 			orgKMHNeedleAngle = KMHNeedle.transform.localEulerAngles.z;
 			activeScreen = ActiveScreen.MENU;
-			Debug.Log(activeScreen);
+			isInMainMenu = true;
+			Debug.Log(isInMainMenu);
 			LoadHighscore();
-			PauseGame();
+			
 			
 			ColorUtility.TryParseHtmlString("#92A1E7", out blue);
 			ColorUtility.TryParseHtmlString("#2339E7", out blue_h);
@@ -97,7 +100,7 @@ namespace BauhausRacer {
            		 textTime.text = GetMinutesDisplay(Game.Instance.timer);
 			}
 
-			
+		
 			// if(Input.GetAxis("DPadY")<0){
 			// 	highscoreScrollrect.verticalScrollbar.value++;
 			// }
@@ -107,56 +110,63 @@ namespace BauhausRacer {
 
 			switch (activeScreen) {
 				case ActiveScreen.MENU:
-					if(Input.GetButtonDown("Controls")){
+					isInMainMenu = true;
+					if(Input.GetButtonDown("Controls")||Input.GetKeyDown(KeyCode.M)){
 						Controls();
 					}
-					if(Input.GetButtonDown("Credits")){
+					if(Input.GetButtonDown("Credits")||Input.GetKeyDown(KeyCode.C)){
 						Credits();
 					}
-					if(Input.GetButtonDown("Menu")){
+					if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Escape)){
 						Exit();
 					}
-					if(Input.GetButtonDown("Play")){
+					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
 						Play();
 					}
 				break;
 				case ActiveScreen.CONTROLS:
-					if(Input.GetButtonDown("Menu")){
+					isInMainMenu = true;
+					if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
 						Back(controlsPanel);
 					} 
 					break;
 				case ActiveScreen.CREDITS:
-					if(Input.GetButtonDown("Menu")){
+					isInMainMenu = true;
+					if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
 						Back(creditsPanel);
 					} 
 				break;
 				case ActiveScreen.PAUSE:
-					if(Input.GetButtonDown("Play")){
+					isInMainMenu = false;
+					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
 						Resume();
 					}
-					if(Input.GetButtonDown("Menu")){
+					if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
 						Menu();
 					}
-					if(Input.GetButtonDown("Controls")){
+					if(Input.GetButtonDown("Controls")||Input.GetKeyDown(KeyCode.M)){
 						Controls();
 					}
 				break;
 				case ActiveScreen.GAME:
-					if(Input.GetButtonDown("Pause")){
+					isInMainMenu = false;
+					if(Input.GetButtonDown("Pause")||Input.GetKeyDown(KeyCode.Space)){
 						PauseGame();
 					}
-					if(Input.GetButtonDown("Respawn")){
+					if(Input.GetButtonDown("Respawn")||Input.GetKeyDown(KeyCode.R)){
 						Respawn_Player();
 					}
 				break;
 				case ActiveScreen.HIGHSCORE:
-					if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.KeypadEnter)){
+					isInMainMenu = false;
+					if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
 						arcadeHighscoreEntry = wheelInput.GetComponent<ArcadeHighscoreEntry>();
 						arcadeHighscoreEntry.SubmitName();
 						HighscoreEntry();
 					}
 				break;
 			}
+			Debug.Log(activeScreen);
 
         }
 
@@ -293,8 +303,8 @@ namespace BauhausRacer {
 
 		//show menu panel 
 		public void Menu(){
-			activeScreen = ActiveScreen.MENU;
-			SceneManager.LoadScene(0); //load scene to reset everything and to reload highscore
+			//activeScreen = ActiveScreen.MENU;
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single); //load scene to reset everything and to reload highscore
 		}
 
 		//show credits panel

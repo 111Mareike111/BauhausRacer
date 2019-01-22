@@ -37,9 +37,9 @@ namespace BauhausRacer
             ColorManager = GetComponent<ColorManager>();
 
             timer = 0f;
-            Time.timeScale = 1.5f;
             PlayerName="";
             wheel = false;
+            gameStopped = true;
 
             for(int i = 0; i<Input.GetJoystickNames().Length; i++){
                 if(Input.GetJoystickNames()[i].Equals("B677") || Input.GetJoystickNames()[i].Equals("Thrustmaster Racing Wheel FFB")){
@@ -71,8 +71,8 @@ namespace BauhausRacer
            
                     foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
                     {
-                        if (Input.GetKeyDown(kcode))
-                            Debug.Log("KeyCode down: " + kcode);
+                       
+                          
                     }
                 
         }

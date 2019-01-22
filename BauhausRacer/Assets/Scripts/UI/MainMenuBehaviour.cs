@@ -23,9 +23,7 @@ public class MainMenuBehaviour : MonoBehaviour {
         if (Input.anyKey)
             SetInitiolSituation();
         else
-            if(controller.GetActiveScreen() != GuiControllerGame.ActiveScreen.HIGHSCORE 
-            && controller.GetActiveScreen() != GuiControllerGame.ActiveScreen.GAME
-            && controller.GetActiveScreen() != GuiControllerGame.ActiveScreen.PAUSE){
+            if(controller.isInMainMenu){
                 CheckTimer();
             }
             
