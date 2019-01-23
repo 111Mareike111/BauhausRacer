@@ -949,7 +949,77 @@ ModelImporter:
     4300366: bridgeorange
     4300368: bridgepurple
     4300370: Plane.001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground
+    second: {fileID: 2100000, guid: 9cb2ac2af9f0f0d4fb72fe20e25d66ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 763cf46364d45c14982f526e104680f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blueLow
+    second: {fileID: 2100000, guid: 6d755d9e5790ca44a912fe1f71284200, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bluehighlight
+    second: {fileID: 2100000, guid: 7174a843763df314c92fcc28866b3366, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greenLow
+    second: {fileID: 2100000, guid: 0bab4c83b52912d41803d962007334ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greenhighlight
+    second: {fileID: 2100000, guid: a607047e64bccc945a31c61dcb5ba6e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orangeLow
+    second: {fileID: 2100000, guid: 852fbd2ce8e27164da4d078635c34fee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orangehighlight
+    second: {fileID: 2100000, guid: 4189128b403b1154da00b3ee0161c7ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purpleLow
+    second: {fileID: 2100000, guid: 7014bcde426fd49409407471fe0cf47c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purplehighlight
+    second: {fileID: 2100000, guid: e34e91573295b6648b35d65d17988162, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: redLow
+    second: {fileID: 2100000, guid: aa8dffe044853d544b2c49fc145cf92e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: redhighlight
+    second: {fileID: 2100000, guid: 1dfb51652331b914eb607df41a9e6353, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellowLow
+    second: {fileID: 2100000, guid: b9410df2714385a47ba28b54f8837f2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellowhighlight
+    second: {fileID: 2100000, guid: 930a6cda7d61d0c44bc253fb47b2f411, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

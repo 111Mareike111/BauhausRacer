@@ -26,7 +26,8 @@ namespace BauhausRacer
         {
             if (col.tag == "Player")
             {
-                Game.Instance.carBody.GetComponent<Renderer>().material = colorManager.MixColors(colorShower).CarTexture;
+                Debug.Log("C");
+                Game.Instance.carBody.GetComponent<MeshRenderer>().materials = colorManager.MixColors(colorShower).CarTexture;
             }
         }
     }

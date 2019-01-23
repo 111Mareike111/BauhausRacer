@@ -41,6 +41,10 @@ namespace BauhausRacer {
 		public Text h_rankText;
 		public Text h_nameText;
 		public Text h_timeText;
+		public GameObject rankPrefab;
+		public GameObject timePrefab;
+		public GameObject namePrefab;
+		public GameObject grid;
 
 		//Speed
 		private float kmh = 0f;
@@ -340,10 +344,22 @@ namespace BauhausRacer {
 			List<HighScoreEntry> highScoreEntries = XMLManager.instance.highscoreDatabase.list;
 			int rank= 1;
 			foreach(HighScoreEntry h in highScoreEntries){
-				m_nameText.text += h.name+"\n";
+				GameObject entry = Instantiate(rankPrefab, grid.transform);
+				entry.transform.SetParent(grid.transform);
+				entry.GetComponent<Text>().text = rank.ToString();
+				rank++;
+				entry = Instantiate(timePrefab, grid.transform);
+				entry.transform.SetParent(grid.transform);
+				entry.GetComponent<Text>().text = GuiControllerGame.GetMinutesDisplay(h.time);
+
+				entry = Instantiate(namePrefab, grid.transform);
+				entry.transform.SetParent(grid.transform);
+				entry.GetComponent<Text>().text = h.name;
+
+				/* m_nameText.text += h.name+"\n";
 				m_timeText.text += GuiControllerGame.GetMinutesDisplay(h.time)+"\n";
 				m_rankText.text += rank.ToString()+"\n";
-				rank++;
+				rank++; */
 			}
 		}
 	
