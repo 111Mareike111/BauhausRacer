@@ -2158,7 +2158,97 @@ ModelImporter:
     4300848: Sphere.001
     4300850: Plane
     4300852: Sphere
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground
+    second: {fileID: 2100000, guid: a4f5847ae864f264289232fe846c8b1b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 1fb28050a661a514fbf8667e1fea4501, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 711da4983163b6843afefd502fb8c13c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: e4bcf27611bfc7e45b803c1810e7ff50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.009
+    second: {fileID: 2100000, guid: 84b7506159d05fb449d145662642b8eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blueLow
+    second: {fileID: 2100000, guid: 9f663e2505fa15240969c46e8d0b239b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bluehighlight
+    second: {fileID: 2100000, guid: 6162a9b9d2d17034c92dbd1ee9c0126a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gorund
+    second: {fileID: 2100000, guid: 4059d1eb42b2bac48ae7906c5eec72f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greenLow
+    second: {fileID: 2100000, guid: 5f22f40e96e9ca742a4c360a053d984f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greenhighlight
+    second: {fileID: 2100000, guid: 069a72af0e89f484087b65db6648f8c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orangeLow
+    second: {fileID: 2100000, guid: 997cc699d0279b949bbe783d2e029f1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orangehighlight
+    second: {fileID: 2100000, guid: 37533cc53cd16534fac33b352736ef2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purpleLow
+    second: {fileID: 2100000, guid: 1d715b8be34c6254b86e33891bca948a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purplehighlight
+    second: {fileID: 2100000, guid: 46f6855a41c13784d8bb24e1afe5483f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: redLow
+    second: {fileID: 2100000, guid: 08aff5314d45ff1419e8100a12f23d23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: redhighlight
+    second: {fileID: 2100000, guid: a788509d3e3c59e468cde324b6786b92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellowLow
+    second: {fileID: 2100000, guid: 5f2fc863b1784ae43bc45a90ee317a19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellowhighlight
+    second: {fileID: 2100000, guid: d7deb4b0196236d43bd1becd0994ad09, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -2197,7 +2287,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

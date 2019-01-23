@@ -34,7 +34,27 @@ ModelImporter:
     4300004: carBlankVariation1FrontRight
     4300006: carBlankVariation1BackRight
     4300008: carBlankVariation1
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blankcolorCar
+    second: {fileID: 2100000, guid: 4fac390ab71f64741bcbb202db044881, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blankcolorCarDark
+    second: {fileID: 2100000, guid: f6a3d1ec56b72c24096e11a564ea8282, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blankcolorCarlight
+    second: {fileID: 2100000, guid: 5fc5047fa2784f1459baac1196bd3e4d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: carBase
+    second: {fileID: 2100000, guid: 1d5944f31aff8084d817c3776eda81ee, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

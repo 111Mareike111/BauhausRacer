@@ -16,9 +16,7 @@ public class CameraZoom : MonoBehaviour {
     enum StatusLights { three, two, one, go};
     private StatusZoom statusCameraZoom;
     private StatusLights statusLights;
-
-    public GameObject cameraRig;
-    public GameObject carCamera;
+    public Camera carCamera;
 
     // Use this for initialization
     void Start () {
@@ -104,9 +102,10 @@ public class CameraZoom : MonoBehaviour {
 
     private void StartRace()
     {
-        cameraRig.SetActive(true);
         carCamera.transform.position = transform.position;
         carCamera.transform.rotation = transform.rotation;
+        carCamera.enabled = true;
+        this.gameObject.SetActive(false);
         //ToDo PrepareRaceStart
     }
 
