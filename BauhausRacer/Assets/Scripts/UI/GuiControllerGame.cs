@@ -19,17 +19,18 @@ namespace BauhausRacer {
 		
 		//
 
-		public Driving carController;
+		public UnityStandardAssets.Vehicles.Car.CarController carController;
 
 		[Header("Menu")]
 		public GameObject menuPanel;
-
-		public Text m_rankText;
-		public Text m_nameText;
-		public Text m_timeText;
+		public GameObject rankPrefab;
+		public GameObject timePrefab;
+		public GameObject namePrefab;
+		public GameObject grid;
 		public GameObject controlsPanel;
 		public GameObject creditsPanel;
 		public ScrollRect highscoreScrollrect;
+		public bool isInMainMenu = true;
 
 
 		[Header("Highscore")]
@@ -41,10 +42,7 @@ namespace BauhausRacer {
 		public Text h_rankText;
 		public Text h_nameText;
 		public Text h_timeText;
-		public GameObject rankPrefab;
-		public GameObject timePrefab;
-		public GameObject namePrefab;
-		public GameObject grid;
+		
 
 		//Speed
 		private float kmh = 0f;
@@ -55,7 +53,7 @@ namespace BauhausRacer {
 			MENU, CREDITS, CONTROLS, GAME, PAUSE, HIGHSCORE
 		}
 
-		public bool isInMainMenu = true;
+	
 
 		private ActiveScreen activeScreen;
 
@@ -249,7 +247,7 @@ namespace BauhausRacer {
 					return;
 			}
 
-			kmh = carController.speed * 1.2f;
+			kmh = carController.CurrentSpeed * 1.2f;
 
 			Quaternion target = Quaternion.Euler (0f, 0f, orgKMHNeedleAngle - kmh);
 			KMHNeedle.rotation = Quaternion.Slerp(KMHNeedle.rotation, target,  Time.deltaTime * 2f);
