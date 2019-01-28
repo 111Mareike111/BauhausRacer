@@ -30,7 +30,6 @@ namespace BauhausRacer {
 		public GameObject grid;
 		public GameObject controlsPanel;
 		public GameObject creditsPanel;
-		public ScrollRect highscoreScrollrect;
 
 
 		[Header("Highscore")]
@@ -42,11 +41,6 @@ namespace BauhausRacer {
 		public Text h_rankText;
 		public Text h_nameText;
 		public Text h_timeText;
-		public GameObject rankPrefab;
-		public GameObject timePrefab;
-		public GameObject namePrefab;
-		public GameObject grid;
-
 		//Speed
 		private float kmh = 0f;
 		private float orgKMHNeedleAngle = 0f;
@@ -347,11 +341,11 @@ namespace BauhausRacer {
 			foreach(HighScoreEntry h in highScoreEntries){
 				GameObject entry = Instantiate(rankPrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
-				entry.GetComponent<Text>().text = rank.ToString();
+				entry.GetComponent<Text>().text = "                     "+rank.ToString();
 				rank++;
 				entry = Instantiate(timePrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
-				entry.GetComponent<Text>().text = GuiControllerGame.GetMinutesDisplay(h.time);
+				entry.GetComponent<Text>().text = "  "+GuiControllerGame.GetMinutesDisplay(h.time);
 
 				entry = Instantiate(namePrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
