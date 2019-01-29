@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: a2e87677ff202a94589d9621a1758d3f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: carBlankVariation1
+    100002: carBlankVariation1BackLeft
+    100004: carBlankVariation1BackRight
+    100006: carBlankVariation1DarkStripes
+    100008: carBlankVariation1FrontLeft
+    100010: carBlankVariation1FrontRight
+    100012: carBlankVariation1Glass
+    100014: carBlankVariation1LightStripes
+    100016: //RootNode
+    400000: carBlankVariation1
+    400002: carBlankVariation1BackLeft
+    400004: carBlankVariation1BackRight
+    400006: carBlankVariation1DarkStripes
+    400008: carBlankVariation1FrontLeft
+    400010: carBlankVariation1FrontRight
+    400012: carBlankVariation1Glass
+    400014: carBlankVariation1LightStripes
+    400016: //RootNode
+    2100000: blankcolorCarDark
+    2100002: blankcolorCarlight
+    2100004: carBase
+    2100006: blankcolorCar
+    2300000: carBlankVariation1
+    2300002: carBlankVariation1BackLeft
+    2300004: carBlankVariation1BackRight
+    2300006: carBlankVariation1DarkStripes
+    2300008: carBlankVariation1FrontLeft
+    2300010: carBlankVariation1FrontRight
+    2300012: carBlankVariation1Glass
+    2300014: carBlankVariation1LightStripes
+    3300000: carBlankVariation1
+    3300002: carBlankVariation1BackLeft
+    3300004: carBlankVariation1BackRight
+    3300006: carBlankVariation1DarkStripes
+    3300008: carBlankVariation1FrontLeft
+    3300010: carBlankVariation1FrontRight
+    3300012: carBlankVariation1Glass
+    3300014: carBlankVariation1LightStripes
+    4300000: carBlankVariation1DarkStripes
+    4300002: carBlankVariation1LightStripes
+    4300004: carBlankVariation1Glass
+    4300006: carBlankVariation1FrontLeft
+    4300008: carBlankVariation1BackLeft
+    4300010: carBlankVariation1FrontRight
+    4300012: carBlankVariation1BackRight
+    4300014: carBlankVariation1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blankcolorCar
+    second: {fileID: 2100000, guid: 7d2bd51159d58484ead521886011eac2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blankcolorCarDark
+    second: {fileID: 2100000, guid: 1adad6c015d77fd488bef020aaf7155e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blankcolorCarlight
+    second: {fileID: 2100000, guid: 3f357004313a5ae4d95a6a3eb5d3fcd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: carBase
+    second: {fileID: 2100000, guid: 669beeeac42017545a483e583edcd853, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
