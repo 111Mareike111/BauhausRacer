@@ -19,17 +19,17 @@ namespace BauhausRacer {
 		
 		//
 
-		public Driving carController;
+		public UnityStandardAssets.Vehicles.Car.CarController carController;
 
 		[Header("Menu")]
 		public GameObject menuPanel;
 
-		public Text m_rankText;
-		public Text m_nameText;
-		public Text m_timeText;
+		public GameObject rankPrefab;
+		public GameObject timePrefab;
+		public GameObject namePrefab;
+		public GameObject grid;
 		public GameObject controlsPanel;
 		public GameObject creditsPanel;
-		public ScrollRect highscoreScrollrect;
 
 
 		[Header("Highscore")]
@@ -41,11 +41,6 @@ namespace BauhausRacer {
 		public Text h_rankText;
 		public Text h_nameText;
 		public Text h_timeText;
-		public GameObject rankPrefab;
-		public GameObject timePrefab;
-		public GameObject namePrefab;
-		public GameObject grid;
-
 		//Speed
 		private float kmh = 0f;
 		private float orgKMHNeedleAngle = 0f;
@@ -249,7 +244,7 @@ namespace BauhausRacer {
 					return;
 			}
 
-			kmh = carController.speed * 1.2f;
+			kmh = carController.CurrentSpeed * 1.2f;
 
 			Quaternion target = Quaternion.Euler (0f, 0f, orgKMHNeedleAngle - kmh);
 			KMHNeedle.rotation = Quaternion.Slerp(KMHNeedle.rotation, target,  Time.deltaTime * 2f);
@@ -346,11 +341,11 @@ namespace BauhausRacer {
 			foreach(HighScoreEntry h in highScoreEntries){
 				GameObject entry = Instantiate(rankPrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
-				entry.GetComponent<Text>().text = rank.ToString();
+				entry.GetComponent<Text>().text = "                     "+rank.ToString();
 				rank++;
 				entry = Instantiate(timePrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
-				entry.GetComponent<Text>().text = GuiControllerGame.GetMinutesDisplay(h.time);
+				entry.GetComponent<Text>().text = "  "+GuiControllerGame.GetMinutesDisplay(h.time);
 
 				entry = Instantiate(namePrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
