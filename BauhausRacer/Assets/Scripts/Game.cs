@@ -74,7 +74,9 @@ namespace BauhausRacer
                        
                           
                     }
-                
+            if(carBody.transform.position.y < 218){
+                CheckpointManager.Instance.ResetPlayerToCurrentCheckpoint();
+            }  
         }
 
         public void EndGame(){

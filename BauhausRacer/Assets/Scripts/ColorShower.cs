@@ -26,8 +26,28 @@ namespace BauhausRacer
         {
             if (col.tag == "Player")
             {
-                Debug.Log("C");
-                Game.Instance.carBody.GetComponent<MeshRenderer>().materials = colorManager.MixColors(colorShower).CarTexture;
+                string c = colorManager.CurrentColor.ColorName;
+                Color[] colors = colorManager.MixColors(colorShower);
+                
+                if(!c.Equals(colorShower.ColorName)){
+                    if(
+                        ((c.Equals("Green") || c.Equals("Orange") || c.Equals("Violet")) && colorManager.CurrentColor.ColorName.Equals("NoColor"))
+                    || (c.Equals("Blue") || c.Equals("Yellow") || c.Equals("Red") || c.Equals("NoColor")))
+                    {
+                        Debug.Log("C "+colorManager.CurrentColor.ColorName);
+                        Debug.Log("m "+colorShower.ColorName);
+                        //Color[] colors = MixColor(colorManager.GetColorByName(selectColor.ToString()).CarTexture;
+                        
+
+                        GameObject carController = col.gameObject;
+                        carController.GetComponentsInParent<ChangeColorByShader>()[0].PrepareTransition(colors[0]);
+                        carController.GetComponentsInParent<ChangeColorByShader>()[1].PrepareTransition(colors[1]);
+                        carController.GetComponentsInParent<ChangeColorByShader>()[2].PrepareTransition(colors[2]);
+                    }
+                    
+                    
+                }
+               
             }
         }
     }

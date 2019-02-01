@@ -1,14 +1,37 @@
 fileFormatVersion: 2
-guid: a6009ed5b41418b439afab334fa2d4f9
+guid: 5e743ec31d5701b45820b05e69c9771f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Plane
+    100004: Plane.002
     400000: //RootNode
-    2100000: groundBase
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Landscape
+    400002: Plane
+    400004: Plane.002
+    2100000: barrierpurple1
+    2100002: barrierpurple3
+    2100004: barrierpurple2
+    2100006: barrierpurple4
+    2100008: barrierorange1
+    2100010: barrierorange3
+    2100012: barrierorange2
+    2100014: barrierorange4
+    2300000: Plane
+    2300002: Plane.002
+    3300000: Plane
+    3300002: Plane.002
+    4300000: Plane.002
+    4300002: Plane
+    7400000: Plane.002|bridgepurpleAction
+    7400002: Plane.002|Cube.253Action
+    7400004: Plane.002|PlaneAction
+    7400006: Plane.002|PlaneAction.001
+    7400008: Plane|bridgepurpleAction
+    7400010: Plane|Cube.253Action
+    7400012: Plane|PlaneAction
+    7400014: Plane|PlaneAction.001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -60,8 +83,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -85,7 +108,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

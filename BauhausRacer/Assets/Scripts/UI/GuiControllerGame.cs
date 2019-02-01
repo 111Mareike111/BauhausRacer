@@ -31,6 +31,9 @@ namespace BauhausRacer {
 		public GameObject controlsPanel;
 		public GameObject creditsPanel;
 
+		[Header("Manual")]
+		public Image[] manualCards;
+		private int manualIndex = 0;
 
 		[Header("Highscore")]
 		public GameObject highScorePanel;
@@ -341,11 +344,11 @@ namespace BauhausRacer {
 			foreach(HighScoreEntry h in highScoreEntries){
 				GameObject entry = Instantiate(rankPrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
-				entry.GetComponent<Text>().text = "                     "+rank.ToString();
+				entry.GetComponent<Text>().text = "                       "+rank;
 				rank++;
 				entry = Instantiate(timePrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
-				entry.GetComponent<Text>().text = "  "+GuiControllerGame.GetMinutesDisplay(h.time);
+				entry.GetComponent<Text>().text = "   "+GuiControllerGame.GetMinutesDisplay(h.time);
 
 				entry = Instantiate(namePrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
@@ -358,6 +361,28 @@ namespace BauhausRacer {
 			}
 		}
 	
+		public void NextManualCard(){
+			for(int i = 0; i< manualCards.Length; i++){
+				manualCards[i].enabled = false;
+			}
+			manualCards[manualIndex].enabled = true;
+			manualIndex++;
+			if(manualIndex == manualCards.Length){
+				manualIndex = 0;
+			}
+		}
+
+		public void PreviousManualCard(){
+			for(int i = 0; i< manualCards.Length; i++){
+				manualCards[i].enabled = false;
+			}
+			manualCards[manualIndex].enabled = true;
+			manualIndex--;
+			if(manualIndex < 0){
+				manualIndex = manualCards.Length-1;
+			}
+		}
+
 		//show highscore-Panel (when game is finished): display player's rank and the rank above and below his
 		public void ShowHighscorePanel(){
 			Game.Instance.gameStopped = true;

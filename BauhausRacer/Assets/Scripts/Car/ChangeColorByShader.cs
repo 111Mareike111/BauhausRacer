@@ -31,6 +31,7 @@ public class ChangeColorByShader : MonoBehaviour {
 
     public void PrepareTransition(Color color)
     {
+        Debug.Log("JSLAIWEFEOWF");
         if (toggle == 1)
         {
             material.SetColor("_Color_Transition",color);

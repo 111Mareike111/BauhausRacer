@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,28 +9,28 @@ namespace BauhausRacer
     {
         //inspector variables, assign Materials 
         [Header("Red")]
-        public Material[] carMaterialRed;
+        public string[] carMaterialRed;
         public Material colorShowerMaterialRed;
         public Material colorBarrierMaterialRed;
         [Header("Blue")]
-        public Material[] carMaterialBlue;
+        public string[] carMaterialBlue;
         public Material colorShowerMaterialBlue;
         public Material colorBarrierMaterialBlue;
         [Header("Yellow")]
-        public Material[] carMaterialYellow;
+        public string[] carMaterialYellow;
         public Material colorShowerMaterialYellow;
         public Material colorBarrierMaterialYellow;
         [Header("Green")]
-        public Material[] carMaterialGreen;
+        public string[] carMaterialGreen;
         public Material colorBarrierMaterialGreen;
         [Header("Violet")]
-        public Material[] carMaterialViolet;
+        public string[] carMaterialViolet;
         public Material colorBarrierMaterialViolet;
         [Header("Orange")]
-        public Material[] carMaterialOrange;
+        public string[] carMaterialOrange;
         public Material colorBarrierMaterialOrange;
         [Header("NoColor")]
-        public Material[] carMaterialNoColor;
+        public string[] carMaterialNoColor;
         public Material colorShowerMaterialNoColor;
 
         Dictionary<string, ColorData> colors = new Dictionary<string, ColorData>();    //contains data of all available colors
@@ -39,16 +40,35 @@ namespace BauhausRacer
         void Awake()
         {
             //initializing colors and adding them to color-list
-            var red = new ColorData("Red", colorShowerMaterialRed, carMaterialRed, colorBarrierMaterialRed);
-            var blue = new ColorData("Blue", colorShowerMaterialBlue, carMaterialBlue, colorBarrierMaterialBlue);
-            var yellow =  new ColorData("Yellow", colorShowerMaterialYellow, carMaterialYellow, colorBarrierMaterialYellow);
+            var red = new ColorData("Red", colorShowerMaterialRed, 
+                    new Color[]{GetColorByHexcode(carMaterialRed[0]), GetColorByHexcode(carMaterialRed[1]), GetColorByHexcode(carMaterialRed[1])}, 
+                      colorBarrierMaterialRed);
+            var blue = new ColorData("Blue", colorShowerMaterialBlue,  new Color[]{GetColorByHexcode(carMaterialBlue[0]), GetColorByHexcode(carMaterialBlue[1]), GetColorByHexcode(carMaterialBlue[1])}, colorBarrierMaterialBlue);
+            var yellow =  new ColorData("Yellow", colorShowerMaterialYellow,  new Color[]{GetColorByHexcode(carMaterialYellow[0]), GetColorByHexcode(carMaterialYellow[1]), GetColorByHexcode(carMaterialYellow[1])}, colorBarrierMaterialYellow);
+            var mixingParentesOrange = new List<ColorData>();
+            mixingParentesOrange.Add(red);
+            mixingParentesOrange.Add(yellow);
+
+            var mixingParentsGreen = new List<ColorData>();
+            mixingParentsGreen.Add(yellow);
+            mixingParentsGreen.Add(blue);
+
+            var mixingParentsViolet = new List<ColorData>();
+            mixingParentsViolet.Add(blue);
+            mixingParentsViolet.Add(red);
+
             colors.Add("Red", red);
             colors.Add("Blue", blue);
             colors.Add("Yellow", yellow);
-            colors.Add("Orange", new ColorData("Orange", carMaterialOrange, colorBarrierMaterialOrange, new ColorData[]{red, yellow}));
-            colors.Add("Green", new ColorData("Green", carMaterialGreen, colorBarrierMaterialGreen, new ColorData[]{yellow, blue}));
-            colors.Add("Violet", new ColorData("Violet", carMaterialViolet, colorBarrierMaterialViolet, new ColorData[]{blue, red}));
-            colors.Add("NoColor", new ColorData("NoColor", colorShowerMaterialNoColor, carMaterialNoColor, colorShowerMaterialNoColor));
+            colors.Add("Orange", new ColorData("Orange", 
+                    new Color[]{GetColorByHexcode(carMaterialOrange[0]), GetColorByHexcode(carMaterialOrange[1]),GetColorByHexcode(carMaterialOrange[2])
+                            }, colorBarrierMaterialOrange, mixingParentesOrange));
+            colors.Add("Green", new ColorData("Green", new Color[]{GetColorByHexcode(carMaterialGreen[0]), GetColorByHexcode(carMaterialGreen[1]),GetColorByHexcode(carMaterialGreen[2])
+                            }, colorBarrierMaterialGreen, mixingParentsGreen));
+            colors.Add("Violet", new ColorData("Violet", new Color[]{GetColorByHexcode(carMaterialViolet[0]), GetColorByHexcode(carMaterialViolet[1]),GetColorByHexcode(carMaterialViolet[2])
+                            }, colorBarrierMaterialViolet, mixingParentsViolet));
+            colors.Add("NoColor", new ColorData("NoColor", colorShowerMaterialNoColor, new Color[]{GetColorByHexcode(carMaterialNoColor[0]), GetColorByHexcode(carMaterialNoColor[1]),GetColorByHexcode(carMaterialNoColor[2])
+                            }, colorShowerMaterialNoColor));
 
             CurrentColor = GetColorByName("NoColor"); //no color in the beginning
         }
@@ -64,8 +84,14 @@ namespace BauhausRacer
             return colorData;
         }
 
+        public Color GetColorByHexcode(string hexcode){
+            Color color;
+            ColorUtility.TryParseHtmlString(hexcode, out color);
+            return color;
+        }
+
         //mix colors
-        public ColorData MixColors(ColorData colorToMix)
+        public Color[] MixColors(ColorData colorToMix)
         {
             if(colorToMix.ColorName == "NoColor")
             {
@@ -111,8 +137,8 @@ namespace BauhausRacer
                     
                 }
             }
-            
-            return CurrentColor;
+            Color[] newColor = GetColorByName(CurrentColor.ColorName).CarTexture;
+            return newColor;
         }          
     }
 }
