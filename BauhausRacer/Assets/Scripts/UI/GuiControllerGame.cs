@@ -124,6 +124,7 @@ namespace BauhausRacer {
 					}
 					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
 						Play();
+						
 					}
 				break;
 				case ActiveScreen.CONTROLS:
