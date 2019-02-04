@@ -2,7 +2,23 @@
 <HighscoreDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Highscore>
     <HighScoreEntry>
-      <name>fesfef</name>
+      <name />
+      <time>0</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name />
+      <time>0</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name />
+      <time>0</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name />
+      <time>0</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name />
       <time>0</time>
     </HighScoreEntry>
     <HighScoreEntry>
@@ -10,23 +26,7 @@
       <time>0</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name />
-      <time>0</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name />
-      <time>0</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name />
-      <time>0</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name />
-      <time>0</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name />
+      <name>fesfef</name>
       <time>0</time>
     </HighScoreEntry>
     <HighScoreEntry>
@@ -68,6 +68,10 @@
     <HighScoreEntry>
       <name />
       <time>1.09360945</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>bmbkjh</name>
+      <time>1.17769587</time>
     </HighScoreEntry>
     <HighScoreEntry>
       <name>dfg</name>

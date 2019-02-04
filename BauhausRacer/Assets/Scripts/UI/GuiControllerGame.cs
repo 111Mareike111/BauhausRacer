@@ -345,11 +345,11 @@ namespace BauhausRacer {
 			foreach(HighScoreEntry h in highScoreEntries){
 				GameObject entry = Instantiate(rankPrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
-				entry.GetComponent<Text>().text = "                       "+rank;
+				entry.GetComponent<Text>().text = rank.ToString();
 				rank++;
 				entry = Instantiate(timePrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
-				entry.GetComponent<Text>().text = "   "+GuiControllerGame.GetMinutesDisplay(h.time);
+				entry.GetComponent<Text>().text = GuiControllerGame.GetMinutesDisplay(h.time);
 
 				entry = Instantiate(namePrefab, grid.transform);
 				entry.transform.SetParent(grid.transform);
