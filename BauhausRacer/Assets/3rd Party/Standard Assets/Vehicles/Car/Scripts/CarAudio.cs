@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
 namespace UnityStandardAssets.Vehicles.Car
@@ -34,6 +35,8 @@ namespace UnityStandardAssets.Vehicles.Car
         public AudioClip lowDecelClip;                                              // Audio clip for low deceleration
         public AudioClip highAccelClip;                                             // Audio clip for high acceleration
         public AudioClip highDecelClip;                                             // Audio clip for high deceleration
+       
+       public AudioMixerGroup Sfx;
         public float pitchMultiplier = 1f;                                          // Used for altering the pitch of audio clips
         public float lowPitchMin = 1f;                                              // The lowest possible pitch for the low sounds
         public float lowPitchMax = 6f;                                              // The highest possible pitch for the low sounds
@@ -41,6 +44,8 @@ namespace UnityStandardAssets.Vehicles.Car
         public float maxRolloffDistance = 500;                                      // The maximum distance where rollof starts to take place
         public float dopplerLevel = 1;                                              // The mount of doppler effect used in the audio
         public bool useDoppler = true;                                              // Toggle for using doppler
+
+        public AudioClip finishClip;
 
         private AudioSource m_LowAccel; // Source for the low acceleration sounds
         private AudioSource m_LowDecel; // Source for the low deceleration sounds
@@ -57,6 +62,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
             // setup the simple audio source
             m_HighAccel = SetUpEngineAudioSource(highAccelClip);
+            m_HighAccel.outputAudioMixerGroup = Sfx;
 
             // if we have four channel audio setup the four audio sources
             if (engineSoundStyle == EngineAudioOptions.FourChannel)
@@ -65,7 +71,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 m_LowDecel = SetUpEngineAudioSource(lowDecelClip);
                 m_HighDecel = SetUpEngineAudioSource(highDecelClip);
             }
-
+           
             // flag that we have started the sounds playing
             m_StartedSound = true;
         }
@@ -86,6 +92,7 @@ namespace UnityStandardAssets.Vehicles.Car
         // Update is called once per frame
         private void Update()
         {
+           
             // get the distance to main camera
             float camDist = (Camera.main.transform.position - transform.position).sqrMagnitude;
 
@@ -174,6 +181,12 @@ namespace UnityStandardAssets.Vehicles.Car
             return source;
         }
 
+        void OnCollisionEnter(Collision col){
+            Debug.Log("ldjf");
+            if(col.gameObject.tag == "World"){
+                GetComponent<AudioSource>().Play();
+            }
+        }
 
         // unclamped versions of Lerp and Inverse Lerp, to allow value to exceed the from-to range
         private static float ULerp(float from, float to, float value)
@@ -181,4 +194,6 @@ namespace UnityStandardAssets.Vehicles.Car
             return (1.0f - value)*from + value*to;
         }
     }
+
+    
 }

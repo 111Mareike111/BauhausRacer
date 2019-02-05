@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 namespace BauhausRacer {
 	public class GuiControllerGame : MonoBehaviour {
@@ -30,6 +31,9 @@ namespace BauhausRacer {
 		public GameObject grid;
 		public GameObject controlsPanel;
 		public GameObject creditsPanel;
+		public AudioSource buttonClickAudio;
+		public AudioSource playButtonClickAudio;
+		public AudioMixerGroup audioMixer;
 
 		[Header("Manual")]
 		public Image[] manualCards;
@@ -261,6 +265,7 @@ namespace BauhausRacer {
 
 		//begin game
 		public void Play(){
+			playButtonClickAudio.Play();
 			menuPanel.SetActive(false);
 			activeScreen = ActiveScreen.GAME;
 			Resume();
@@ -268,6 +273,7 @@ namespace BauhausRacer {
 
 		//pause game
 		public void PauseGame(){
+			buttonClickAudio.Play();
 			pausePanel.SetActive(true);
 			activeScreen = ActiveScreen.PAUSE;
 			Game.Instance.gameStopped = true; //timer mustn't count during pause
@@ -276,6 +282,10 @@ namespace BauhausRacer {
 
 		//resume game after pause
 		public void Resume(){
+			if(!playButtonClickAudio.isPlaying){
+				buttonClickAudio.Play();
+			}
+		
 			activeScreen = ActiveScreen.GAME;
 			Time.timeScale = 1.5f;
 			pausePanel.SetActive(false);
@@ -284,11 +294,13 @@ namespace BauhausRacer {
 
 		//exit game
 		public void Exit(){
+			buttonClickAudio.Play();
 			Application.Quit();
 		}
 
 		//back from controls or credits to menu or game
 		public void Back(GameObject panel){
+			buttonClickAudio.Play();
 			panel.SetActive(false);
 			if(menuPanel.activeSelf){
 				activeScreen = ActiveScreen.MENU;
@@ -300,6 +312,7 @@ namespace BauhausRacer {
 		//show controls panel
 		public void Controls(){
 			//PauseGame(); 
+			buttonClickAudio.Play();
 			activeScreen = ActiveScreen.CONTROLS;
 			controlsPanel.SetActive(true);
 		}
@@ -307,17 +320,20 @@ namespace BauhausRacer {
 		//show menu panel 
 		public void Menu(){
 			//activeScreen = ActiveScreen.MENU;
+			buttonClickAudio.Play();
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single); //load scene to reset everything and to reload highscore
 		}
 
 		//show credits panel
 		public void Credits(){
+			buttonClickAudio.Play();
 			activeScreen = ActiveScreen.CREDITS;
 			creditsPanel.SetActive(true);
 		}
 
 		//new entry in highscore database (if name is not empty)
 		public void HighscoreEntry(){
+			buttonClickAudio.Play();
 			if(!Game.Instance.wheel){
 				Game.Instance.PlayerName = nameInput.text;
 			}

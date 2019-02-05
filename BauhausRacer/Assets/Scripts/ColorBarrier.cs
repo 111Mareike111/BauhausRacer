@@ -16,7 +16,23 @@ namespace BauhausRacer{
 		void Awake(){
 			colorManager = Game.Instance.ColorManager; 
             colorBarrier = colorManager.GetColorByName(selectColor.ToString()); //color gets color selected in inspector
-            GetComponent<Renderer>().material = colorBarrier.ColorBarrierMaterial;
+            
+		}
+
+		void Update(){
+			if(colorManager.CurrentColor.ColorName == colorBarrier.ColorName){
+				ChangeOpacity(0.7f);
+			} else if (colorManager.CurrentColor.MixingParents != null){
+				foreach(ColorData c in colorManager.CurrentColor.MixingParents){
+					if(c == colorBarrier){
+						ChangeOpacity(0.7f);
+					}
+				}
+			} else {
+				ChangeOpacity(1f);
+			}
+				
+			
 		}
 
 		void OnTriggerEnter(Collider col){
@@ -38,8 +54,16 @@ namespace BauhausRacer{
 				}
 				//wrong color - car can not pass
 				collider.enabled=true;
-				
+				GetComponent<AudioSource>().Play();
 			}
+		}
+
+		private void ChangeOpacity(float opacity){
+			for(int i = 0; i<GetComponent<MeshRenderer>().materials.Length; i++){
+				UnityEngine.Color oldColor = GetComponent<MeshRenderer>().materials[i].color;
+				GetComponent<MeshRenderer>().materials[i].color = new UnityEngine.Color(oldColor.r,oldColor.g,oldColor.b,opacity);
+				
+			} 
 		}
 	}
 }

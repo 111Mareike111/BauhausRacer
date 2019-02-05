@@ -18,7 +18,7 @@ namespace BauhausRacer
         {
             colorManager = Game.Instance.ColorManager; 
             colorShower = colorManager.GetColorByName(selectColor.ToString()); //colorShower gets color selected in inspector
-            GetComponent<Renderer>().material = colorShower.ColorShowerMaterial;
+          
         }
 
         //wenn colliding with car, car changes its color
@@ -43,6 +43,7 @@ namespace BauhausRacer
                         carController.GetComponentsInParent<ChangeColorByShader>()[0].PrepareTransition(colors[0]);
                         carController.GetComponentsInParent<ChangeColorByShader>()[1].PrepareTransition(colors[1]);
                         carController.GetComponentsInParent<ChangeColorByShader>()[2].PrepareTransition(colors[2]);
+                        GetComponent<AudioSource>().Play();
                     }
                     
                     

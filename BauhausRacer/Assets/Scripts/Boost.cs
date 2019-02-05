@@ -37,6 +37,7 @@ public class Boost : MonoBehaviour {
 				if(colorManager.CurrentColor.ColorName == colorBoost.ColorName){
 					Debug.Log("hi2");
 					car.GetComponent<Rigidbody>().AddForce(car.transform.forward*Time.deltaTime*accleration, ForceMode.Acceleration);
+					GetComponent<AudioSource>().Play();
 					return;
 				}
 				//color of the car was mixed with color of barrier
@@ -45,6 +46,7 @@ public class Boost : MonoBehaviour {
 						Debug.Log("c "+ c.ColorName);
 						if(c == colorBoost){
 							car.GetComponent<Rigidbody>().AddForce(car.transform.forward*accleration);
+							GetComponent<AudioSource>().Play();
 							StartCoroutine(DeleteForce());
 						}
 					}
