@@ -55,7 +55,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 								Letters[letterSelect].text = alphabet[stepper].ToString();
 							}							
 							Letters [letterSelect - 1].color = Color.black;
-							arrows.transform.position = new Vector3(arrows.transform.position.x+18.7f, arrows.transform.position.y, 0);
+							arrows.transform.position = new Vector3(arrows.transform.position.x+24f, arrows.transform.position.y, 0);
 							readyToMove = false;
 							Invoke ("ResetReadyToMove", moveDelay+1);
 					}
@@ -68,7 +68,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 							Letters [letterSelect].color = Color.white; // selected Letter is white
 							
 							Letters [letterSelect + 1].text = "";
-							arrows.transform.position = new Vector3(arrows.transform.position.x-18.7f, arrows.transform.position.y, 0);
+							arrows.transform.position = new Vector3(arrows.transform.position.x-24f, arrows.transform.position.y, 0);
 							readyToMove = false;
 							Invoke ("ResetReadyToMove", moveDelay+1);
 					}

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace BauhausRacer
 {
@@ -12,6 +13,12 @@ namespace BauhausRacer
         public ColorManager ColorManager { get; private set; }
 
         public GameObject carBody;
+        [Header("Audio")]
+        public AudioMixer IngameAudio;
+        
+        public float volumeIngame = 0f;
+        public AudioSource Music;
+
         public float horizontal;
         public float vertical;
 
@@ -36,10 +43,8 @@ namespace BauhausRacer
 
             ColorManager = GetComponent<ColorManager>();
 
-            timer = 0f;
-            PlayerName="";
+            
             wheel = false;
-            gameStopped = true;
 
             for(int i = 0; i<Input.GetJoystickNames().Length; i++){
                 if(Input.GetJoystickNames()[i].Equals("B677") || Input.GetJoystickNames()[i].Equals("Thrustmaster Racing Wheel FFB")){
@@ -66,14 +71,21 @@ namespace BauhausRacer
             vertical = Input.GetAxis("Vertical2");
             if(!gameStopped){
                  timer += (Time.deltaTime/1.5f);
+                 IngameAudio.SetFloat("Volume", volumeIngame);
+                 if(!Music.isPlaying){
+                     Music.Play();
+                 }
+                 
+               
+            } else{
+                IngameAudio.SetFloat("Volume", -80f);
+                 if(Music.isPlaying){
+                     Music.Pause();
+                 }
             }
 
            
-                    foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-                    {
-                       
-                          
-                    }
+                   
             if(carBody.transform.position.y < 218){
                 CheckpointManager.Instance.ResetPlayerToCurrentCheckpoint();
             }  

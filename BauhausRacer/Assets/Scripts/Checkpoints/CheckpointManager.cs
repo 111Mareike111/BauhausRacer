@@ -32,6 +32,10 @@ namespace BauhausRacer {
         private int _currentRound =0;
         private Checkpoint[] checkpoints;
 
+        public AudioSource checkpointSound;
+        public AudioSource finishSound;
+        public AudioSource resetSound;
+
         void Awake()
         {
             if (Instance == null)
@@ -59,12 +63,15 @@ namespace BauhausRacer {
         public void NextCheckpointArrived(Checkpoint currentCheckpoint, Checkpoint[] nextCheckpoints)
         {
             _currentCheckpoint = currentCheckpoint;
+            checkpointSound.Play();
             if(_currentCheckpoint == _lastCheckpoint)
             {
                 _currentRound++;
                 guiController.DisplayRounds(_currentRound);
                 if(_currentRound == Game.Instance.rounds){
                     guiController.ShowHighscorePanel();
+                    finishSound.Play();
+
                 }
                 //Todo Increment course rounds
             }
@@ -84,6 +91,7 @@ namespace BauhausRacer {
 
         public void ResetPlayerToCurrentCheckpoint()
         {
+            resetSound.Play();
             _playerTranform.position = _currentCheckpoint.SpawnPosition.position;
             _playerTranform.rotation = _currentCheckpoint.SpawnPosition.rotation;
             Debug.Log("CHECK");

@@ -45,7 +45,7 @@ namespace UnityStandardAssets.Vehicles.Car
         public float dopplerLevel = 1;                                              // The mount of doppler effect used in the audio
         public bool useDoppler = true;                                              // Toggle for using doppler
 
-        public AudioClip finishClip;
+        public AudioSource finishClip;
 
         private AudioSource m_LowAccel; // Source for the low acceleration sounds
         private AudioSource m_LowDecel; // Source for the low deceleration sounds
@@ -160,6 +160,8 @@ namespace UnityStandardAssets.Vehicles.Car
                     m_LowDecel.dopplerLevel = useDoppler ? dopplerLevel : 0;
                 }
             }
+
+            
         }
 
 

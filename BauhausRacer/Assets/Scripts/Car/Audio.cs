@@ -28,6 +28,7 @@ public class Audio : MonoBehaviour {
 
 	public float minimumPitch = .75f;
 	public float maximumPitch = 1.25f;
+	public AudioSource finishSound;
 
 	void Start () {
 
@@ -65,6 +66,9 @@ public class Audio : MonoBehaviour {
 		engineOnSource.pitch = Mathf.Lerp(minimumPitch, maximumPitch, drivetrain.engineRPM / drivetrain.maximumEngineRPM);
 		engineOffSource.pitch = engineOnSource.pitch;
 
+		if(BauhausRacer.Game.Instance.rounds == 0 && !finishSound.isPlaying){
+			finishSound.Play();
+		}
 	}
 
 }

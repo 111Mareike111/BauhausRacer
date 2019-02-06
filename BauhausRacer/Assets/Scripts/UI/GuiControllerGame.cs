@@ -36,7 +36,8 @@ namespace BauhausRacer {
 		public AudioMixerGroup audioMixer;
 
 		[Header("Manual")]
-		public Image[] manualCards;
+		public ScrollRect scrollRect;
+		public RectTransform[] manualCards;
 		private int manualIndex = 0;
 
 		[Header("Highscore")]
@@ -78,6 +79,8 @@ namespace BauhausRacer {
 			controlsPanel.SetActive(false);
 			orgKMHNeedleAngle = KMHNeedle.transform.localEulerAngles.z;
 			activeScreen = ActiveScreen.MENU;
+			PauseGame();
+			buttonClickAudio.Stop();
 			isInMainMenu = true;
 			Debug.Log(isInMainMenu);
 			LoadHighscore();
@@ -136,6 +139,11 @@ namespace BauhausRacer {
 					if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
 						Back(controlsPanel);
 					} 
+					if(Input.GetAxis("DPadX")>0){
+						NextManualCard();
+					} else if(Input.GetAxis("DPadY")<0){
+						PreviousManualCard();
+					}
 					break;
 				case ActiveScreen.CREDITS:
 					isInMainMenu = true;
@@ -315,6 +323,8 @@ namespace BauhausRacer {
 			buttonClickAudio.Play();
 			activeScreen = ActiveScreen.CONTROLS;
 			controlsPanel.SetActive(true);
+			
+            scrollRect.horizontalNormalizedPosition = 0;
 		}
 
 		//show menu panel 
@@ -335,7 +345,7 @@ namespace BauhausRacer {
 		public void HighscoreEntry(){
 			buttonClickAudio.Play();
 			if(!Game.Instance.wheel){
-				Game.Instance.PlayerName = nameInput.text;
+				Game.Instance.PlayerName = nameInput.text.ToUpper();
 			}
 			if(Game.Instance.PlayerName!=""){
 				XMLManager.instance.highscoreDatabase.AddEntry(Game.Instance.PlayerName, Game.Instance.timer);
@@ -379,25 +389,20 @@ namespace BauhausRacer {
 		}
 	
 		public void NextManualCard(){
-			for(int i = 0; i< manualCards.Length; i++){
-				manualCards[i].enabled = false;
-			}
-			manualCards[manualIndex].enabled = true;
 			manualIndex++;
 			if(manualIndex == manualCards.Length){
 				manualIndex = 0;
 			}
+        
+			scrollRect.horizontalNormalizedPosition = (float)manualIndex/((float)manualCards.Length-1.08f);
 		}
 
 		public void PreviousManualCard(){
-			for(int i = 0; i< manualCards.Length; i++){
-				manualCards[i].enabled = false;
-			}
-			manualCards[manualIndex].enabled = true;
 			manualIndex--;
 			if(manualIndex < 0){
 				manualIndex = manualCards.Length-1;
 			}
+           scrollRect.horizontalNormalizedPosition = (float)manualIndex/((float)manualCards.Length-1.08f);
 		}
 
 		//show highscore-Panel (when game is finished): display player's rank and the rank above and below his

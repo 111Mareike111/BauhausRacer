@@ -363,5 +363,9 @@ namespace UnityStandardAssets.Vehicles.Car
             }
             return false;
         }
+
+       void OnCollisionEnter(Collision col) {
+           Debug.Log("COL "+col.gameObject.name);
+        }
     }
 }
