@@ -6,26 +6,20 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: CarMaterialLight
-  m_Shader: {fileID: 4800000, guid: 9a703d329977bc445988725414c32947, type: 3}
+  m_Name: Transparent
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - SHADOWCASTER
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_78C6D8D5:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_842D0C8D:
-        m_Texture: {fileID: 2800000, guid: bd90f1ba4a50f0a4682d00cde5aca31b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -67,20 +61,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_19124205: -2.04
-    - Vector1_1CDCA04F: 60
-    - Vector1_6F990D1: 0.61
-    - Vector1_7D69CE89: 0.6
-    - Vector1_86207868: 0.4
-    - Vector1_9049F14: 1.45
-    - Vector1_EE54E61A: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -89,20 +76,12 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
-    - _Surface: 0
+    - _SrcBlend: 5
+    - _Surface: 1
     - _UVSec: 0
-    - _Vector1_Transition: -0.5131754
     - _WorkflowMode: 1
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
-    - Color_59D5565: {r: 0, g: 30.635191, b: 31.999996, a: 0}
-    - Color_6066237A: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 0}
-    - Color_A2BD54A9: {r: 1, g: 0, b: 0, a: 0}
-    - Color_ABE336C8: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 0}
-    - Color_FA85C342: {r: 2, g: 1.6941177, b: 0, a: 1}
-    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _Color_Surface: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 0}
-    - _Color_Transition: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 0}
+    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

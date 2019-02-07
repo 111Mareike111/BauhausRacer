@@ -34,6 +34,7 @@ public class Boost : MonoBehaviour {
 		Debug.Log("hi");
 		if(collider.tag == "Player"){
 			//same color as the car
+			Debug.Log("Colorcar: "+ colorManager.CurrentColor.ColorName);
 				if(colorManager.CurrentColor.ColorName == colorBoost.ColorName){
 					Debug.Log("hi2");
 					car.GetComponent<Rigidbody>().AddForce(car.transform.forward*Time.deltaTime*accleration, ForceMode.Acceleration);

@@ -94,6 +94,7 @@ namespace BauhausRacer {
             resetSound.Play();
             _playerTranform.position = _currentCheckpoint.SpawnPosition.position;
             _playerTranform.rotation = _currentCheckpoint.SpawnPosition.rotation;
+            _playerTranform.LookAt(_currentCheckpoint.transform.GetChild(1));
             Debug.Log("CHECK");
         }
         

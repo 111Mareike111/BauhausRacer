@@ -17,7 +17,9 @@ namespace BauhausRacer
         public AudioMixer IngameAudio;
         
         public float volumeIngame = 0f;
-        public AudioSource Music;
+        public GameObject Music;
+       private AudioSource _musicIngame;
+        private AudioSource _musicMenu;
 
         public float horizontal;
         public float vertical;
@@ -52,6 +54,8 @@ namespace BauhausRacer
                     break;
                 }
             }
+            _musicIngame = Music.GetComponents<AudioSource>()[0];
+            _musicMenu = Music.GetComponents<AudioSource>()[1];
         }
 
         // Use this for initialization
@@ -72,15 +76,22 @@ namespace BauhausRacer
             if(!gameStopped){
                  timer += (Time.deltaTime/1.5f);
                  IngameAudio.SetFloat("Volume", volumeIngame);
-                 if(!Music.isPlaying){
-                     Music.Play();
+                 if(!_musicIngame.isPlaying){
+                     _musicIngame.Play();
+                 }
+
+                 if(_musicMenu.isPlaying){
+                     _musicMenu.Stop();
                  }
                  
                
             } else{
                 IngameAudio.SetFloat("Volume", -80f);
-                 if(Music.isPlaying){
-                     Music.Pause();
+                 if(_musicIngame.isPlaying){
+                     _musicIngame.Pause();
+                 }
+                 if(!_musicMenu.isPlaying){
+                     _musicMenu.Play();
                  }
             }
 
