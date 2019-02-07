@@ -92,7 +92,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _UVSec: 0
-    - _Vector1_Transition: -0.5131754
+    - _Vector1_Transition: 1.5009276
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

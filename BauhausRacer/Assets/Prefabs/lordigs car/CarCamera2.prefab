@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114183356763660270}
   - component: {fileID: 114386191898601008}
   m_Layer: 0
-  m_Name: CarCameraRig 1
+  m_Name: CarCamera2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
