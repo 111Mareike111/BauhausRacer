@@ -24,7 +24,7 @@ namespace BauhausRacer {
         public Checkpoint FirstCheckpoint { get { return _firstCheckpiont; } }
         private int checkpointIndex;
 
-        [SerializeField] private Transform _playerTranform;
+        [SerializeField] private UnityStandardAssets.Vehicles.Car.CarController _playerTranform;
         [SerializeField] private Material materialNextCheckpoint;
         [SerializeField] private Material materialOtherCeckpoint;
         [SerializeField] private Material materialLastCeckpoint;
@@ -92,9 +92,12 @@ namespace BauhausRacer {
         public void ResetPlayerToCurrentCheckpoint()
         {
             resetSound.Play();
-            _playerTranform.position = _currentCheckpoint.SpawnPosition.position;
-            _playerTranform.rotation = _currentCheckpoint.SpawnPosition.rotation;
-            _playerTranform.LookAt(_currentCheckpoint.transform.GetChild(1));
+            _playerTranform.transform.position = _currentCheckpoint.SpawnPosition.position;
+            _playerTranform.transform.rotation = _currentCheckpoint.SpawnPosition.rotation;
+            _playerTranform.transform.LookAt(_currentCheckpoint.transform.GetChild(1));
+           _playerTranform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+           
             Debug.Log("CHECK");
         }
         

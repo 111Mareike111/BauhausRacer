@@ -71,7 +71,7 @@ namespace BauhausRacer {
 		//menu is active, game is paused
 		void Awake () {
 			menuPanel.SetActive(true);
-			pausePanel.SetActive(false);
+			
 			highScorePanel.SetActive(false);
 			wheelInput.SetActive(false);
 			keyboardInput.SetActive(false);
@@ -80,6 +80,7 @@ namespace BauhausRacer {
 			orgKMHNeedleAngle = KMHNeedle.transform.localEulerAngles.z;
 			activeScreen = ActiveScreen.MENU;
 			PauseGame();
+			pausePanel.SetActive(false);
 			buttonClickAudio.Stop();
 			isInMainMenu = true;
 			Debug.Log(isInMainMenu);
@@ -165,7 +166,7 @@ namespace BauhausRacer {
 				break;
 				case ActiveScreen.GAME:
 					isInMainMenu = false;
-					if(Input.GetButtonDown("Pause")||Input.GetKeyDown(KeyCode.Space)){
+					if(Input.GetButtonDown("Pause")||Input.GetKeyDown(KeyCode.Escape)){
 						PauseGame();
 					}
 					if(Input.GetButtonDown("Respawn")||Input.GetKeyDown(KeyCode.R)){
@@ -349,7 +350,7 @@ namespace BauhausRacer {
 			}
 			if(Game.Instance.PlayerName!=""){
 				XMLManager.instance.highscoreDatabase.AddEntry(Game.Instance.PlayerName, Game.Instance.timer);
-				SceneManager.LoadScene(0);
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			}
 		}
 

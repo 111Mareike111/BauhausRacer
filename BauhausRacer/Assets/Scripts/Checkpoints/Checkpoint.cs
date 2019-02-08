@@ -6,7 +6,7 @@ namespace BauhausRacer{
     public class Checkpoint : MonoBehaviour {
         private bool isNextCheckpoint;
         [SerializeField] private Transform _spawn;
-        [SerializeField] private Checkpoint[] nextCheckpoints;
+        [SerializeField] public Checkpoint[] nextCheckpoints;
         public Transform SpawnPosition { get { return _spawn; } }
 
         private void Start(){
