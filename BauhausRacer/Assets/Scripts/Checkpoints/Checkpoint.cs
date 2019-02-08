@@ -22,7 +22,7 @@ namespace BauhausRacer{
             isNextCheckpoint = value;
         }
 
-        private void OnTriggerExit(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             if (other.tag != "Player")
             {
@@ -33,8 +33,10 @@ namespace BauhausRacer{
             {
                 CheckpointManager.Instance.NextCheckpointArrived(this, nextCheckpoints);
                 Debug.Log("nextCheckpoint");
+                CheckpointManager.Instance.HideWrongDirection();
             }
-            else if (this == CheckpointManager.Instance.LastCheckpoint)
+          
+             else if (this == CheckpointManager.Instance.LastCheckpoint)
             {
                 if(CheckpointManager.Instance.WrongDirection){
                     CheckpointManager.Instance.HideWrongDirection();
@@ -48,6 +50,8 @@ namespace BauhausRacer{
                 }
 
                 
+            } else {
+                CheckpointManager.Instance.ShowWrongDirection();
             }
 
         }

@@ -15,9 +15,8 @@ public class Boost : MonoBehaviour {
 	void Awake(){
 			colorManager = Game.Instance.ColorManager; 
             colorBoost = colorManager.GetColorByName(selectColor.ToString()); //color gets color selected in inspector
-			foreach(Renderer r in GetComponentsInChildren<Renderer>()){
-				r.material = colorBoost.ColorBarrierMaterial;
-			}
+			GetComponent<Renderer>().material=colorBoost.ColorBarrierMaterial;
+			
 		}
 
 	// Use this for initialization
@@ -37,7 +36,7 @@ public class Boost : MonoBehaviour {
 			Debug.Log("Colorcar: "+ colorManager.CurrentColor.ColorName);
 				if(colorManager.CurrentColor.ColorName == colorBoost.ColorName){
 					Debug.Log("hi2");
-					car.GetComponent<Rigidbody>().AddForce(car.transform.forward*Time.deltaTime*accleration, ForceMode.Acceleration);
+					car.GetComponent<Rigidbody>().AddForce(car.transform.forward*accleration, ForceMode.Acceleration);
 					GetComponent<AudioSource>().Play();
 					return;
 				}
@@ -46,7 +45,7 @@ public class Boost : MonoBehaviour {
 					foreach(ColorData c in colorManager.CurrentColor.MixingParents){
 						Debug.Log("c "+ c.ColorName);
 						if(c == colorBoost){
-							car.GetComponent<Rigidbody>().AddForce(car.transform.forward*accleration);
+							car.GetComponent<Rigidbody>().AddForce(car.transform.forward*accleration, ForceMode.Acceleration);
 							GetComponent<AudioSource>().Play();
 							StartCoroutine(DeleteForce());
 						}

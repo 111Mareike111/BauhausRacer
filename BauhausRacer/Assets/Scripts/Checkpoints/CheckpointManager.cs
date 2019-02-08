@@ -29,12 +29,13 @@ namespace BauhausRacer {
         [SerializeField] private Material materialOtherCeckpoint;
         [SerializeField] private Material materialLastCeckpoint;
         [SerializeField] private Material materialCurrentCeckpoint;
-        private int _currentRound =0;
+        private int _currentRound = -1;
         private Checkpoint[] checkpoints;
 
         public AudioSource checkpointSound;
         public AudioSource finishSound;
         public AudioSource resetSound;
+        public AudioSource newRoundSound;
 
         void Awake()
         {
@@ -63,10 +64,11 @@ namespace BauhausRacer {
         public void NextCheckpointArrived(Checkpoint currentCheckpoint, Checkpoint[] nextCheckpoints)
         {
             _currentCheckpoint = currentCheckpoint;
-            checkpointSound.Play();
-            if(_currentCheckpoint == _lastCheckpoint)
+           
+            if(_currentCheckpoint == _firstCheckpiont)
             {
                 _currentRound++;
+                newRoundSound.Play();
                 guiController.DisplayRounds(_currentRound);
                 if(_currentRound == Game.Instance.rounds){
                     guiController.ShowHighscorePanel();
@@ -74,6 +76,8 @@ namespace BauhausRacer {
 
                 }
                 //Todo Increment course rounds
+            } else {
+                 checkpointSound.Play();
             }
             foreach(Checkpoint cp in _nextCheckpoints)
             {
@@ -95,9 +99,8 @@ namespace BauhausRacer {
             _playerTranform.transform.position = _currentCheckpoint.SpawnPosition.position;
             _playerTranform.transform.rotation = _currentCheckpoint.SpawnPosition.rotation;
             _playerTranform.transform.LookAt(_currentCheckpoint.transform.GetChild(1));
-           _playerTranform.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
-           
+            _playerTranform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            HideWrongDirection();
             Debug.Log("CHECK");
         }
         
