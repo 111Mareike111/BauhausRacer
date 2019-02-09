@@ -15,6 +15,7 @@ namespace BauhausRacer {
         [SerializeField] private Checkpoint _lastCheckpoint;
 
         private bool _wrongDirection;
+        public int CurrentCheckpointIndex {get; set;}
         public GameObject turnBack_img;
 
         public Checkpoint[] NextCheckpoints { get { return _nextCheckpoints; } }
@@ -91,6 +92,7 @@ namespace BauhausRacer {
                 cp.SetNextCheckpoint(true);
             }
             Debug.Log("Round: "+_currentRound);
+            CurrentCheckpointIndex = currentCheckpoint.CheckpointIndex;
         }
 
         public void ResetPlayerToCurrentCheckpoint()

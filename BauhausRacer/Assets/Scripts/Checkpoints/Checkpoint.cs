@@ -8,6 +8,7 @@ namespace BauhausRacer{
         [SerializeField] private Transform _spawn;
         [SerializeField] public Checkpoint[] nextCheckpoints;
         public Transform SpawnPosition { get { return _spawn; } }
+        public int CheckpointIndex;
 
         private void Start(){
             _spawn = this.gameObject.transform.GetChild(0).transform;
@@ -36,7 +37,7 @@ namespace BauhausRacer{
                 CheckpointManager.Instance.HideWrongDirection();
             }
           
-             else if (this == CheckpointManager.Instance.LastCheckpoint)
+             else if (this.CheckpointIndex == CheckpointManager.Instance.CurrentCheckpointIndex)
             {
                 if(CheckpointManager.Instance.WrongDirection){
                     CheckpointManager.Instance.HideWrongDirection();
@@ -46,12 +47,10 @@ namespace BauhausRacer{
                     }
                 } else {
                     CheckpointManager.Instance.ShowWrongDirection();
-                Debug.Log("wrong");
+                    Debug.Log("wrong");
                 }
-
-                
             } else {
-                CheckpointManager.Instance.ShowWrongDirection();
+                 CheckpointManager.Instance.ShowWrongDirection();
             }
 
         }
