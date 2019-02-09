@@ -25,7 +25,7 @@ namespace BauhausRacer {
         public Checkpoint FirstCheckpoint { get { return _firstCheckpiont; } }
         private int checkpointIndex;
 
-        [SerializeField] private UnityStandardAssets.Vehicles.Car.CarController _playerTranform;
+        [SerializeField] private UnityStandardAssets.Vehicles.Car.CarController _car;
         [SerializeField] private Material materialNextCheckpoint;
         [SerializeField] private Material materialOtherCeckpoint;
         [SerializeField] private Material materialLastCeckpoint;
@@ -70,7 +70,10 @@ namespace BauhausRacer {
             {
                 _currentRound++;
                 newRoundSound.Play();
-                guiController.DisplayRounds(_currentRound);
+                if(_currentRound!=0){
+                    guiController.DisplayRounds(_currentRound);
+                }
+                
                 if(_currentRound == Game.Instance.rounds){
                     guiController.ShowHighscorePanel();
                     finishSound.Play();
@@ -98,10 +101,15 @@ namespace BauhausRacer {
         public void ResetPlayerToCurrentCheckpoint()
         {
             resetSound.Play();
-            _playerTranform.transform.position = _currentCheckpoint.SpawnPosition.position;
-            _playerTranform.transform.rotation = _currentCheckpoint.SpawnPosition.rotation;
-            _playerTranform.transform.LookAt(_currentCheckpoint.transform.GetChild(1));
-            _playerTranform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            _car.transform.position = _currentCheckpoint.SpawnPosition.position;
+            _car.transform.rotation = _currentCheckpoint.SpawnPosition.rotation;
+            _car.transform.LookAt(_currentCheckpoint.transform.GetChild(1));
+            _car.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            Game.Instance.ColorManager.CurrentColor = _currentCheckpoint._carColor;
+            Color[] colors = _currentCheckpoint._carColor.CarTexture;
+            _car.GetComponentsInParent<ChangeColorByShader>()[0].PrepareTransition(colors[0]);
+            _car.GetComponentsInParent<ChangeColorByShader>()[1].PrepareTransition(colors[1]);
+            _car.GetComponentsInParent<ChangeColorByShader>()[2].PrepareTransition(colors[2]);
             HideWrongDirection();
             Debug.Log("CHECK");
         }

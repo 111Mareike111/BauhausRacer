@@ -38,6 +38,7 @@ public class SCC_Camera : MonoBehaviour {
 	private float zVelocity = 0.0F;
 	private float targetDistance = 0.0f;
 
+
 	void Start () {
 
 		lookAtVector =  new Vector3(0,lookAtHeight,0);
@@ -54,6 +55,7 @@ public class SCC_Camera : MonoBehaviour {
 		
 		wantedRotationAngle = playerCar.eulerAngles.y;
 		currentRotationAngle = transform.eulerAngles.y;
+		
 		
 		currentRotationAngle = Mathf.SmoothDampAngle(currentRotationAngle, wantedRotationAngle, ref yVelocity, rotationSnapTime);
 

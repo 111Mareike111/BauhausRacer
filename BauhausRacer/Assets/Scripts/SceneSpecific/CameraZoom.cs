@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Vehicles.Car;
 
+namespace BauhausRacer{
 public class CameraZoom : MonoBehaviour {
 
     public Transform target;
@@ -22,6 +23,8 @@ public class CameraZoom : MonoBehaviour {
 
     private AudioSource audioSource;
     public AudioClip[] audioClips;
+
+    public GuiControllerGame gUIController;
 
     // Use this for initialization
     void Start () {
@@ -70,7 +73,7 @@ public class CameraZoom : MonoBehaviour {
                 ChangeLampStatus(StatusLights.go,0,1,true,true);
                 audioSource.PlayOneShot(audioClips[1]);
                 statusCameraZoom = StatusZoom.s_04startRace;
-                StartRace();
+                Invoke("StartRace", 2f);
             }
             timer = lampTime;
         }
@@ -113,19 +116,26 @@ public class CameraZoom : MonoBehaviour {
 
     private void StartRace()
     {
+        illuminaitonBehaviours[0].GlowMaterial(false);
+        illuminaitonBehaviours[1].GlowMaterial(false);
+        illuminaitonBehaviours[2].GlowMaterial(false);
         carCamera.transform.position = transform.position;
         carCamera.transform.rotation = transform.rotation;
         carCamera.enabled = true;
         this.GetComponent<Camera>().enabled = false;
         StartCar();
+        gUIController.Resume();
+        gUIController.ingameUI.GetComponent<Animation>().Play();
         //ToDo PrepareRaceStart
     }
 
     void StartCar()
     {
+    
         carPrefab.GetComponent<CarController>().enabled = true;
         carPrefab.GetComponent<CarUserControl>().enabled = true;
         carPrefab.GetComponent<CarAudio>().enabled = true;
     }
 
+}
 }

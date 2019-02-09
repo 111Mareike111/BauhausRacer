@@ -9,6 +9,7 @@ namespace BauhausRacer{
         [SerializeField] public Checkpoint[] nextCheckpoints;
         public Transform SpawnPosition { get { return _spawn; } }
         public int CheckpointIndex;
+        public ColorData _carColor { get; set; }
 
         private void Start(){
             _spawn = this.gameObject.transform.GetChild(0).transform;
@@ -35,6 +36,7 @@ namespace BauhausRacer{
                 CheckpointManager.Instance.NextCheckpointArrived(this, nextCheckpoints);
                 Debug.Log("nextCheckpoint");
                 CheckpointManager.Instance.HideWrongDirection();
+                _carColor = Game.Instance.ColorManager.CurrentColor;
             }
           
              else if (this.CheckpointIndex == CheckpointManager.Instance.CurrentCheckpointIndex)

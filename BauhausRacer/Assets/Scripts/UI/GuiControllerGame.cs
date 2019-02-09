@@ -10,13 +10,16 @@ namespace BauhausRacer {
 	public class GuiControllerGame : MonoBehaviour {
 
 		[Header("Ingame")]
+		public GameObject ingameUI;
 		public TextMeshProUGUI textTime;
 		public Image[] roundDisplay;
+		public IlluminaitonBehaviour[] illuminaitonBehaviours;
 		public Sprite roundSprite;
 		public RectTransform KMHNeedle;
 		public GameObject pausePanel;
 
 		public Image[] carColorDisplay;
+		
 		
 		//
 
@@ -33,7 +36,7 @@ namespace BauhausRacer {
 		public GameObject creditsPanel;
 		public AudioSource buttonClickAudio;
 		public AudioSource playButtonClickAudio;
-		public AudioMixerGroup audioMixer;
+
 
 		[Header("Manual")]
 		public ScrollRect scrollRect;
@@ -55,7 +58,7 @@ namespace BauhausRacer {
 		//
 		public enum ActiveScreen
 		{
-			MENU, CREDITS, CONTROLS, GAME, PAUSE, HIGHSCORE
+			MENU, CREDITS, CONTROLS, GAME, PAUSE, HIGHSCORE, INTRO
 		}
 
 		public bool isInMainMenu = true;
@@ -71,7 +74,7 @@ namespace BauhausRacer {
 		//menu is active, game is paused
 		void Awake () {
 			menuPanel.SetActive(true);
-			
+			Game.Instance._musicMenu.Play();
 			highScorePanel.SetActive(false);
 			wheelInput.SetActive(false);
 			keyboardInput.SetActive(false);
@@ -114,6 +117,7 @@ namespace BauhausRacer {
 			// if(Input.GetAxis("DPadY")<0){
 			// 	highscoreScrollrect.verticalScrollbar.value++;
 			// }
+
            
 			DisplaySpeed();
 			DisplayCarColor();
@@ -182,6 +186,7 @@ namespace BauhausRacer {
 					}
 				break;
 			}
+			
 			Debug.Log(activeScreen);
 
         }
@@ -250,7 +255,9 @@ namespace BauhausRacer {
 
 		//display rounds
 		public void DisplayRounds(int currentRound){
-			roundDisplay[currentRound].sprite = roundSprite;
+			roundDisplay[currentRound-1].sprite = roundSprite;
+			illuminaitonBehaviours[currentRound-1].GlowMaterial(true);
+			
 		}
 
 		//Display speed as kmh-needle
@@ -276,8 +283,10 @@ namespace BauhausRacer {
 		public void Play(){
 			playButtonClickAudio.Play();
 			menuPanel.SetActive(false);
-			activeScreen = ActiveScreen.GAME;
-			Resume();
+			activeScreen = ActiveScreen.INTRO;
+			Time.timeScale = 1.5f;
+			Game.Instance._musicMenu.Stop();
+			
 		}
 
 		//pause game
@@ -286,7 +295,10 @@ namespace BauhausRacer {
 			pausePanel.SetActive(true);
 			activeScreen = ActiveScreen.PAUSE;
 			Game.Instance.gameStopped = true; //timer mustn't count during pause
-			Time.timeScale = 0f;
+			Time.timeScale = 0f;	
+		
+			Game.Instance._musicIngame.Pause();	
+			Game.Instance.IngameAudio.SetFloat("Volume", -80f);		
 		}
 
 		//resume game after pause
@@ -299,6 +311,11 @@ namespace BauhausRacer {
 			Time.timeScale = 1.5f;
 			pausePanel.SetActive(false);
 			Game.Instance.gameStopped= false;
+
+			Game.Instance.IngameAudio.SetFloat("Volume", Game.Instance.volumeIngame);
+			if(!Game.Instance._musicIngame.isPlaying){
+				Game.Instance._musicIngame.Play();
+			}
 		}
 
 		//exit game
@@ -324,14 +341,17 @@ namespace BauhausRacer {
 			buttonClickAudio.Play();
 			activeScreen = ActiveScreen.CONTROLS;
 			controlsPanel.SetActive(true);
-			
             scrollRect.horizontalNormalizedPosition = 0;
+			if(pausePanel.activeSelf){
+				Game.Instance._musicMenu.Stop();
+			}
 		}
 
 		//show menu panel 
 		public void Menu(){
 			//activeScreen = ActiveScreen.MENU;
 			buttonClickAudio.Play();
+			
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single); //load scene to reset everything and to reload highscore
 		}
 
@@ -409,6 +429,7 @@ namespace BauhausRacer {
 		//show highscore-Panel (when game is finished): display player's rank and the rank above and below his
 		public void ShowHighscorePanel(){
 			Game.Instance.gameStopped = true;
+			Game.Instance.IngameAudio.SetFloat("Volume", -80f);		
 			if(Game.Instance.wheel){		//wheel or keyboard input
 				ShowWheelInput();
 			} else {
