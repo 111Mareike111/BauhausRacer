@@ -3,32 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class IlluminaitonBehaviour : MonoBehaviour {
-    public Material[] standardMaterials;
-    public Material[] glowingMaterials;
-    private Renderer renderer;
+    public GameObject standardMaterials;
+    public GameObject glowingMaterials;
 	// Use this for initialization
-	void Start () {
-        renderer = GetComponent<Renderer>();
-        
-	}
+
 
     public void GlowMaterial(bool value)
     {
         if (value)
         {
-            ChangeMaterials(glowingMaterials);
+            glowingMaterials.SetActive(true);
+            standardMaterials.SetActive(false);
         }
         else
         {
-            ChangeMaterials(standardMaterials);
+            glowingMaterials.SetActive(false);
+            standardMaterials.SetActive(true);
         }
     }
-
-    private void ChangeMaterials(Material[] materials)
-    {
-        for(int i = 0; i < renderer.materials.Length; i++)
-        {
-            renderer.material = materials[i];
-        }
-    }
+    
 }

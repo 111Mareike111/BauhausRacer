@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Vehicles.Car;
 
 public class CameraZoom : MonoBehaviour {
 
@@ -17,11 +18,16 @@ public class CameraZoom : MonoBehaviour {
     private StatusZoom statusCameraZoom;
     private StatusLights statusLights;
     public Camera carCamera;
+    public GameObject carPrefab;
+
+    private AudioSource audioSource;
+    public AudioClip[] audioClips;
 
     // Use this for initialization
     void Start () {
         timer = waitTime;
         statusCameraZoom = StatusZoom.s_01wait;
+        audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -53,12 +59,16 @@ public class CameraZoom : MonoBehaviour {
             if(statusLights == StatusLights.three)
             {
                 ChangeLampStatus(StatusLights.two,0,1,false,true);
+                audioSource.PlayOneShot(audioClips[0]);
             }else if (statusLights == StatusLights.two)
             {
                 ChangeLampStatus(StatusLights.one,1,2,false,true);
-            }else if (statusLights == StatusLights.one)
+                audioSource.PlayOneShot(audioClips[0]);
+            }
+            else if (statusLights == StatusLights.one)
             {
                 ChangeLampStatus(StatusLights.go,0,1,true,true);
+                audioSource.PlayOneShot(audioClips[1]);
                 statusCameraZoom = StatusZoom.s_04startRace;
                 StartRace();
             }
@@ -94,6 +104,7 @@ public class CameraZoom : MonoBehaviour {
         {
             statusCameraZoom = StatusZoom.s_03countdown;
             statusLights = StatusLights.three;
+            audioSource.PlayOneShot(audioClips[0]);
             illuminaitonBehaviours[0].GlowMaterial(true);
             timer = lampTime;
         }
@@ -105,9 +116,16 @@ public class CameraZoom : MonoBehaviour {
         carCamera.transform.position = transform.position;
         carCamera.transform.rotation = transform.rotation;
         carCamera.enabled = true;
-        this.gameObject.SetActive(false);
+        this.GetComponent<Camera>().enabled = false;
+        StartCar();
         //ToDo PrepareRaceStart
     }
 
+    void StartCar()
+    {
+        carPrefab.GetComponent<CarController>().enabled = true;
+        carPrefab.GetComponent<CarUserControl>().enabled = true;
+        carPrefab.GetComponent<CarAudio>().enabled = true;
+    }
 
 }
