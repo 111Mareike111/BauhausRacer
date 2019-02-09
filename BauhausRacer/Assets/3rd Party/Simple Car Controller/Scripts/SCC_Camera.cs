@@ -43,7 +43,8 @@ public class SCC_Camera : MonoBehaviour {
 
 		lookAtVector =  new Vector3(0,lookAtHeight,0);
 		currentDistance = distance;
-
+	
+		
 	}
 	
 	void LateUpdate () {
