@@ -17,7 +17,7 @@ public class XMLManager : MonoBehaviour {
 
 	void Awake(){
 		instance = this;
-		dataPath = Application.dataPath+"/HighscoreFile/highscore_data.xml";
+		dataPath = Application.streamingAssetsPath+"\\highscore_data.xml";
 		if(File.Exists(dataPath)){
 				XMLManager.instance.Load();
 			}
