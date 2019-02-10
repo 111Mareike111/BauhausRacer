@@ -2,84 +2,8 @@
 <HighscoreDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Highscore>
     <HighScoreEntry>
-      <name>DJANGO</name>
-      <time>0.760005951</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name />
-      <time>0.760005951</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>ESFES</name>
-      <time>0.795200646</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>WERNER</name>
-      <time>0.92691493</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name />
-      <time>0.92691493</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>WOLFIE</name>
-      <time>0.9770054</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name />
-      <time>0.9770054</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>SAMMY</name>
-      <time>1.112044</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>WAUWAU</name>
-      <time>1.29819119</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>AARON</name>
-      <time>1.52737093</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>WWWWWW</name>
-      <time>2.19658184</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>MAREIK</name>
-      <time>2.58025384</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>SADJAD</name>
-      <time>3.725273</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>A.-</name>
-      <time>157.366333</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>DASFSD</name>
-      <time>198.878464</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>JLNLKJ</name>
-      <time>363.9384</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>MAREIK</name>
-      <time>413.795563</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>BKBK</name>
-      <time>471.2455</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>MAYALA</name>
-      <time>478.980164</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>Ö,Ö,Ö,</name>
-      <time>562.959656</time>
+      <name>ASDFSA</name>
+      <time>5.18947649</time>
     </HighScoreEntry>
   </Highscore>
 </HighscoreDatabase>

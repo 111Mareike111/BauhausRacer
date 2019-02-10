@@ -21,14 +21,17 @@ namespace UnityStandardAssets.Vehicles.Car
 
         private void FixedUpdate()
         {
-            // pass the input to the car!
-            if(BauhausRacer.Game.Instance.wheel){
-                h = CrossPlatformInputManager.GetAxis("Horizontal2");
-                v = CrossPlatformInputManager.GetAxis("Vertical2");
-            } else {
-                h = CrossPlatformInputManager.GetAxis("Horizontal");
-                v = CrossPlatformInputManager.GetAxis("Vertical");
+            if(!Game.Instance.gameStopped){
+                         // pass the input to the car!
+                if(BauhausRacer.Game.Instance.wheel){
+                    h = CrossPlatformInputManager.GetAxis("Horizontal2");
+                    v = CrossPlatformInputManager.GetAxis("Vertical2");
+                } else {
+                    h = CrossPlatformInputManager.GetAxis("Horizontal");
+                    v = CrossPlatformInputManager.GetAxis("Vertical");
+                }
             }
+       
 
          
 #if !MOBILE_INPUT

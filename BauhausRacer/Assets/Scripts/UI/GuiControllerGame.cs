@@ -451,7 +451,7 @@ namespace BauhausRacer {
 				ShowKeyboardInput();
 			}
 			highScorePanel.SetActive(true);
-
+			activeScreen = ActiveScreen.HIGHSCORE;
 			XMLManager.instance.highscoreDatabase.AddEntry("", Game.Instance.timer); //add entry with empty name, to get the rank
 		
 			List<HighScoreEntry> highscore = XMLManager.instance.highscoreDatabase.list; //get the index and so the rank of the new entry
@@ -465,7 +465,7 @@ namespace BauhausRacer {
 
 			//show the current player's rank and time in highlighted field, show the entry above and below
 			if(highscore.Count >=3){
-				activeScreen = ActiveScreen.HIGHSCORE;
+				
 				if(index == highscore.Count-1){ 		//new entry is the last one
 					h_rankText.text = index.ToString()+"\n"+ (index+1).ToString();
 					h_nameText.text = highscore[index-1].name+"\n";
