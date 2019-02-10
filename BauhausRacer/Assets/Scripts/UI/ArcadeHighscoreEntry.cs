@@ -11,7 +11,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
         private string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.-";
         private int stepper = 0;
         private int letterSelect = 0;
-        public Text[] Letters = new Text[8];
+        public Text[] Letters;
         public float moveDelay = 0.2f;
         private bool readyToMove = true;
 
@@ -49,13 +49,14 @@ public class ArcadeHighscoreEntry : MonoBehaviour
                     
 					if (letterSelect < Letters.Length - 1) {
 							letterSelect++;
+
 							Letters [letterSelect].color = Color.white; // selected Letter is white
 							if(Letters[letterSelect].text==""){
 								stepper=0;
 								Letters[letterSelect].text = alphabet[stepper].ToString();
 							}							
 							Letters [letterSelect - 1].color = Color.black;
-							arrows.transform.position = new Vector3(arrows.transform.position.x+24f, arrows.transform.position.y, 0);
+							arrows.transform.position = new Vector3(arrows.transform.position.x+18.5f, arrows.transform.position.y, 0);
 							readyToMove = false;
 							Invoke ("ResetReadyToMove", moveDelay+1);
 					}
@@ -68,7 +69,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 							Letters [letterSelect].color = Color.white; // selected Letter is white
 							
 							Letters [letterSelect + 1].text = "";
-							arrows.transform.position = new Vector3(arrows.transform.position.x-24f, arrows.transform.position.y, 0);
+							arrows.transform.position = new Vector3(arrows.transform.position.x-18.5f, arrows.transform.position.y, 0);
 							readyToMove = false;
 							Invoke ("ResetReadyToMove", moveDelay+1);
 					}
@@ -90,7 +91,8 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 			}
 			Game.Instance.PlayerName = name;
 			Debug.Log("name: "+name);
-			
+			XMLManager.instance.highscoreDatabase.AddEntry(Game.Instance.PlayerName, Game.Instance.timer);
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 
 

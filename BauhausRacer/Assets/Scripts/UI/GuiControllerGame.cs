@@ -42,6 +42,8 @@ namespace BauhausRacer {
 		public ScrollRect scrollRect;
 		public RectTransform[] manualCards;
 		private int manualIndex = 0;
+		private bool readyToMove = true;
+		private float moveDelay = 0.2f;
 
 		[Header("Highscore")]
 		public GameObject highScorePanel;
@@ -81,9 +83,11 @@ namespace BauhausRacer {
 			creditsPanel.SetActive(false);
 			controlsPanel.SetActive(false);
 			orgKMHNeedleAngle = KMHNeedle.transform.localEulerAngles.z;
-			activeScreen = ActiveScreen.MENU;
+			
 			PauseGame();
 			pausePanel.SetActive(false);
+			Time.timeScale=1f;
+			activeScreen = ActiveScreen.MENU;
 			buttonClickAudio.Stop();
 			isInMainMenu = true;
 			Debug.Log(isInMainMenu);
@@ -136,18 +140,27 @@ namespace BauhausRacer {
 					}
 					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
 						Play();
-						
+					}
+					if(Input.GetAxis("DPadY")>0){
+						scrollRect.verticalNormalizedPosition = scrollRect.verticalNormalizedPosition+0.1f;
+					} else if ( Input.GetAxis("DPadY")<0){
+						scrollRect.verticalNormalizedPosition = scrollRect.verticalNormalizedPosition-0.1f;
 					}
 				break;
 				case ActiveScreen.CONTROLS:
 					isInMainMenu = true;
 					if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
 						Back(controlsPanel);
-					} 
-					if(Input.GetAxis("DPadX")>0){
+					}
+					
+					if(Input.GetAxis("DPadX")>0 && readyToMove){
 						NextManualCard();
-					} else if(Input.GetAxis("DPadY")<0){
+						readyToMove = false;
+						Invoke("ResetReadyToMove", moveDelay);
+					} else if(Input.GetAxis("DPadX")<0 && readyToMove){
 						PreviousManualCard();
+						readyToMove = false;
+						Invoke("ResetReadyToMove", moveDelay);
 					}
 					break;
 				case ActiveScreen.CREDITS:
@@ -191,6 +204,12 @@ namespace BauhausRacer {
 
         }
 
+		private void ResetReadyToMove ()
+        {
+			Debug.Log("ready");
+            readyToMove = true;
+        }
+		
 		public ActiveScreen GetActiveScreen(){
 			return activeScreen;
 		}
@@ -286,6 +305,7 @@ namespace BauhausRacer {
 			activeScreen = ActiveScreen.INTRO;
 			Time.timeScale = 1.5f;
 			Game.Instance._musicMenu.Stop();
+			Game.Instance.CameraStart = true;
 			
 		}
 
@@ -369,6 +389,7 @@ namespace BauhausRacer {
 				Game.Instance.PlayerName = nameInput.text.ToUpper();
 			}
 			if(Game.Instance.PlayerName!=""){
+				Debug.Log("hier");
 				XMLManager.instance.highscoreDatabase.AddEntry(Game.Instance.PlayerName, Game.Instance.timer);
 				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			}
@@ -447,10 +468,12 @@ namespace BauhausRacer {
 					break;
 				}
 			}
-
+			
+			activeScreen = ActiveScreen.HIGHSCORE;
+			
 			//show the current player's rank and time in highlighted field, show the entry above and below
 			if(highscore.Count >=3){
-				activeScreen = ActiveScreen.HIGHSCORE;
+				
 				if(index == highscore.Count-1){ 		//new entry is the last one
 					h_rankText.text = index.ToString()+"\n"+ (index+1).ToString();
 					h_nameText.text = highscore[index-1].name+"\n";
