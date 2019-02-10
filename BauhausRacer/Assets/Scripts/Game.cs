@@ -78,6 +78,9 @@ namespace BauhausRacer
             vertical = Input.GetAxis("Vertical2");
            if(!gameStopped){
               timer += (Time.deltaTime/1.5f); 
+              Cursor.visible = false;
+           } else {
+               Cursor.visible = true;
            }
 
            

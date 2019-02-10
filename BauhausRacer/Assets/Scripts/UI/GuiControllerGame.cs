@@ -185,12 +185,16 @@ namespace BauhausRacer {
 					}
 				break;
 				case ActiveScreen.HIGHSCORE:
+					
 					isInMainMenu = false;
 					if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
 						arcadeHighscoreEntry = wheelInput.GetComponent<ArcadeHighscoreEntry>();
 						arcadeHighscoreEntry.SubmitName();
 						HighscoreEntry();
 					}
+				break;
+				case ActiveScreen.INTRO:
+					Cursor.visible = false;
 				break;
 			}
 			
@@ -282,7 +286,7 @@ namespace BauhausRacer {
 			kmh = carController.CurrentSpeed * 1.2f;
 
 			Quaternion target = Quaternion.Euler (0f, 0f, orgKMHNeedleAngle - kmh);
-			KMHNeedle.rotation = Quaternion.Slerp(KMHNeedle.rotation, target,  Time.deltaTime * 2f);
+			KMHNeedle.rotation = Quaternion.Slerp(KMHNeedle.rotation, target,  Time.deltaTime * 1f);
 		}
 
 		//Respawn player
