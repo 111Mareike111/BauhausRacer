@@ -32,6 +32,8 @@ namespace BauhausRacer
         public float timer {get;set;}
         public bool wheel{get;set;}
 
+        public bool CameraStart {get;set;}
+
 
         void Awake()
         {
@@ -61,11 +63,12 @@ namespace BauhausRacer
         // Use this for initialization
         void Start()
         {
-           string[] names = Input.GetJoystickNames();
-        Debug.Log("Connected Joysticks:");
-        for(int i = 0; i < names.Length; i++) {
-            Debug.Log("Joystick" + (i + 1) + " = " + names[i]);
-        }
+            string[] names = Input.GetJoystickNames();
+            Debug.Log("Connected Joysticks:");
+            for(int i = 0; i < names.Length; i++) {
+                Debug.Log("Joystick" + (i + 1) + " = " + names[i]);
+            }
+            CameraStart = false;
         }
 
         // Update is called once per frame

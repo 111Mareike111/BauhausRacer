@@ -105,6 +105,7 @@ namespace BauhausRacer {
             _car.transform.rotation = _currentCheckpoint.SpawnPosition.rotation;
             _car.transform.LookAt(_currentCheckpoint.transform.GetChild(1));
             _car.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            _car.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             if(Game.Instance.ColorManager.CurrentColor != _currentCheckpoint._carColor){
                  Game.Instance.ColorManager.CurrentColor = _currentCheckpoint._carColor;
                 Color[] colors = _currentCheckpoint._carColor.CarTexture;

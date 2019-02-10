@@ -42,6 +42,8 @@ namespace BauhausRacer {
 		public ScrollRect scrollRect;
 		public RectTransform[] manualCards;
 		private int manualIndex = 0;
+		private bool readyToMove = true;
+		private float moveDelay = 0.3f;
 
 		[Header("Highscore")]
 		public GameObject highScorePanel;
@@ -81,9 +83,10 @@ namespace BauhausRacer {
 			creditsPanel.SetActive(false);
 			controlsPanel.SetActive(false);
 			orgKMHNeedleAngle = KMHNeedle.transform.localEulerAngles.z;
-			activeScreen = ActiveScreen.MENU;
 			PauseGame();
 			pausePanel.SetActive(false);
+			Time.timeScale = 1f;
+			activeScreen = ActiveScreen.MENU;
 			buttonClickAudio.Stop();
 			isInMainMenu = true;
 			Debug.Log(isInMainMenu);
@@ -144,10 +147,14 @@ namespace BauhausRacer {
 					if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
 						Back(controlsPanel);
 					} 
-					if(Input.GetAxis("DPadX")>0){
+					if(Input.GetAxis("DPadX")>0 && readyToMove){
 						NextManualCard();
-					} else if(Input.GetAxis("DPadY")<0){
+						readyToMove = false;
+						Invoke("ResetReadyToMove", moveDelay);
+					} else if(Input.GetAxis("DPadX")<0 && readyToMove){
 						PreviousManualCard();
+						readyToMove = false;
+						Invoke("ResetReadyToMove", moveDelay);
 					}
 					break;
 				case ActiveScreen.CREDITS:
@@ -190,6 +197,10 @@ namespace BauhausRacer {
 			Debug.Log(activeScreen);
 
         }
+		
+		void ResetReadyToMove(){
+			readyToMove = true;
+		}
 
 		public ActiveScreen GetActiveScreen(){
 			return activeScreen;
@@ -286,6 +297,7 @@ namespace BauhausRacer {
 			activeScreen = ActiveScreen.INTRO;
 			Time.timeScale = 1.5f;
 			Game.Instance._musicMenu.Stop();
+			Game.Instance.CameraStart = true;
 			
 		}
 
@@ -328,10 +340,11 @@ namespace BauhausRacer {
 		public void Back(GameObject panel){
 			buttonClickAudio.Play();
 			panel.SetActive(false);
-			if(menuPanel.activeSelf){
-				activeScreen = ActiveScreen.MENU;
-			} else {		//if controls is called from the paused game
+			if(pausePanel.activeSelf){
 				activeScreen = ActiveScreen.PAUSE;
+			} else {		
+				activeScreen = ActiveScreen.MENU;
+				menuPanel.SetActive(true);
 			}
 		}
 
@@ -341,6 +354,7 @@ namespace BauhausRacer {
 			buttonClickAudio.Play();
 			activeScreen = ActiveScreen.CONTROLS;
 			controlsPanel.SetActive(true);
+			menuPanel.SetActive(false);
             scrollRect.horizontalNormalizedPosition = 0;
 			if(pausePanel.activeSelf){
 				Game.Instance._musicMenu.Stop();
@@ -360,6 +374,7 @@ namespace BauhausRacer {
 			buttonClickAudio.Play();
 			activeScreen = ActiveScreen.CREDITS;
 			creditsPanel.SetActive(true);
+			menuPanel.SetActive(false);
 		}
 
 		//new entry in highscore database (if name is not empty)
@@ -370,7 +385,7 @@ namespace BauhausRacer {
 			}
 			if(Game.Instance.PlayerName!=""){
 				XMLManager.instance.highscoreDatabase.AddEntry(Game.Instance.PlayerName, Game.Instance.timer);
-				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 			}
 		}
 
