@@ -119,8 +119,6 @@ public class CameraZoom : MonoBehaviour {
         illuminaitonBehaviours[0].GlowMaterial(false);
         illuminaitonBehaviours[1].GlowMaterial(false);
         illuminaitonBehaviours[2].GlowMaterial(false);
-        carCamera.transform.position = transform.position;
-        carCamera.transform.rotation = transform.rotation;
         carCamera.enabled = true;
         this.GetComponent<Camera>().enabled = false;
         StartCar();
