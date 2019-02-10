@@ -28,21 +28,15 @@ public class CameraZoom : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-       if(Game.Instance.CameraStart){
-           Startzoom();
-       }
-	}
-
-    public void Startzoom(){
         timer = waitTime;
         statusCameraZoom = StatusZoom.s_01wait;
         audioSource = GetComponent<AudioSource>();
-    }
+	}
 	
 	// Update is called once per frame
 	void Update () {
-        if(Game.Instance.CameraStart){
-                    switch (statusCameraZoom)
+
+        switch (statusCameraZoom)
         {
             case StatusZoom.s_01wait:
                 WaitForTimer();
@@ -54,8 +48,6 @@ public class CameraZoom : MonoBehaviour {
                 CountDown();
                 break;
         }
-        }
-
         
     }
 
@@ -127,14 +119,11 @@ public class CameraZoom : MonoBehaviour {
         illuminaitonBehaviours[0].GlowMaterial(false);
         illuminaitonBehaviours[1].GlowMaterial(false);
         illuminaitonBehaviours[2].GlowMaterial(false);
-        carCamera.transform.position = transform.position;
-        carCamera.transform.rotation = transform.rotation;
         carCamera.enabled = true;
         this.GetComponent<Camera>().enabled = false;
         StartCar();
         gUIController.Resume();
         gUIController.ingameUI.GetComponent<Animation>().Play();
-        Game.Instance.CameraStart = false;
         //ToDo PrepareRaceStart
     }
 

@@ -32,7 +32,6 @@ namespace BauhausRacer
         public float timer {get;set;}
         public bool wheel{get;set;}
 
-        public bool CameraStart = false;
 
         void Awake()
         {
