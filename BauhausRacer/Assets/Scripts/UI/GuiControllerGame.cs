@@ -36,6 +36,8 @@ namespace BauhausRacer {
 		public GameObject creditsPanel;
 		public AudioSource buttonClickAudio;
 		public AudioSource playButtonClickAudio;
+		public Scrollbar scrollbar;
+		public GameObject videoWindow;
 
 
 		[Header("Manual")]
@@ -135,11 +137,21 @@ namespace BauhausRacer {
 						Credits();
 					}
 					if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Escape)){
-						Exit();
+						if(!videoWindow.activeSelf){
+							Exit();
+						}
+						
 					}
 					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
 						Play();
-						
+					}	
+				
+					if(Input.GetAxis("DPadY")>0){
+						scrollbar.value = scrollbar.value+0.1f;
+					
+					}
+					if(Input.GetAxis("DPadY")<0){
+						scrollbar.value = scrollbar.value-0.1f;
 					}
 				break;
 				case ActiveScreen.CONTROLS:
@@ -311,7 +323,7 @@ namespace BauhausRacer {
 			pausePanel.SetActive(true);
 			activeScreen = ActiveScreen.PAUSE;
 			Game.Instance.gameStopped = true; //timer mustn't count during pause
-			Time.timeScale = 0f;	
+			
 		
 			Game.Instance._musicIngame.Pause();	
 			Game.Instance.IngameAudio.SetFloat("Volume", -80f);		
@@ -337,7 +349,9 @@ namespace BauhausRacer {
 		//exit game
 		public void Exit(){
 			buttonClickAudio.Play();
+			Debug.Log("Exit");
 			Application.Quit();
+
 		}
 
 		//back from controls or credits to menu or game

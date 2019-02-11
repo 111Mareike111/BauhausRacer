@@ -20,7 +20,7 @@ public class MainMenuBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.anyKey)
+        if (Input.anyKey || Input.GetAxis("DPadY") != 0 || Input.GetAxis("DPadX") != 0)
             SetInitiolSituation();
         else
             if(controller.isInMainMenu){

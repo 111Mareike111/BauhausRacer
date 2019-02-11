@@ -2,6 +2,26 @@
 <HighscoreDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Highscore>
     <HighScoreEntry>
+      <name>A</name>
+      <time>0</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name />
+      <time>0</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>A</name>
+      <time>0</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>WAWAZA</name>
+      <time>0.8820431</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>WAWAZA</name>
+      <time>0.8820431</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
       <name>SSFSDF</name>
       <time>1.06896162</time>
     </HighScoreEntry>
@@ -10,11 +30,19 @@
       <time>5.18947649</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>LORDIG</name>
-      <time>373.81778</time>
+      <name>YZZAAM</name>
+      <time>100.243484</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>YZZAAM</name>
+      <time>100.243484</time>
     </HighScoreEntry>
     <HighScoreEntry>
       <name />
+      <time>373.81778</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>LORDIG</name>
       <time>373.81778</time>
     </HighScoreEntry>
     <HighScoreEntry>
