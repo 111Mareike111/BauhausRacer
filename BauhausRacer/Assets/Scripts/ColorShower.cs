@@ -43,6 +43,8 @@ namespace BauhausRacer
                         carController.GetComponentsInParent<ChangeColorByShader>()[0].PrepareTransition(colors[0]);
                         carController.GetComponentsInParent<ChangeColorByShader>()[1].PrepareTransition(colors[1]);
                         carController.GetComponentsInParent<ChangeColorByShader>()[2].PrepareTransition(colors[2]);
+                        carController.GetComponentsInParent<TrailColor>()[0].ChangeTrailColor(colors[2]);
+                        carController.GetComponentsInParent<TrailColor>()[1].ChangeTrailColor(colors[2]);
                         GetComponent<AudioSource>().Play();
                     }
                     

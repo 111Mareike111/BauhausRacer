@@ -38,16 +38,24 @@
       <time>100.243484</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>LORDIG</name>
+      <name />
       <time>373.81778</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name />
+      <name>LORDIG</name>
       <time>373.81778</time>
     </HighScoreEntry>
     <HighScoreEntry>
       <name>SADJAD</name>
       <time>478.7836</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>LDG</name>
+      <time>799.4885</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name />
+      <time>799.4885</time>
     </HighScoreEntry>
   </Highscore>
 </HighscoreDatabase>
