@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Vehicles.Car;
 
 public class Speedlines : MonoBehaviour
 {
     public ParticleSystem SpeedlineEffectSystem;
-
+    [SerializeField] private CarController carController;
     [Header("Effect intensity")] 
     [Range(0,1f)]
     public float Intensity;
@@ -24,6 +25,24 @@ public class Speedlines : MonoBehaviour
     private void OnValidate()
     {
         SetEffectValues();
+    }
+
+    private void Update()
+    {
+        SetIntesityByCarSpeed();
+        SetEffectValues();
+    }
+
+    private void SetIntesityByCarSpeed()
+    {
+        if(carController.MaxSpeed == 0)
+        {
+            Intensity = 0;
+        }
+        else
+        {
+            Intensity = Mathf.Clamp(carController.CurrentSpeed / carController.MaxSpeed, 0, 1);
+        }
     }
 
     private void SetEffectValues()
