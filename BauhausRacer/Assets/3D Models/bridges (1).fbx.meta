@@ -32,7 +32,47 @@ ModelImporter:
     7400012: Plane|PlaneAction
     7400014: Plane|PlaneAction.001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierorange1
+    second: {fileID: 2100000, guid: 1396c897b93edd2499f00b05947037ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierorange2
+    second: {fileID: 2100000, guid: 93b42e2d8299fd348b262eb4abe13a6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierorange3
+    second: {fileID: 2100000, guid: aa7b00d872a9c584ca137c2bca0e78c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierorange4
+    second: {fileID: 2100000, guid: 6f1d45e51e635494098e578678be07dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierpurple1
+    second: {fileID: 2100000, guid: f9b94386cb99bf144b1a5b9be9d0c6c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierpurple2
+    second: {fileID: 2100000, guid: 1c8439bfd4a020c4a8f196a6ee33317d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierpurple3
+    second: {fileID: 2100000, guid: f6cd7b020b9b3c045b7e29d76f841115, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierpurple4
+    second: {fileID: 2100000, guid: bb5fe012b7ae1b24394dbe4f3350344f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

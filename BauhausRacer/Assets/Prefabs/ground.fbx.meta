@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Landscape
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: groundBase
+    second: {fileID: 2100000, guid: de76f82358fa3dc4cac95217b49b8c95, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

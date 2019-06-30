@@ -19,7 +19,37 @@ ModelImporter:
     7400004: Cube.253|PlaneAction
     7400006: Cube.253|PlaneAction.001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blueLow
+    second: {fileID: 2100000, guid: 2d41f91f8db552b41ad38a29f55f7164, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greenLow
+    second: {fileID: 2100000, guid: aca56fea5bebb4c4f866887b4df40d73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orangeLow
+    second: {fileID: 2100000, guid: d35158a40f5c35a42964f689368debc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: purpleLow
+    second: {fileID: 2100000, guid: f9b94386cb99bf144b1a5b9be9d0c6c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: redLow
+    second: {fileID: 2100000, guid: 06ad893df4c32124aba2659a0e779b02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellowLow
+    second: {fileID: 2100000, guid: dff7939b01c44fd4e8b3ef573c1d3016, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

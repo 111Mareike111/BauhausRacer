@@ -2158,7 +2158,47 @@ ModelImporter:
     4300848: Sphere.001
     4300850: Plane
     4300852: Sphere
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground
+    second: {fileID: 2100000, guid: a4f5847ae864f264289232fe846c8b1b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blueLow
+    second: {fileID: 2100000, guid: 9f663e2505fa15240969c46e8d0b239b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bluehighlight
+    second: {fileID: 2100000, guid: b75d042f4a44ea34caba9ef921e2036c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gorund
+    second: {fileID: 2100000, guid: de76f82358fa3dc4cac95217b49b8c95, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greenLow
+    second: {fileID: 2100000, guid: 5f22f40e96e9ca742a4c360a053d984f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greenhighlight
+    second: {fileID: 2100000, guid: ed62b43005dcb2c40a5ea25c61057aad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orangeLow
+    second: {fileID: 2100000, guid: d35158a40f5c35a42964f689368debc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orangehighlight
+    second: {fileID: 2100000, guid: 01945576828acf94f8a6d22641ceb1e6, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

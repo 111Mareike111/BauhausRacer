@@ -32,7 +32,67 @@ ModelImporter:
     4300000: showerYellow
     4300002: showerBlue
     4300004: showerRed
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierblue1
+    second: {fileID: 2100000, guid: 2d41f91f8db552b41ad38a29f55f7164, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierblue2
+    second: {fileID: 2100000, guid: 01ad7884919daf048bf38335e4105abe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierblue3
+    second: {fileID: 2100000, guid: 815a451bc1e7748429ae03385cf52bbc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierblue4
+    second: {fileID: 2100000, guid: 911cf88562e920240a15fac2af9f21da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierred1
+    second: {fileID: 2100000, guid: c2132b4e17eda4f47acd9df26ec3bc56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierred2
+    second: {fileID: 2100000, guid: fb90762f5c7cc5142868c0b4427c962f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierred3
+    second: {fileID: 2100000, guid: 57f924c6682f3db45a46ef92157678b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrierred4
+    second: {fileID: 2100000, guid: 478cac26000ee224cbae472527d1ec0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrieryellow1
+    second: {fileID: 2100000, guid: 1671be780f730584e8cfeaf1e3219b2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrieryellow2
+    second: {fileID: 2100000, guid: c3977e4fb821d594ca502f6196d5f84e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrieryellow3
+    second: {fileID: 2100000, guid: e9644a18eb6abdf46b80cfa21464b5f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: barrieryellow4
+    second: {fileID: 2100000, guid: bc68287f6d217de4ebf3a5aeec5d5bb5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
