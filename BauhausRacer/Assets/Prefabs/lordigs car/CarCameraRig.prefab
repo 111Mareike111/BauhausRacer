@@ -307,7 +307,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpeedlineEffectSystem: {fileID: 198058666084302872}
-  carController: {fileID: 0}
   Intensity: 0.15
   MinSpeed: 2
   MaxSpeed: 6
@@ -327,7 +326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
-  carController: {fileID: 0}
   foVMin: 60
   foVMax: 90
 --- !u!114 &114645766579702076
