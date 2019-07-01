@@ -75,7 +75,7 @@ namespace BauhausRacer {
                 }
                 
                 if(_currentRound == Game.Instance.rounds){
-                    guiController.ShowHighscorePanel();
+                    guiController.CheckIfHighscore();
                     finishSound.Play();
 
                 }
@@ -112,6 +112,8 @@ namespace BauhausRacer {
                 _car.GetComponentsInParent<ChangeColorByShader>()[0].PrepareTransition(colors[0]);
                 _car.GetComponentsInParent<ChangeColorByShader>()[1].PrepareTransition(colors[1]);
                 _car.GetComponentsInParent<ChangeColorByShader>()[2].PrepareTransition(colors[2]);
+                _car.GetComponentsInParent<TrailColor>()[0].ChangeTrailColor(colors[2]);
+                _car.GetComponentsInParent<TrailColor>()[1].ChangeTrailColor(colors[2]);
             }
            
             HideWrongDirection();

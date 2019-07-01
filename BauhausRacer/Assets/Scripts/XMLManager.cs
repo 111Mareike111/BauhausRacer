@@ -60,12 +60,16 @@ public class XMLManager : MonoBehaviour {
 	public class HighscoreDatabase {
 		[XmlArray("Highscore")]
 		public List <HighScoreEntry> list  = new List <HighScoreEntry>();
+		public int maxHighscoreEntries = 10;
 
 		public void AddEntry(string name, float time){
 			list.Add(new HighScoreEntry(name, time));
 			list.Sort(delegate(HighScoreEntry h1, HighScoreEntry h2){
 				return h1.time.CompareTo(h2.time);
 			});
+			if(list.Count > maxHighscoreEntries){
+				list.RemoveAt(maxHighscoreEntries);
+			}
 			XMLManager.instance.Save();
 		}
 
@@ -78,6 +82,12 @@ public class XMLManager : MonoBehaviour {
 			list.Clear();
 			XMLManager.instance.Save();
 		}
+
+		public HighScoreEntry GetLastEntry(){
+			return list[maxHighscoreEntries-1];
+		}
+
+		
     }
 
 }
