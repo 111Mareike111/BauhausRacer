@@ -28,15 +28,13 @@ namespace BauhausRacer {
 		[Header("Menu")]
 		public GameObject menuPanel;
 
-		public GameObject rankPrefab;
-		public GameObject timePrefab;
-		public GameObject namePrefab;
-		public GameObject grid;
+		public Text rankText;
+		public Text timeText;
+		public GameObject nameText;
 		public GameObject controlsPanel;
 		public GameObject creditsPanel;
 		public AudioSource buttonClickAudio;
 		public AudioSource playButtonClickAudio;
-		public Scrollbar scrollbar;
 		public GameObject videoWindow;
 
 
@@ -49,7 +47,6 @@ namespace BauhausRacer {
 
 		[Header("Highscore")]
 		public GameObject highScorePanel;
-		
 		public GameObject wheelInput;
 		public GameObject keyboardInput;
 		public InputField nameInput;
@@ -147,11 +144,11 @@ namespace BauhausRacer {
 					}	
 				
 					if(Input.GetAxis("DPadY")>0){
-						scrollbar.value = scrollbar.value+0.1f;
+						//scrollbar.value = scrollbar.value+0.1f;
 					
 					}
 					if(Input.GetAxis("DPadY")<0){
-						scrollbar.value = scrollbar.value-0.1f;
+						//scrollbar.value = scrollbar.value-0.1f;
 					}
 				break;
 				case ActiveScreen.CONTROLS:
@@ -423,17 +420,10 @@ namespace BauhausRacer {
 			List<HighScoreEntry> highScoreEntries = XMLManager.instance.highscoreDatabase.list;
 			int rank= 1;
 			foreach(HighScoreEntry h in highScoreEntries){
-				GameObject entry = Instantiate(rankPrefab, grid.transform);
-				entry.transform.SetParent(grid.transform);
-				entry.GetComponent<Text>().text = rank.ToString();
+				rankText.GetComponent<Text>().text += rank.ToString()+"\n";
 				rank++;
-				entry = Instantiate(timePrefab, grid.transform);
-				entry.transform.SetParent(grid.transform);
-				entry.GetComponent<Text>().text = GuiControllerGame.GetMinutesDisplay(h.time);
-
-				entry = Instantiate(namePrefab, grid.transform);
-				entry.transform.SetParent(grid.transform);
-				entry.GetComponent<Text>().text = h.name;
+				timeText.GetComponent<Text>().text += GuiControllerGame.GetMinutesDisplay(h.time)+"\n";
+				nameText.GetComponent<Text>().text += h.name+"\n";
 
 				/* m_nameText.text += h.name+"\n";
 				m_timeText.text += GuiControllerGame.GetMinutesDisplay(h.time)+"\n";
@@ -459,10 +449,23 @@ namespace BauhausRacer {
            scrollRect.horizontalNormalizedPosition = (float)manualIndex/((float)manualCards.Length-1.08f);
 		}
 
+		public void CheckIfHighscore(){
+			Game.Instance.gameStopped = true;
+			Game.Instance.IngameAudio.SetFloat("Volume", -80f);
+			if(XMLManager.instance.highscoreDatabase.list.Count<XMLManager.instance.highscoreDatabase.maxHighscoreEntries || XMLManager.instance.highscoreDatabase.GetLastEntry().time < Game.Instance.timer){
+				ShowHighscorePanel();
+			} else {
+				ShowGameOverPanel();
+			}
+		}
+
+		public void ShowGameOverPanel(){
+			Debug.Log("GameOverPanel");
+		}
+
 		//show highscore-Panel (when game is finished): display player's rank and the rank above and below his
 		public void ShowHighscorePanel(){
-			Game.Instance.gameStopped = true;
-			Game.Instance.IngameAudio.SetFloat("Volume", -80f);		
+					
 			if(Game.Instance.wheel){		//wheel or keyboard input
 				ShowWheelInput();
 			} else {

@@ -75,7 +75,7 @@ namespace BauhausRacer {
                 }
                 
                 if(_currentRound == Game.Instance.rounds){
-                    guiController.ShowHighscorePanel();
+                    guiController.CheckIfHighscore();
                     finishSound.Play();
 
                 }
