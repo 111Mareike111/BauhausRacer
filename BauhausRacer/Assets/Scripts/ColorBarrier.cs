@@ -59,7 +59,6 @@ namespace BauhausRacer{
 		}
 
 		private void ChangeOpacity(float opacity){
-			Debug.Log("changeOpacity");
 			for(int i = 0; i<GetComponent<MeshRenderer>().materials.Length; i++){
 				UnityEngine.Color oldColor = GetComponent<MeshRenderer>().materials[i].color;
 				GetComponent<MeshRenderer>().materials[i].SetColor("_BaseColor", new UnityEngine.Color(oldColor.r,oldColor.g,oldColor.b,opacity));

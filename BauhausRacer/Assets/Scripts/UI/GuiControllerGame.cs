@@ -206,9 +206,6 @@ namespace BauhausRacer {
 					Cursor.visible = false;
 				break;
 			}
-			
-			Debug.Log(activeScreen);
-
         }
 		
 		void ResetReadyToMove(){
