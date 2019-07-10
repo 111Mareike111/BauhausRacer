@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 
 namespace BauhausRacer
@@ -25,11 +26,14 @@ namespace BauhausRacer
         public float vertical;
 
         public int rounds =3;
+        public float waitingdelay = 60f;
         public string PlayerName {get; set;}
 
         public bool gameStopped {get; set;}
 
         public float timer {get;set;}
+
+        public float timerResetGame {get;set;} //timer for resetting game when no input
         public bool wheel{get;set;}
 
         public bool CameraStart {get;set;}
@@ -69,6 +73,7 @@ namespace BauhausRacer
                 Debug.Log("Joystick" + (i + 1) + " = " + names[i]);
             }
             CameraStart = false;
+            timerResetGame = Time.realtimeSinceStartup + waitingdelay;
         }
 
         // Update is called once per frame
@@ -88,11 +93,44 @@ namespace BauhausRacer
             if(carBody.transform.position.y < 218){
                 CheckpointManager.Instance.ResetPlayerToCurrentCheckpoint();
             }  
+
+            if (Input.anyKey || Input.GetAxis("DPadY") != 0 || Input.GetAxis("DPadX") != 0 || horizontal != 0 || vertical != 0)
+                SetInitiolSituation();
+            else
+                if(!gameStopped){
+                    CheckTimer();
+                }
         }
 
         public void EndGame(){
             Debug.Log("Ende");
         }
+
+         void SetInitiolSituation()
+            {
+                timerResetGame = Time.realtimeSinceStartup + waitingdelay;
+                
+            }
+
+            void CheckTimer()
+            {
+                if (timerResetGame < 0)
+                {
+                    ResetGame();
+                }
+                else
+                {
+                    if(Time.realtimeSinceStartup > timerResetGame)
+                    {
+                        ResetGame();
+                    }
+                    
+                }
+            }
+
+            void ResetGame(){
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+            }
 
 
     }

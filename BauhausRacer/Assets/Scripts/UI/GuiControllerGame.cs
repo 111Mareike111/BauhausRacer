@@ -41,6 +41,7 @@ namespace BauhausRacer {
 		[Header("Manual")]
 		public ScrollRect scrollRect;
 		public RectTransform[] manualCards;
+		public GameObject backButton;
 		private int manualIndex = 0;
 		private bool readyToMove = true;
 		private float moveDelay = 0.3f;
@@ -304,11 +305,20 @@ namespace BauhausRacer {
 		public void Play(){
 			playButtonClickAudio.Play();
 			menuPanel.SetActive(false);
+			controlsPanel.SetActive(true);
+			activeScreen = ActiveScreen.CONTROLS;
+			Game.Instance._musicMenu.Stop();
+			backButton.SetActive(false);
+		}
+
+		public void PlayAfterManual(){
+			controlsPanel.SetActive(false);
+			menuPanel.SetActive(false);
 			activeScreen = ActiveScreen.INTRO;
 			Time.timeScale = 1.5f;
-			Game.Instance._musicMenu.Stop();
 			Game.Instance.CameraStart = true;
-			
+			Game.Instance._musicMenu.Stop();
+			playButtonClickAudio.Play();
 		}
 
 		//pause game
@@ -371,6 +381,7 @@ namespace BauhausRacer {
 			if(pausePanel.activeSelf){
 				Game.Instance._musicMenu.Stop();
 			}
+			backButton.SetActive(true);
 		}
 
 		//show menu panel 
