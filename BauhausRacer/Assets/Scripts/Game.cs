@@ -14,6 +14,7 @@ namespace BauhausRacer
         public ColorManager ColorManager { get; private set; }
 
         public GameObject carBody;
+           public GameObject wrongColorText;
         [Header("Audio")]
         public AudioMixer IngameAudio;
         
@@ -37,6 +38,8 @@ namespace BauhausRacer
         public bool wheel{get;set;}
 
         public bool CameraStart {get;set;}
+
+     
 
 
         void Awake()

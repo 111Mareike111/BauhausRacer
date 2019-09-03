@@ -5,7 +5,6 @@ using UnityEngine;
 namespace BauhausRacer{
 	public class ColorBarrier : MonoBehaviour {
 
-
 		public SelectColor selectColor; //display dropdown in Inspektor
 		public BoxCollider collider;
 
@@ -55,6 +54,8 @@ namespace BauhausRacer{
 				//wrong color - car can not pass
 				collider.enabled=true;
 				GetComponent<AudioSource>().Play();
+				Game.Instance.wrongColorText.SetActive(true);
+				Game.Instance.wrongColorText.GetComponent<Animator>().Play("wrongColorTextAppear", -1, 0);
 			}
 		}
 
