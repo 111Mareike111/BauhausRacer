@@ -16,15 +16,24 @@ public class ArcadeHighscoreEntry : MonoBehaviour
         private bool readyToMove = true;
 
 		public GameObject arrows;
+
+		public bool isEnteringName = true;
  
         void Start ()
         {
                 Letters[letterSelect].text = alphabet[stepper].ToString ();
 				Letters[letterSelect].color = Color.white;
         }
+
+		public void SetIsEnteringName(bool boolean){
+			isEnteringName = boolean;
+		}
  
         void Update ()
         {
+			if(isEnteringName){
+				Letters[letterSelect].color = Color.white;
+				arrows.SetActive(true);
                 if (Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove) {
                         if (stepper < alphabet.Length - 1) {
                                 stepper++;
@@ -75,6 +84,12 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 					}
                         
                 }
+				if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
+					Letters[letterSelect].color = Color.black;
+					arrows.SetActive(false);
+				}
+				
+			}	
 				
 
         }

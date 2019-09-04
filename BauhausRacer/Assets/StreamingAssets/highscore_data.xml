@@ -2,44 +2,32 @@
 <HighscoreDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Highscore>
     <HighScoreEntry>
-      <name>WAWAZA</name>
-      <time>0.8820431</time>
+      <name />
+      <time>2.67374229</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>WAWAZA</name>
-      <time>0.8820431</time>
+      <name />
+      <time>2.72936535</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>SSFSDF</name>
-      <time>1.06896162</time>
+      <name>ADA</name>
+      <time>2.764063</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>ASDFSA</name>
-      <time>5.18947649</time>
+      <name>.DASA</name>
+      <time>3.49818015</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>YZZAAM</name>
-      <time>100.243484</time>
+      <name>W.Z-</name>
+      <time>3.5026896</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>YZZAAM</name>
-      <time>100.243484</time>
+      <name>A.C-</name>
+      <time>3.830811</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>HLHLHL</name>
-      <time>218.577988</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>KLJKJL</name>
-      <time>261.7876</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>AF</name>
-      <time>345.175018</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>AS</name>
-      <time>362.483368</time>
+      <name>CBZCB</name>
+      <time>4.79555464</time>
     </HighScoreEntry>
   </Highscore>
   <maxHighscoreEntries>10</maxHighscoreEntries>

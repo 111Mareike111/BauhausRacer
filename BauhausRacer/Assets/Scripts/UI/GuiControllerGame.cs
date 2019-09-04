@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
 namespace BauhausRacer {
 	public class GuiControllerGame : MonoBehaviour {
@@ -20,6 +21,7 @@ namespace BauhausRacer {
 
 		public Image[] carColorDisplay;
 		
+		public Button[] pauseButtons;
 		
 		//
 
@@ -37,6 +39,9 @@ namespace BauhausRacer {
 		public AudioSource playButtonClickAudio;
 		public GameObject videoWindow;
 
+		public Button[] menuButtons;
+		private int selectedButton = 0;
+
 
 		[Header("Manual")]
 		public ScrollRect scrollRect;
@@ -45,9 +50,12 @@ namespace BauhausRacer {
 		private int manualIndex = 0;
 		private bool readyToMove = true;
 		private float moveDelay = 0.3f;
+		public Button[] manualButtons;
 
 		[Header("Highscore")]
 		public GameObject highScorePanel;
+		public Button[] highscoreButtons;
+		
 		public GameObject wheelInput;
 		public GameObject keyboardInput;
 		public InputField nameInput;
@@ -91,6 +99,8 @@ namespace BauhausRacer {
 			isInMainMenu = true;
 			Debug.Log(isInMainMenu);
 			LoadHighscore();
+			menuButtons[0].Select();
+			arcadeHighscoreEntry = wheelInput.GetComponent<ArcadeHighscoreEntry>();
 			
 			
 			ColorUtility.TryParseHtmlString("#92A1E7", out blue);
@@ -107,28 +117,38 @@ namespace BauhausRacer {
 			ColorUtility.TryParseHtmlString("#FF7600", out orange_h);
 		}
 		
-
+		private void NextButton(Button[] buttons){
+			if(selectedButton < buttons.Length-1){
+				selectedButton++;
+			} else {
+				selectedButton = 0;
+			}
+			buttons[selectedButton].Select();
+		}
 		
+			private void PreviousButton(Button[] buttons){
+			if(selectedButton > 0){
+				selectedButton--;
+			} else {
+				selectedButton = buttons.Length-1;
+			}
+			buttons[selectedButton].Select();
+		}
+
 		// Update is called once per frame
 		void Update ()
         {
 			if(!Game.Instance.gameStopped){
            		 textTime.text = GetMinutesDisplay(Game.Instance.timer);
 			}
-
-		
-			// if(Input.GetAxis("DPadY")<0){
-			// 	highscoreScrollrect.verticalScrollbar.value++;
-			// }
-
-           
+         
 			DisplaySpeed();
 			DisplayCarColor();
 
 			switch (activeScreen) {
 				case ActiveScreen.MENU:
 					isInMainMenu = true;
-					if(Input.GetButtonDown("Controls")||Input.GetKeyDown(KeyCode.M)){
+				/*	if(Input.GetButtonDown("Controls")||Input.GetKeyDown(KeyCode.M)){
 						Controls();
 					}
 					if(Input.GetButtonDown("Credits")||Input.GetKeyDown(KeyCode.C)){
@@ -139,50 +159,87 @@ namespace BauhausRacer {
 							Exit();
 						}
 						
-					}
-					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
-						Play();
+					}*/
+				 	if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
+                       menuButtons[selectedButton].onClick.Invoke();
 					}	
 				
-					if(Input.GetAxis("DPadY")>0){
-						//scrollbar.value = scrollbar.value+0.1f;
+					if(Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove){
+						PreviousButton(menuButtons);
+						readyToMove = false;
+						Invoke("ResetReadyToMove", moveDelay);
 					
 					}
-					if(Input.GetAxis("DPadY")<0){
-						//scrollbar.value = scrollbar.value-0.1f;
+					if(Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove){
+						NextButton(menuButtons);
+						readyToMove = false;
+						Invoke("ResetReadyToMove", moveDelay);
 					}
 				break;
 				case ActiveScreen.CONTROLS:
 					isInMainMenu = true;
-					if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
+					/* if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
 						Back(controlsPanel);
-					} 
-					if(Input.GetAxis("DPadX")>0 && readyToMove){
+					} */
+					if(Input.GetKey ("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove){
 						NextManualCard();
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
-					} else if(Input.GetAxis("DPadX")<0 && readyToMove){
+					} else if(Input.GetKey ("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove){
 						PreviousManualCard();
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
 					}
+					if(Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove){
+						if(manualButtons[0].isActiveAndEnabled && manualButtons[1].isActiveAndEnabled){
+							PreviousButton(manualButtons);
+							readyToMove = false;
+							Invoke("ResetReadyToMove", moveDelay);
+						}
+					}
+					if(Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove){
+						if(manualButtons[0].isActiveAndEnabled && manualButtons[1].isActiveAndEnabled){
+							NextButton(manualButtons);
+							readyToMove = false;
+							Invoke("ResetReadyToMove", moveDelay);
+						}	
+					}
+					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
+                       if(manualButtons[0].isActiveAndEnabled && selectedButton == 0){
+						   Back(controlsPanel);
+					   } else {
+						   PlayAfterManual();
+					   }
+					}	
+
 					break;
 				case ActiveScreen.CREDITS:
 					isInMainMenu = true;
-					if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
+					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
 						Back(creditsPanel);
 					} 
 				break;
 				case ActiveScreen.PAUSE:
 					isInMainMenu = false;
 					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
-						Resume();
+						pauseButtons[selectedButton].onClick.Invoke();
 					}
-					if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
+					/* if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
 						Menu();
 					}
 					if(Input.GetButtonDown("Controls")||Input.GetKeyDown(KeyCode.M)){
 						Controls();
+					}*/
+					if(Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove){
+						PreviousButton(pauseButtons);
+						readyToMove = false;
+						Invoke("ResetReadyToMove", moveDelay);
+					
+					}
+					if(Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove){
+						NextButton(pauseButtons);
+						readyToMove = false;
+						Invoke("ResetReadyToMove", moveDelay);
 					}
 				break;
 				case ActiveScreen.GAME:
@@ -197,17 +254,54 @@ namespace BauhausRacer {
 				case ActiveScreen.HIGHSCORE:
 					
 					isInMainMenu = false;
-					if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
-						arcadeHighscoreEntry = wheelInput.GetComponent<ArcadeHighscoreEntry>();
-						arcadeHighscoreEntry.SubmitName();
-						HighscoreEntry();
+					
+					if(!arcadeHighscoreEntry.isEnteringName){
+						if(Input.GetKey ("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove){
+							PreviousButton(highscoreButtons);
+							readyToMove = false;
+							Invoke("ResetReadyToMove", moveDelay);
+						}
+						if(Input.GetKey ("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove){
+							NextButton(highscoreButtons);
+							readyToMove = false;
+							Invoke("ResetReadyToMove", moveDelay);
+						}
+						if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
+							Debug.Log("selectedbutton "+ selectedButton);
+							highscoreButtons[selectedButton].onClick.Invoke();		
+						}
+					} else {
+						if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
+							arcadeHighscoreEntry.SetIsEnteringName(false);;	
+							highscoreButtons[0].enabled = true;
+							highscoreButtons[1].enabled = true;
+							selectedButton = 1;
+							highscoreButtons[1].Select();
+						}
 					}
+				
+					
+				
+
 				break;
 				case ActiveScreen.INTRO:
 					Cursor.visible = false;
 				break;
 			}
         }
+
+		public void ConfirmHighscoreEntry(){
+			Debug.Log("confirm");
+			//arcadeHighscoreEntry = wheelInput.GetComponent<ArcadeHighscoreEntry>();
+			arcadeHighscoreEntry.SubmitName();
+			HighscoreEntry();
+		}
+
+		public void BeginNameEntry(){
+			arcadeHighscoreEntry.SetIsEnteringName(true);
+			highscoreButtons[0].enabled = false;
+			highscoreButtons[1].enabled = false;
+		}
 		
 		void ResetReadyToMove(){
 			readyToMove = true;
@@ -215,6 +309,11 @@ namespace BauhausRacer {
 
 		public ActiveScreen GetActiveScreen(){
 			return activeScreen;
+		}
+
+		public void SetActiveScreen(ActiveScreen screen){
+			activeScreen = screen;
+			selectedButton = 0;
 		}
 
 		public void DisplayCarColor(){
@@ -306,7 +405,8 @@ namespace BauhausRacer {
 			playButtonClickAudio.Play();
 			menuPanel.SetActive(false);
 			controlsPanel.SetActive(true);
-			activeScreen = ActiveScreen.CONTROLS;
+			SetActiveScreen(ActiveScreen.CONTROLS);
+			manualButtons[1].Select();
 			Game.Instance._musicMenu.Stop();
 			backButton.SetActive(false);
 		}
@@ -314,7 +414,7 @@ namespace BauhausRacer {
 		public void PlayAfterManual(){
 			controlsPanel.SetActive(false);
 			menuPanel.SetActive(false);
-			activeScreen = ActiveScreen.INTRO;
+			SetActiveScreen(ActiveScreen.INTRO);
 			Time.timeScale = 1.5f;
 			Game.Instance.CameraStart = true;
 			Game.Instance._musicMenu.Stop();
@@ -325,7 +425,8 @@ namespace BauhausRacer {
 		public void PauseGame(){
 			buttonClickAudio.Play();
 			pausePanel.SetActive(true);
-			activeScreen = ActiveScreen.PAUSE;
+			SetActiveScreen(ActiveScreen.PAUSE);
+			pauseButtons[0].Select();
 			Game.Instance.gameStopped = true; //timer mustn't count during pause
 			
 		
@@ -339,7 +440,7 @@ namespace BauhausRacer {
 				buttonClickAudio.Play();
 			}
 		
-			activeScreen = ActiveScreen.GAME;
+			SetActiveScreen(ActiveScreen.GAME);
 			Time.timeScale = 1.5f;
 			pausePanel.SetActive(false);
 			Game.Instance.gameStopped= false;
@@ -363,23 +464,29 @@ namespace BauhausRacer {
 			buttonClickAudio.Play();
 			panel.SetActive(false);
 			if(pausePanel.activeSelf){
-				activeScreen = ActiveScreen.PAUSE;
+				SetActiveScreen(ActiveScreen.PAUSE);
+				pauseButtons[0].Select();
 			} else {		
-				activeScreen = ActiveScreen.MENU;
+				SetActiveScreen(ActiveScreen.MENU);
+				
 				menuPanel.SetActive(true);
+				menuButtons[0].Select();
 			}
 		}
 
 		//show controls panel
 		public void Controls(){
-			//PauseGame(); 
+			//PauseGame();
+			manualButtons[1].gameObject.SetActive(true); 
 			buttonClickAudio.Play();
-			activeScreen = ActiveScreen.CONTROLS;
+			SetActiveScreen(ActiveScreen.CONTROLS);	
 			controlsPanel.SetActive(true);
+			manualButtons[0].Select();
 			menuPanel.SetActive(false);
             scrollRect.horizontalNormalizedPosition = 0;
 			if(pausePanel.activeSelf){
 				Game.Instance._musicMenu.Stop();
+				manualButtons[1].gameObject.SetActive(false);
 			}
 			backButton.SetActive(true);
 		}
@@ -395,7 +502,7 @@ namespace BauhausRacer {
 		//show credits panel
 		public void Credits(){
 			buttonClickAudio.Play();
-			activeScreen = ActiveScreen.CREDITS;
+			SetActiveScreen(ActiveScreen.CREDITS);
 			creditsPanel.SetActive(true);
 			menuPanel.SetActive(false);
 		}
@@ -474,13 +581,14 @@ namespace BauhausRacer {
 		//show highscore-Panel (when game is finished): display player's rank and the rank above and below his
 		public void ShowHighscorePanel(){
 					
-			if(Game.Instance.wheel){		//wheel or keyboard input
-				ShowWheelInput();
-			} else {
-				ShowKeyboardInput();
-			}
+			ShowWheelInput();
+			
 			highScorePanel.SetActive(true);
-			activeScreen = ActiveScreen.HIGHSCORE;
+			SetActiveScreen(ActiveScreen.HIGHSCORE);
+			selectedButton = 0;
+			highscoreButtons[0].Select();
+			highscoreButtons[0].onClick.Invoke();
+
 			XMLManager.instance.highscoreDatabase.AddEntry("", Game.Instance.timer); //add entry with empty name, to get the rank
 		
 			List<HighScoreEntry> highscore = XMLManager.instance.highscoreDatabase.list; //get the index and so the rank of the new entry
