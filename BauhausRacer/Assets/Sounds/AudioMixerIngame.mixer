@@ -26,6 +26,7 @@ AudioMixerController:
     - 8dc5a45d200a1614492f41cc47e5faff
     - b06d75e8866077e47a0754460f9a9335
     - a6d6eff10b400cc45a5de5bfe2a669ef
+    - 0eed3c673df851c448485488aa3d4fc4
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -40,6 +41,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 243977741756122928}
   - {fileID: 243798162492199566}
+  - {fileID: 243733153816515318}
   m_Volume: e03daa3068c616145a1f9bbd1faf75f2
   m_Pitch: 659bd15d8d8c9db4987e84c6f00b5a60
   m_Effects:
@@ -70,9 +72,27 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: f005f59ed9e8e3b41adcde1e473262d8
   m_FloatValues:
+    552c8072d7ed76f41a50fae81145ce76: 4.648096
     e031b7334be5b7d4ea52343811fbe60d: -2.8722944
     8ce77bc7823be2740b965535e9ebab12: -2.9490063
   m_TransitionOverrides: {}
+--- !u!243 &243733153816515318
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Effects louder
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 0eed3c673df851c448485488aa3d4fc4
+  m_Children: []
+  m_Volume: 552c8072d7ed76f41a50fae81145ce76
+  m_Pitch: a30e93feaae2fe1459b186cb0450099c
+  m_Effects:
+  - {fileID: 244496813784893392}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &243798162492199566
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -116,6 +136,19 @@ AudioMixerEffectController:
   m_EffectID: 063f0514e0c1c0d48834329268feb78f
   m_EffectName: Attenuation
   m_MixLevel: a179c549c14af94488439f6a25e5691f
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244496813784893392
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 71c1bfa27f015cb42be88fa6a58a1af2
+  m_EffectName: Attenuation
+  m_MixLevel: e5ed8c5d42b1be842b71c2c1858512f9
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0

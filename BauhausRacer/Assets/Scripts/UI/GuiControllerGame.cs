@@ -62,13 +62,18 @@ namespace BauhausRacer {
 		public Text h_rankText;
 		public Text h_nameText;
 		public Text h_timeText;
+
+		[Header("NotHighscore")]
+		public GameObject notHighScorePanel;
+		public Button[] notHighscoreButtons;
+
 		//Speed
 		private float kmh = 0f;
 		private float orgKMHNeedleAngle = 0f;
 		//
 		public enum ActiveScreen
 		{
-			MENU, CREDITS, CONTROLS, GAME, PAUSE, HIGHSCORE, INTRO
+			MENU, CREDITS, CONTROLS, GAME, PAUSE, HIGHSCORE, INTRO, NOTHIGHSCORE
 		}
 
 		public bool isInMainMenu = true;
@@ -90,6 +95,7 @@ namespace BauhausRacer {
 			keyboardInput.SetActive(false);
 			creditsPanel.SetActive(false);
 			controlsPanel.SetActive(false);
+			notHighScorePanel.SetActive(false);
 			orgKMHNeedleAngle = KMHNeedle.transform.localEulerAngles.z;
 			PauseGame();
 			pausePanel.SetActive(false);
@@ -287,6 +293,22 @@ namespace BauhausRacer {
 				case ActiveScreen.INTRO:
 					Cursor.visible = false;
 				break;
+				case ActiveScreen.NOTHIGHSCORE:
+					if(Input.GetKey ("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove){
+							PreviousButton(notHighscoreButtons);
+							readyToMove = false;
+							Invoke("ResetReadyToMove", moveDelay);
+						}
+						if(Input.GetKey ("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove){
+							NextButton(notHighscoreButtons);
+							readyToMove = false;
+							Invoke("ResetReadyToMove", moveDelay);
+						}
+						if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
+							Debug.Log("selectedbutton "+ selectedButton);
+							notHighscoreButtons[selectedButton].onClick.Invoke();		
+						}
+				break;
 			}
         }
 
@@ -402,18 +424,20 @@ namespace BauhausRacer {
 
 		//begin game
 		public void Play(){
-			playButtonClickAudio.Play();
+			
 			menuPanel.SetActive(false);
 			controlsPanel.SetActive(true);
 			SetActiveScreen(ActiveScreen.CONTROLS);
 			manualButtons[1].Select();
 			Game.Instance._musicMenu.Stop();
 			backButton.SetActive(false);
+			playButtonClickAudio.Play();
 		}
 
 		public void PlayAfterManual(){
 			controlsPanel.SetActive(false);
 			menuPanel.SetActive(false);
+			notHighScorePanel.SetActive(false);
 			SetActiveScreen(ActiveScreen.INTRO);
 			Time.timeScale = 1.5f;
 			Game.Instance.CameraStart = true;
@@ -567,7 +591,8 @@ namespace BauhausRacer {
 		public void CheckIfHighscore(){
 			Game.Instance.gameStopped = true;
 			Game.Instance.IngameAudio.SetFloat("Volume", -80f);
-			if(XMLManager.instance.highscoreDatabase.list.Count<XMLManager.instance.highscoreDatabase.maxHighscoreEntries || XMLManager.instance.highscoreDatabase.GetLastEntry().time < Game.Instance.timer){
+			Debug.Log(Game.Instance.timer);
+			if(XMLManager.instance.highscoreDatabase.list.Count < XMLManager.instance.highscoreDatabase.maxHighscoreEntries || XMLManager.instance.highscoreDatabase.GetLastEntry().time > Game.Instance.timer){
 				ShowHighscorePanel();
 			} else {
 				ShowGameOverPanel();
@@ -575,6 +600,9 @@ namespace BauhausRacer {
 		}
 
 		public void ShowGameOverPanel(){
+			SetActiveScreen(ActiveScreen.NOTHIGHSCORE);
+			notHighScorePanel.SetActive(true);
+			notHighscoreButtons[1].Select();
 			Debug.Log("GameOverPanel");
 		}
 
