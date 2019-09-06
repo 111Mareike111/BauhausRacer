@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4477750478640872}
   - component: {fileID: 198726086334414956}
   - component: {fileID: 199222688941347384}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 65958025286769098}
   - component: {fileID: 82577943202282346}
   - component: {fileID: 82359674427466934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: showerBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 4396947605942262}
   - component: {fileID: 198839628676884790}
   - component: {fileID: 199642644420822882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,15 +72,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1071140392651560}
-  m_LocalRotation: {x: -0.000000025017146, y: -0.7488632, z: -0.000000028268822, w: 0.6627246}
-  m_LocalPosition: {x: 867.05286, y: 160.3, z: 620}
-  m_LocalScale: {x: 185, y: 185, z: 185}
+  m_LocalRotation: {x: -0.0000000070412662, y: -0.9824495, z: -0.000000037086455,
+    w: 0.18652917}
+  m_LocalPosition: {x: 322.01938, y: 159.35034, z: 124.743164}
+  m_LocalScale: {x: 185.00017, y: 185, z: 185.00017}
   m_Children:
   - {fileID: 4477750478640872}
   - {fileID: 4396947605942262}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -69.624, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -158.49901, z: 0}
 --- !u!4 &4396947605942262
 Transform:
   m_ObjectHideFlags: 1
@@ -122,10 +123,10 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100008, guid: 8bd70fed7d4077446bc9717acffaa2c9, type: 3}
-  - {fileID: 2100010, guid: 8bd70fed7d4077446bc9717acffaa2c9, type: 3}
-  - {fileID: 2100012, guid: 8bd70fed7d4077446bc9717acffaa2c9, type: 3}
-  - {fileID: 2100014, guid: 8bd70fed7d4077446bc9717acffaa2c9, type: 3}
+  - {fileID: 2100000, guid: 01ad7884919daf048bf38335e4105abe, type: 2}
+  - {fileID: 2100000, guid: 911cf88562e920240a15fac2af9f21da, type: 2}
+  - {fileID: 2100000, guid: 815a451bc1e7748429ae03385cf52bbc, type: 2}
+  - {fileID: 2100000, guid: 2d41f91f8db552b41ad38a29f55f7164, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -268,7 +269,7 @@ AudioSource:
   m_GameObject: {fileID: 1071140392651560}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243977741756122928, guid: 839be381db49d6647a86fcc248f285bb,
+  OutputAudioMixerGroup: {fileID: 243733153816515318, guid: 839be381db49d6647a86fcc248f285bb,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4fca20fc7426bd143bb34685e2ba1c5f, type: 3}
   m_PlayOnAwake: 0

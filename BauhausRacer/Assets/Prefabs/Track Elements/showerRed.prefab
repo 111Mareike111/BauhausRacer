@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114849306878243710}
   - component: {fileID: 82530986707851840}
   - component: {fileID: 82437288567331620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: showerRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4590162162961428}
   - component: {fileID: 198625819765986854}
   - component: {fileID: 199292862776577942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 4104694355229696}
   - component: {fileID: 198215115941921484}
   - component: {fileID: 199113527750558826}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,8 +98,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1014594601006860}
-  m_LocalRotation: {x: -0.0062840157, y: -0.6758994, z: 0.026573459, w: 0.7364879}
-  m_LocalPosition: {x: 519.1459, y: 152.8, z: 612.3327}
+  m_LocalRotation: {x: 0.0120468065, y: -0.033944935, z: 0.010144493, w: 0.99929965}
+  m_LocalPosition: {x: 997.3246, y: 186.43, z: 216.0763}
   m_LocalScale: {x: 185, y: 185, z: 185}
   m_Children:
   - {fileID: 4590162162961428}
@@ -122,10 +122,10 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100016, guid: 8bd70fed7d4077446bc9717acffaa2c9, type: 3}
-  - {fileID: 2100018, guid: 8bd70fed7d4077446bc9717acffaa2c9, type: 3}
-  - {fileID: 2100020, guid: 8bd70fed7d4077446bc9717acffaa2c9, type: 3}
-  - {fileID: 2100022, guid: 8bd70fed7d4077446bc9717acffaa2c9, type: 3}
+  - {fileID: 2100000, guid: fb90762f5c7cc5142868c0b4427c962f, type: 2}
+  - {fileID: 2100000, guid: 478cac26000ee224cbae472527d1ec0f, type: 2}
+  - {fileID: 2100000, guid: 57f924c6682f3db45a46ef92157678b1, type: 2}
+  - {fileID: 2100000, guid: c2132b4e17eda4f47acd9df26ec3bc56, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -268,7 +268,7 @@ AudioSource:
   m_GameObject: {fileID: 1014594601006860}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243977741756122928, guid: 839be381db49d6647a86fcc248f285bb,
+  OutputAudioMixerGroup: {fileID: 243733153816515318, guid: 839be381db49d6647a86fcc248f285bb,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4fca20fc7426bd143bb34685e2ba1c5f, type: 3}
   m_PlayOnAwake: 0
