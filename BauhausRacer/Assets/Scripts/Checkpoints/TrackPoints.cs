@@ -7,10 +7,20 @@ namespace BauhausRacer
     public class TrackPoints : MonoBehaviour
     {
         [SerializeField] TrackPoints[] nextTrackpoints;
+        public TrackPoints[] NextTrackpoints { get { return nextTrackpoints; } }
+
+        private CarTracker _carTracker;
+
         // Use this for initialization
         void Start()
         {
             CheckMissingLinks();
+            _carTracker = transform.parent.GetComponent<CarTracker>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            _carTracker.ChangeCurrentTrackpoints(this);
         }
 
         void CheckMissingLinks()

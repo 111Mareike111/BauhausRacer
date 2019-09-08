@@ -13,11 +13,14 @@ namespace BauhausRacer {
 		[Header("Ingame")]
 		public GameObject ingameUI;
 		public TextMeshProUGUI textTime;
-		public Image[] roundDisplay;
+		public GameObject[] roundDisplay;
 		public IlluminaitonBehaviour[] illuminaitonBehaviours;
-		public Sprite roundSprite;
 		public RectTransform KMHNeedle;
 		public GameObject pausePanel;
+        public Image[] inGameBackground;
+
+        public Animator inGameUIAnimator;
+        public ColorCircleController colorCircleController;
 
 		public Image[] carColorDisplay;
 		
@@ -121,9 +124,21 @@ namespace BauhausRacer {
 			ColorUtility.TryParseHtmlString("#BD27E7", out violet_h);
 			ColorUtility.TryParseHtmlString("#FFAB6C", out orange);
 			ColorUtility.TryParseHtmlString("#FF7600", out orange_h);
-		}
-		
-		private void NextButton(Button[] buttons){
+            inGameBackground[0].color = Color.gray;
+            inGameBackground[1].color = Color.gray;
+        }
+
+
+        #region IngameUI
+
+        public void MoveIngameUI()
+        {
+            inGameUIAnimator.SetTrigger("Start");
+        }
+
+        #endregion
+
+        private void NextButton(Button[] buttons){
 			if(selectedButton < buttons.Length-1){
 				selectedButton++;
 			} else {
@@ -339,36 +354,49 @@ namespace BauhausRacer {
 		}
 
 		public void DisplayCarColor(){
-			switch(Game.Instance.ColorManager.CurrentColor.ColorName){
+            colorCircleController.ChangeColorCircle(Game.Instance.ColorManager.CurrentColor.ColorName);
+
+
+            switch (Game.Instance.ColorManager.CurrentColor.ColorName){
 				case "Red":
 					carColorDisplay[0].color = red_h;
 					carColorDisplay[1].color = Color.white;
 					carColorDisplay[2].color = Color.white;
-					break;
+                    inGameBackground[0].color = Color.Lerp(inGameBackground[0].color,red_h,1);
+                    inGameBackground[1].color = red_h;
+                    break;
 
 				case "Yellow":
 					carColorDisplay[1].color = yellow_h;
 					carColorDisplay[0].color = Color.white;
 					carColorDisplay[2].color = Color.white;
-					break;
+                    inGameBackground[0].color = yellow_h;
+                    inGameBackground[1].color = yellow_h;
+                    break;
 
 				case "Blue":
 					carColorDisplay[1].color = Color.white;
 					carColorDisplay[2].color = Color.white;
 					carColorDisplay[0].color = blue_h;
-					break;
+                    inGameBackground[0].color = blue_h;
+                    inGameBackground[1].color = blue_h;
+                    break;
 
 				case "Orange":
 					carColorDisplay[0].color = red;
 					carColorDisplay[1].color = yellow;
 					carColorDisplay[2].color = orange_h;
-					break;
+                    inGameBackground[0].color = orange_h;
+                    inGameBackground[1].color = orange_h;
+                    break;
 
 				case "Green":
 					carColorDisplay[0].color = blue;
 					carColorDisplay[2].color = green_h;
 					carColorDisplay[1].color = yellow;
-					break;
+                    inGameBackground[0].color = green_h;
+                    inGameBackground[1].color = green_h;
+                    break;
 
 				case "Violet":
 					if(carColorDisplay[0].color == red_h){
@@ -378,14 +406,18 @@ namespace BauhausRacer {
 						carColorDisplay[1].color = red;
 						carColorDisplay[0].color = blue;
 					}
-	
-					carColorDisplay[2].color = violet_h;
+                    inGameBackground[0].color = violet_h;
+                    inGameBackground[1].color = violet_h;
+
+                    carColorDisplay[2].color = violet_h;
 					break;
 				case "NoColor":
 					carColorDisplay[0].color = Color.white;
 					carColorDisplay[1].color = Color.white;
 					carColorDisplay[2].color = Color.white;
-					break;
+                    inGameBackground[0].color = Color.gray;
+                    inGameBackground[1].color = Color.gray;
+                    break;
 			}
 		}
 
@@ -398,7 +430,7 @@ namespace BauhausRacer {
 
 		//display rounds
 		public void DisplayRounds(int currentRound){
-			roundDisplay[currentRound-1].sprite = roundSprite;
+            roundDisplay[currentRound - 1].SetActive(true);
 			illuminaitonBehaviours[currentRound-1].GlowMaterial(true);
 			
 		}
@@ -412,8 +444,9 @@ namespace BauhausRacer {
 			}
 
 			kmh = carController.CurrentSpeed * 1.2f;
-
-			Quaternion target = Quaternion.Euler (0f, 0f, orgKMHNeedleAngle - kmh);
+            float maximalAngle = orgKMHNeedleAngle - kmh;
+            maximalAngle = Mathf.Clamp(maximalAngle, -90, float.MaxValue);
+            Quaternion target = Quaternion.Euler (0f, 0f, maximalAngle);
 			KMHNeedle.rotation = Quaternion.Slerp(KMHNeedle.rotation, target,  Time.deltaTime * 1f);
 		}
 

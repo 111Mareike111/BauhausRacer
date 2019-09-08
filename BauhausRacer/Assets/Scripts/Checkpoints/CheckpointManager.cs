@@ -75,6 +75,7 @@ namespace BauhausRacer {
                 }
                 
                 if(_currentRound == Game.Instance.rounds){
+                    guiController.MoveIngameUI();
                     guiController.CheckIfHighscore();
                     finishSound.Play();
 
@@ -143,13 +144,13 @@ namespace BauhausRacer {
         public void ShowWrongDirection()
         {
                 _wrongDirection = true;
-                turnBack_img.SetActive(true);
+                //turnBack_img.SetActive(true);
                 Debug.Log("wrong direction");
         }
 
         public void HideWrongDirection(){
             _wrongDirection = false;
-            turnBack_img.SetActive(false);
+            //turnBack_img.SetActive(false);
         }
 
     }

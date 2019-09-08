@@ -138,6 +138,7 @@ namespace BauhausRacer
             StartCar();
             gUIController.Resume();
             gUIController.ingameUI.GetComponent<Animation>().Play();
+            gUIController.MoveIngameUI();
             Game.Instance.CameraStart = false;
             postProcessVolume.profile.TryGetSettings(out motionBlur);
             motionBlur.shutterAngle.value = 200;
