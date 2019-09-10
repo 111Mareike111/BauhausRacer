@@ -68,7 +68,7 @@ namespace BauhausRacer {
 
 		[Header("NotHighscore")]
 		public GameObject notHighScorePanel;
-		public Button[] notHighscoreButtons;
+		public Button notHighscoreButton;
 
 		//Speed
 		private float kmh = 0f;
@@ -309,20 +309,9 @@ namespace BauhausRacer {
 					Cursor.visible = false;
 				break;
 				case ActiveScreen.NOTHIGHSCORE:
-					if(Input.GetKey ("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove){
-							PreviousButton(notHighscoreButtons);
-							readyToMove = false;
-							Invoke("ResetReadyToMove", moveDelay);
-						}
-						if(Input.GetKey ("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove){
-							NextButton(notHighscoreButtons);
-							readyToMove = false;
-							Invoke("ResetReadyToMove", moveDelay);
-						}
-						if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
-							Debug.Log("selectedbutton "+ selectedButton);
-							notHighscoreButtons[selectedButton].onClick.Invoke();		
-						}
+					if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
+							Menu();	
+					}
 				break;
 			}
         }
@@ -635,7 +624,7 @@ namespace BauhausRacer {
 		public void ShowGameOverPanel(){
 			SetActiveScreen(ActiveScreen.NOTHIGHSCORE);
 			notHighScorePanel.SetActive(true);
-			notHighscoreButtons[1].Select();
+			notHighscoreButton.Select();
 			Debug.Log("GameOverPanel");
 		}
 
