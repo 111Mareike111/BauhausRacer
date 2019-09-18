@@ -45,7 +45,6 @@ namespace BauhausRacer
             foreach (TrackPoints nextTrackpoint in _nextTrackpoints)
             {
                 var heading = CarObject.transform.position - nextTrackpoint.transform.position;
-                Debug.Log(heading + "");
             }
         }
 

@@ -33,6 +33,20 @@ namespace BauhausRacer
         public string[] carMaterialNoColor;
         public Material colorShowerMaterialNoColor;
 
+        [Header("Barriers")]
+        public Material[] redBarrier;
+        public Material[] redBarrierX;
+        public Material[] blueBarrier;
+        public Material[] blueBarrierX;
+        public Material[] yellowBarrier;
+        public Material[] yellowBarrierX;
+        public Material[] orangeBarrier;
+        public Material[] orangeBarrierX;
+        public Material[] violetBarrier;
+        public Material[] violetBarrierX;
+        public Material[] greenBarrier;
+        public Material[] greenBarrierX;
+
         Dictionary<string, ColorData> colors = new Dictionary<string, ColorData>();    //contains data of all available colors
         
         public ColorData CurrentColor { get; set; }     //current color of the car
@@ -139,7 +153,37 @@ namespace BauhausRacer
             }
             Color[] newColor = GetColorByName(CurrentColor.ColorName).CarTexture;
             return newColor;
-        }          
+        }
+        
+        public Material[] GetBarrierMaterial(SelectColor selectColor ,bool passable)
+        {
+            Material[] materials;
+            if (selectColor == SelectColor.Blue)
+            {
+                materials = passable == true ? blueBarrierX : blueBarrier;
+            }else if(selectColor == SelectColor.Green)
+            {
+                materials = passable == true ? greenBarrierX : greenBarrier;
+            }
+            else if (selectColor == SelectColor.Orange)
+            {
+                materials = passable == true ? orangeBarrierX : orangeBarrier;
+            }
+            else if (selectColor == SelectColor.Red)
+            {
+                materials = passable == true ? redBarrierX : redBarrier;
+            }
+            else if (selectColor == SelectColor.Violet)
+            {
+                materials = passable == true ? violetBarrierX : violetBarrier;
+            }
+            else
+            {
+                materials = passable == true ? yellowBarrierX : yellowBarrier;
+            }
+            return materials;
+
+        }
     }
 }
 

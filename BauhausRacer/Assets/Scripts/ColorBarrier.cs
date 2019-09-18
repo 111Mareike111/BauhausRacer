@@ -7,6 +7,7 @@ namespace BauhausRacer{
 
 		public SelectColor selectColor; //display dropdown in Inspektor
 		public BoxCollider collider;
+        private Renderer renderer;
 
 		private ColorData colorBarrier;
 		private ColorManager colorManager;
@@ -15,24 +16,32 @@ namespace BauhausRacer{
 		void Awake(){
 			colorManager = Game.Instance.ColorManager; 
             colorBarrier = colorManager.GetColorByName(selectColor.ToString()); //color gets color selected in inspector
-            
+            renderer = GetComponent<Renderer>();
 		}
 
 		void Update(){
-			if(colorManager.CurrentColor.ColorName == colorBarrier.ColorName){
-				ChangeOpacity(0.7f);
-			} else if (colorManager.CurrentColor.MixingParents != null){
-				foreach(ColorData c in colorManager.CurrentColor.MixingParents){
-					if(c == colorBarrier){
-						ChangeOpacity(0.7f);
-					}
-				}
-			} else {
-				ChangeOpacity(1f);
-			}
-				
-			
-		}
+            if (colorManager.CurrentColor.ColorName == colorBarrier.ColorName)
+            {
+                //ChangeOpacity(0.7f);
+                ChangeMaterial(true);
+            }
+            else if (colorManager.CurrentColor.MixingParents != null)
+            {
+                foreach (ColorData c in colorManager.CurrentColor.MixingParents)
+                {
+                    if (c == colorBarrier)
+                    {
+                        //ChangeOpacity(0.7f);
+                        ChangeMaterial(true);
+                    }
+                }
+            }
+            else
+            {
+                //ChangeOpacity(1f);
+                ChangeMaterial(false);
+            }
+        }
 
 		void OnTriggerEnter(Collider col){
 			if(col.tag == "Player"){
@@ -66,5 +75,18 @@ namespace BauhausRacer{
 				
 			} 
 		}
+
+        private void ChangeMaterial(bool passable)
+        {
+            Material[] materials = colorManager.GetBarrierMaterial(selectColor, passable);
+            renderer.materials = materials;
+
+            //for(int i = 0; i < materials.Length; i++)
+            //{
+                
+            //    renderer.materials[i] = materials[i];
+            //}
+            
+        }
 	}
 }
