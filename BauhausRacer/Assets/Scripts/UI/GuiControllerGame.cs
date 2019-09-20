@@ -55,7 +55,10 @@ namespace BauhausRacer {
 		private float moveDelay = 0.3f;
 		public Button[] manualButtons;
 
-		[Header("Highscore")]
+        [Header("Credits")]
+        public Button creditBackButton;
+
+        [Header("Highscore")]
 		public GameObject highScorePanel;
 		public Button[] highscoreButtons;
 		
@@ -551,7 +554,9 @@ namespace BauhausRacer {
 			SetActiveScreen(ActiveScreen.CREDITS);
 			creditsPanel.SetActive(true);
 			menuPanel.SetActive(false);
-		}
+            creditBackButton.Select();
+
+        }
 
 		//new entry in highscore database (if name is not empty)
 		public void HighscoreEntry(){
