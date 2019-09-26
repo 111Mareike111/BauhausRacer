@@ -457,6 +457,7 @@ namespace BauhausRacer {
 			Game.Instance._musicMenu.Stop();
 			backButton.SetActive(false);
 			playButtonClickAudio.Play();
+			carController.GetComponent<Rigidbody>().isKinematic = false;
 		}
 
 		public void PlayAfterManual(){
@@ -468,6 +469,7 @@ namespace BauhausRacer {
 			Game.Instance.CameraStart = true;
 			Game.Instance._musicMenu.Stop();
 			playButtonClickAudio.Play();
+			carController.GetComponent<Rigidbody>().isKinematic = false;
 		}
 
 		//pause game
@@ -477,7 +479,7 @@ namespace BauhausRacer {
 			SetActiveScreen(ActiveScreen.PAUSE);
 			pauseButtons[0].Select();
 			Game.Instance.gameStopped = true; //timer mustn't count during pause
-			
+			carController.GetComponent<Rigidbody>().isKinematic = true;
 		
 			Game.Instance._musicIngame.Pause();	
 			Game.Instance.IngameAudio.SetFloat("Volume", -80f);		
@@ -490,6 +492,7 @@ namespace BauhausRacer {
 			}
 		
 			SetActiveScreen(ActiveScreen.GAME);
+			carController.GetComponent<Rigidbody>().isKinematic = false;
 			Time.timeScale = 1.5f;
 			pausePanel.SetActive(false);
 			Game.Instance.gameStopped= false;
@@ -536,8 +539,10 @@ namespace BauhausRacer {
 			if(pausePanel.activeSelf){
 				Game.Instance._musicMenu.Stop();
 				manualButtons[1].gameObject.SetActive(false);
+				manualButtons[0].Select();
 			}
 			backButton.SetActive(true);
+			manualButtons[0].Select();
 		}
 
 		//show menu panel 
