@@ -2,11 +2,11 @@
 <HighscoreDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Highscore>
     <HighScoreEntry>
-      <name />
+      <name>.EJA</name>
       <time>2.513048</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>.EJA</name>
+      <name />
       <time>2.513048</time>
     </HighScoreEntry>
     <HighScoreEntry>
