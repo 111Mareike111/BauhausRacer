@@ -30,12 +30,9 @@ public class Boost : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collider){
-		Debug.Log("hi");
 		if(collider.tag == "Player"){
 			//same color as the car
-			Debug.Log("Colorcar: "+ colorManager.CurrentColor.ColorName);
 				if(colorManager.CurrentColor.ColorName == colorBoost.ColorName){
-					Debug.Log("hi2");
 					car.GetComponent<Rigidbody>().AddForce(car.transform.forward*accleration, ForceMode.Acceleration);
 					GetComponent<AudioSource>().Play();
 					return;
