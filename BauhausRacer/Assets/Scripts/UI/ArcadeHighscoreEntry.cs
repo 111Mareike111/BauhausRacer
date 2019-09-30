@@ -15,16 +15,22 @@ public class ArcadeHighscoreEntry : MonoBehaviour
         public float moveDelay = 0.2f;
         private bool readyToMove = false;
 
-		public GameObject arrows;
+		public GameObject[] arrows;
+
+		public string arrowColorHex;
+		public string arrowHighlightColorHex;
+		public string textColorHex;
 
 		public bool isEnteringName = true;
+		private Color arrowColor;
  
         void Start ()
         {
                 Invoke("ResetReadyToMove", 5f);
 				Letters[letterSelect].text = alphabet[stepper].ToString ();
 				Color textcolor; 
-				ColorUtility.TryParseHtmlString("#FF3200", out textcolor);
+				ColorUtility.TryParseHtmlString(textColorHex, out textcolor);
+				ColorUtility.TryParseHtmlString(arrowHighlightColorHex, out arrowColor);
 				Letters[letterSelect].color = textcolor;
         }
 
@@ -36,9 +42,10 @@ public class ArcadeHighscoreEntry : MonoBehaviour
         {
 			if(isEnteringName){
 				Color textcolor; 
-				ColorUtility.TryParseHtmlString("#FF3200", out textcolor);
+				ColorUtility.TryParseHtmlString(textColorHex, out textcolor);
 				Letters[letterSelect].color = textcolor;
-				arrows.SetActive(true);
+				arrows[0].SetActive(true);
+				arrows[1].SetActive(true);
                 if (Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove) {
                         if (stepper < alphabet.Length - 1) {
                                 stepper++;
@@ -46,6 +53,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 							stepper = 0;
 						}
 						Letters [letterSelect].text = alphabet [stepper].ToString ();
+						arrows[0].GetComponent<Image>().color = arrowColor;
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
                 }
@@ -56,6 +64,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 							stepper = alphabet.Length-1;
 						}
 						Letters [letterSelect].text = alphabet [stepper].ToString ();
+						arrows[1].GetComponent<Image>().color = arrowColor;
 						readyToMove = false;
 						Invoke ("ResetReadyToMove", moveDelay);
                 }
@@ -70,7 +79,8 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 								Letters[letterSelect].text = alphabet[stepper].ToString();
 							}							
 							Letters [letterSelect - 1].color = Color.black;
-							arrows.transform.position = new Vector3(arrows.transform.position.x+18f, arrows.transform.position.y, 0);
+							arrows[0].transform.position = new Vector3(arrows[0].transform.position.x+18f, arrows[0].transform.position.y, 0);
+							arrows[1].transform.position = new Vector3(arrows[1].transform.position.x+18f, arrows[1].transform.position.y, 0);
 							readyToMove = false;
 							Invoke ("ResetReadyToMove", moveDelay+1);
 					}
@@ -84,7 +94,8 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 							Letters[letterSelect].color = textcolor; // selected Letter is white
 							
 							Letters [letterSelect + 1].text = "";
-							arrows.transform.position = new Vector3(arrows.transform.position.x-18f, arrows.transform.position.y, 0);
+							arrows[0].transform.position = new Vector3(arrows[0].transform.position.x-18f, arrows[0].transform.position.y, 0);
+							arrows[1].transform.position = new Vector3(arrows[1].transform.position.x-18f, arrows[1].transform.position.y, 0);
 							readyToMove = false;
 							Invoke ("ResetReadyToMove", moveDelay+1);
 					}
@@ -92,7 +103,8 @@ public class ArcadeHighscoreEntry : MonoBehaviour
                 }
 				if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
 					Letters[letterSelect].color = Color.black;
-					arrows.SetActive(false);
+					arrows[0].SetActive(false);
+					arrows[1].SetActive(false);
 				}
 				
 			}	
@@ -103,6 +115,10 @@ public class ArcadeHighscoreEntry : MonoBehaviour
         void ResetReadyToMove ()
         {
             readyToMove = true;
+			Color arrowNormalColor;
+			ColorUtility.TryParseHtmlString(arrowColorHex, out arrowNormalColor);
+			arrows[0].GetComponent<Image>().color = arrowNormalColor;
+			arrows[1].GetComponent<Image>().color = arrowNormalColor;
         }
 
 		public void SubmitName(){
