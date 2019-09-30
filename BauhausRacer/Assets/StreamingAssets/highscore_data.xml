@@ -2,11 +2,11 @@
 <HighscoreDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Highscore>
     <HighScoreEntry>
-      <name>B-A</name>
+      <name />
       <time>2.47619</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name />
+      <name>B-A</name>
       <time>2.47619</time>
     </HighScoreEntry>
     <HighScoreEntry>
@@ -14,11 +14,11 @@
       <time>2.47839546</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name />
+      <name>.EJA</name>
       <time>2.513048</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>.EJA</name>
+      <name />
       <time>2.513048</time>
     </HighScoreEntry>
     <HighScoreEntry>
@@ -27,19 +27,15 @@
     </HighScoreEntry>
     <HighScoreEntry>
       <name>RAA</name>
-      <time>2.53486633</time>
+      <time>3.53486633</time>
     </HighScoreEntry>
     <HighScoreEntry>
       <name />
-      <time>2.54200721</time>
+      <time>4.54200745</time>
     </HighScoreEntry>
     <HighScoreEntry>
       <name>EAX</name>
-      <time>2.56165</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>AYA</name>
-      <time>2.582373</time>
+      <time>5.56165</time>
     </HighScoreEntry>
   </Highscore>
   <maxHighscoreEntries>10</maxHighscoreEntries>
