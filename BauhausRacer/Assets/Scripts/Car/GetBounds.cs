@@ -25,10 +25,11 @@ public class GetBounds : MonoBehaviour {
 		Bounds bounds = new Bounds();
 		bool initBounds = false;
 		foreach (Renderer r in renderers){
-			
-			if (!((r is TrailRenderer) || (r is ParticleRenderer) || (r is ParticleSystemRenderer))){
-				
-				if (!initBounds){
+
+                //if (!((r is TrailRenderer) || (r is ParticleRenderer) || (r is ParticleSystemRenderer))){
+                if (!((r is TrailRenderer) || (r is ParticleSystemRenderer)))
+                {
+                    if (!initBounds){
 					initBounds = true;
 					bounds = r.bounds;
 				}else{
