@@ -2,11 +2,23 @@
 <HighscoreDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Highscore>
     <HighScoreEntry>
-      <name>.EJA</name>
-      <time>2.513048</time>
+      <name>B-A</name>
+      <time>2.47619</time>
     </HighScoreEntry>
     <HighScoreEntry>
       <name />
+      <time>2.47619</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>DAC</name>
+      <time>2.47839546</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name />
+      <time>2.513048</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>.EJA</name>
       <time>2.513048</time>
     </HighScoreEntry>
     <HighScoreEntry>
@@ -14,28 +26,20 @@
       <time>2.51831269</time>
     </HighScoreEntry>
     <HighScoreEntry>
+      <name>RAA</name>
+      <time>2.53486633</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
       <name />
       <time>2.54200721</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name />
-      <time>2.67374229</time>
+      <name>EAX</name>
+      <time>2.56165</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name />
-      <time>2.72936535</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>ADA</name>
-      <time>2.764063</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>AXU</name>
-      <time>3.117024</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>.DASA</name>
-      <time>3.49818015</time>
+      <name>AYA</name>
+      <time>2.582373</time>
     </HighScoreEntry>
   </Highscore>
   <maxHighscoreEntries>10</maxHighscoreEntries>
