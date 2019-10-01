@@ -141,7 +141,7 @@ namespace BauhausRacer
             gUIController.MoveIngameUI();
             Game.Instance.CameraStart = false;
             postProcessVolume.profile.TryGetSettings(out motionBlur);
-            motionBlur.shutterAngle.value = 200;
+            motionBlur.shutterAngle.value = 48;
             //ToDo PrepareRaceStart
         }
 
