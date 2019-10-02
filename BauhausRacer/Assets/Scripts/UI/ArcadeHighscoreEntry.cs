@@ -13,6 +13,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
         private int letterSelect = 0;
         public Text[] Letters;
         public float moveDelay = 0.2f;
+		public float moveDelayRightLeft = 1f;
         private bool readyToMove = false;
 
 		public GameObject[] arrows;
@@ -23,12 +24,16 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 
 		public bool isEnteringName = true;
 		private Color arrowColor;
+		Color textcolor;
+
+		public Button okButton;
+		public Button enterNameButton;
  
         void Start ()
         {
-                Invoke("ResetReadyToMove", 5f);
+                Invoke("ResetReadyToMove", 3f);
 				Letters[letterSelect].text = alphabet[stepper].ToString ();
-				Color textcolor; 
+				 
 				ColorUtility.TryParseHtmlString(textColorHex, out textcolor);
 				ColorUtility.TryParseHtmlString(arrowHighlightColorHex, out arrowColor);
 				Letters[letterSelect].color = textcolor;
@@ -82,7 +87,16 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 							arrows[0].transform.position = new Vector3(arrows[0].transform.position.x+18f, arrows[0].transform.position.y, 0);
 							arrows[1].transform.position = new Vector3(arrows[1].transform.position.x+18f, arrows[1].transform.position.y, 0);
 							readyToMove = false;
-							Invoke ("ResetReadyToMove", moveDelay+1);
+							Invoke ("ResetReadyToMove", moveDelayRightLeft);
+					} else {
+						isEnteringName = false;
+						enterNameButton.Select();
+						okButton.Select();
+						Letters[letterSelect].color = Color.black;
+						arrows[0].SetActive(false);
+						arrows[1].SetActive(false);
+						readyToMove = false;
+						Invoke ("ResetReadyToMove", moveDelayRightLeft);
 					}
                     
                 }
@@ -93,22 +107,29 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 
 							Letters[letterSelect].color = textcolor; // selected Letter is white
 							
-							Letters [letterSelect + 1].text = "";
+							Letters [letterSelect + 1].color = Color.black;
 							arrows[0].transform.position = new Vector3(arrows[0].transform.position.x-18f, arrows[0].transform.position.y, 0);
 							arrows[1].transform.position = new Vector3(arrows[1].transform.position.x-18f, arrows[1].transform.position.y, 0);
 							readyToMove = false;
-							Invoke ("ResetReadyToMove", moveDelay+1);
+							Invoke ("ResetReadyToMove", moveDelayRightLeft);
 					}
                         
                 }
-				if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
-					Letters[letterSelect].color = Color.black;
-					arrows[0].SetActive(false);
-					arrows[1].SetActive(false);
+				
+			}	else {
+				if (Input.GetKey("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove) {
+					isEnteringName = true;
+					Letters[letterSelect].color = textcolor;
+					arrows[0].SetActive(true);
+					arrows[1].SetActive(true);
+					enterNameButton.Select();
+					readyToMove = false;
+					Invoke ("ResetReadyToMove", moveDelayRightLeft);
 				}
-				
+				if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
+					okButton.onClick.Invoke();
+				}
 			}	
-				
 
         }
  

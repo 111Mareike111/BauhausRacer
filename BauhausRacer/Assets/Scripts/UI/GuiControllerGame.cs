@@ -60,7 +60,7 @@ namespace BauhausRacer {
 
         [Header("Highscore")]
 		public GameObject highScorePanel;
-		public Button[] highscoreButtons;
+		//public Button[] highscoreButtons;
 		
 		public GameObject wheelInput;
 		public GameObject keyboardInput;
@@ -278,36 +278,8 @@ namespace BauhausRacer {
 				case ActiveScreen.HIGHSCORE:
 					
 					isInMainMenu = false;
-					
-					if(!arcadeHighscoreEntry.isEnteringName){
-						if(Input.GetKey ("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove){
-							PreviousButton(highscoreButtons);
-							readyToMove = false;
-							Invoke("ResetReadyToMove", moveDelay);
-						}
-						if(Input.GetKey ("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove){
-							NextButton(highscoreButtons);
-							readyToMove = false;
-							Invoke("ResetReadyToMove", moveDelay);
-						}
-						if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
-							Debug.Log("selectedbutton "+ selectedButton);
-							highscoreButtons[selectedButton].onClick.Invoke();		
-						}
-					} else {
-						if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
-							arcadeHighscoreEntry.SetIsEnteringName(false);;	
-							highscoreButtons[0].enabled = true;
-							highscoreButtons[1].enabled = true;
-							selectedButton = 1;
-							highscoreButtons[1].Select();
-						}
-					}
-				
-					
-				
-
 				break;
+
 				case ActiveScreen.INTRO:
 					Cursor.visible = false;
 				break;
@@ -324,12 +296,6 @@ namespace BauhausRacer {
 			//arcadeHighscoreEntry = wheelInput.GetComponent<ArcadeHighscoreEntry>();
 			arcadeHighscoreEntry.SubmitName();
 			HighscoreEntry();
-		}
-
-		public void BeginNameEntry(){
-			arcadeHighscoreEntry.SetIsEnteringName(true);
-			highscoreButtons[0].enabled = false;
-			highscoreButtons[1].enabled = false;
 		}
 		
 		void ResetReadyToMove(){
@@ -650,9 +616,6 @@ namespace BauhausRacer {
 			
 			highScorePanel.SetActive(true);
 			SetActiveScreen(ActiveScreen.HIGHSCORE);
-			selectedButton = 0;
-			highscoreButtons[0].Select();
-			highscoreButtons[0].onClick.Invoke();
 
 			XMLManager.instance.highscoreDatabase.AddEntry("", Game.Instance.timer); //add entry with empty name, to get the rank
 		
