@@ -91,6 +91,10 @@ namespace BauhausRacer {
 		private Color red, blue, yellow, orange, green, violet;
 		private Color blue_h, red_h, yellow_h, orange_h, green_h, violet_h;
 
+ 		
+		//GaspedalEingabe
+		private bool m_isAxisInUse = false;
+
 
 		//menu is active, game is paused
 		void Awake () {
@@ -162,6 +166,28 @@ namespace BauhausRacer {
 		// Update is called once per frame
 		void Update ()
         {
+
+
+			Debug.Log(Input.GetAxisRaw("Vertical2"));
+
+			//GaspedalEingabeNoInput
+			 if( Input.GetAxisRaw("Vertical2") == 0)
+    			 {
+       			  m_isAxisInUse = false;
+    			 }  
+			
+		/*
+			GaspedalEingabeInput
+			   if( Input.GetAxisRaw("Vertical2") != 0)
+   			  {
+      			   if(m_isAxisInUse == false)
+        		 {
+          			   // Call your event function here.
+          			   m_isAxisInUse = true;
+        			 }
+   			  }
+		*/
+			
 			if(!Game.Instance.gameStopped){
            		 textTime.text = GetMinutesDisplay(Game.Instance.timer);
 			}
@@ -184,17 +210,21 @@ namespace BauhausRacer {
 						}
 						
 					}*/
-				 	if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
-                       menuButtons[selectedButton].onClick.Invoke();
+				 	if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return) || Input.GetAxisRaw("Vertical2") > 0.6){
+			 if(m_isAxisInUse == false)
+        		 {
+                     		 menuButtons[selectedButton].onClick.Invoke();
+				 m_isAxisInUse = true;
+			 }
 					}	
 				
-					if(Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove){
+					if(Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove || Input.GetButton("Backward") && readyToMove){
 						PreviousButton(menuButtons);
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
 					
 					}
-					if(Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove){
+					if(Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove || Input.GetButton("Forward") && readyToMove){
 						NextButton(menuButtons);
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
@@ -205,62 +235,78 @@ namespace BauhausRacer {
 					/* if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
 						Back(controlsPanel);
 					} */
-					if(Input.GetKey ("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove){
+					if(Input.GetKey ("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove || Input.GetButton("Forward") && readyToMove){
 						NextManualCard();
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
-					} else if(Input.GetKey ("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove){
+					} else if(Input.GetKey ("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove || Input.GetButton("Backward") && readyToMove){
 						PreviousManualCard();
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
 					}
-					if(Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove){
+					if(Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove || Input.GetButton("Backward") && readyToMove){
 						if(manualButtons[0].isActiveAndEnabled && manualButtons[1].isActiveAndEnabled){
 							PreviousButton(manualButtons);
 							readyToMove = false;
 							Invoke("ResetReadyToMove", moveDelay);
 						}
 					}
-					if(Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove){
+					if(Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove || Input.GetButton("Forward") && readyToMove){
 						if(manualButtons[0].isActiveAndEnabled && manualButtons[1].isActiveAndEnabled){
 							NextButton(manualButtons);
 							readyToMove = false;
 							Invoke("ResetReadyToMove", moveDelay);
 						}	
 					}
-					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
+					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return) || Input.GetAxisRaw("Vertical2") > 0.6){
+
+			 if(m_isAxisInUse == false)
+        		 {
                        if(manualButtons[0].isActiveAndEnabled && selectedButton == 0){
 						   Back(controlsPanel);
 					   } else {
 						   PlayAfterManual();
 					   }
+					   m_isAxisInUse = true;
 					}	
+				}	
 
 					break;
 				case ActiveScreen.CREDITS:
 					isInMainMenu = true;
-					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
+
+					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return) || Input.GetAxisRaw("Vertical2") > 0.6){
+
+					 if(m_isAxisInUse == false)
+        				 {
 						Back(creditsPanel);
-					} 
+ 						m_isAxisInUse = true;
+					 }
+				} 
 				break;
 				case ActiveScreen.PAUSE:
 					isInMainMenu = false;
-					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return)){
+					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return) || Input.GetAxisRaw("Vertical2") > 0.6){
+
+					 if(m_isAxisInUse == false)
+        				 {
 						pauseButtons[selectedButton].onClick.Invoke();
-					}
+						m_isAxisInUse = true;
+					 }
+				}
 					/* if(Input.GetButtonDown("Menu")||Input.GetKeyDown(KeyCode.Backspace)){
 						Menu();
 					}
 					if(Input.GetButtonDown("Controls")||Input.GetKeyDown(KeyCode.M)){
 						Controls();
 					}*/
-					if(Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove){
+					if(Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove || Input.GetButton("Backward") && readyToMove){
 						PreviousButton(pauseButtons);
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
 					
 					}
-					if(Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove){
+					if(Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove || Input.GetButton("Forward") && readyToMove){
 						NextButton(pauseButtons);
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
@@ -268,10 +314,10 @@ namespace BauhausRacer {
 				break;
 				case ActiveScreen.GAME:
 					isInMainMenu = false;
-					if(Input.GetButtonDown("Pause")||Input.GetKeyDown(KeyCode.Escape)){
+					if(Input.GetButtonDown("Pause")||Input.GetKeyDown(KeyCode.Escape) || Input.GetButton("Backward")){
 						PauseGame();
 					}
-					if(Input.GetButtonDown("Respawn")||Input.GetKeyDown(KeyCode.R)){
+					if(Input.GetButtonDown("Respawn")||Input.GetKeyDown(KeyCode.R) || Input.GetButton("Forward")){
 						Respawn_Player();
 					}
 				break;
@@ -284,9 +330,15 @@ namespace BauhausRacer {
 					Cursor.visible = false;
 				break;
 				case ActiveScreen.NOTHIGHSCORE:
-					if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
+					if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return) || Input.GetAxisRaw("Vertical2") > 0.6){
+
+					
+					 if(m_isAxisInUse == false)
+        				 {
 							Menu();	
+							m_isAxisInUse = true;
 					}
+				}
 				break;
 			}
         }
