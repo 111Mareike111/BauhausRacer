@@ -12,7 +12,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
         private int stepper = 0;
         private int letterSelect = 0;
         public Text[] Letters;
-        public float moveDelay = 0.2f;
+        public float moveDelayUpDown = 0.2f;
 		public float moveDelayRightLeft = 1f;
         private bool readyToMove = false;
 
@@ -28,7 +28,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 
 		public Button okButton;
 		public Button enterNameButton;
-		private bool m_isAxisInUse = false;
+	//	private bool m_isAxisInUse = false;
  
         void Start ()
         {
@@ -61,7 +61,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 						Letters [letterSelect].text = alphabet [stepper].ToString ();
 						arrows[0].GetComponent<Image>().color = arrowColor;
 						readyToMove = false;
-						Invoke("ResetReadyToMove", moveDelay);
+						Invoke("ResetReadyToMove", moveDelayUpDown);
                 }
                 if (Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove || Input.GetButton("Backward") && readyToMove) {
                         if (stepper > 0) {
@@ -72,13 +72,12 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 						Letters [letterSelect].text = alphabet [stepper].ToString ();
 						arrows[1].GetComponent<Image>().color = arrowColor;
 						readyToMove = false;
-						Invoke ("ResetReadyToMove", moveDelay);
+						Invoke ("ResetReadyToMove", moveDelayUpDown);
                 }
-                if (Input.GetKey("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove || Input.GetAxisRaw("Vertical2") > 0.6) { //next Letter
+                if (Input.GetKey("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove || Input.GetAxisRaw("Vertical2") > 0.6  && readyToMove) { //next Letter
 
 		
- 					if(m_isAxisInUse == false)
-        				 {
+ 					
                     
 							if (letterSelect < Letters.Length - 1) {
 									letterSelect++;
@@ -89,8 +88,8 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 										Letters[letterSelect].text = alphabet[stepper].ToString();
 									}							
 									Letters [letterSelect - 1].color = Color.black;
-									arrows[0].transform.position = new Vector3(arrows[0].transform.position.x+18f, arrows[0].transform.position.y, 0);
-									arrows[1].transform.position = new Vector3(arrows[1].transform.position.x+18f, arrows[1].transform.position.y, 0);
+									arrows[0].transform.position = new Vector3(arrows[0].transform.position.x+24f, arrows[0].transform.position.y, 0);
+									arrows[1].transform.position = new Vector3(arrows[1].transform.position.x+24f, arrows[1].transform.position.y, 0);
 									readyToMove = false;
 									Invoke ("ResetReadyToMove", moveDelayRightLeft);
 							} else {
@@ -100,30 +99,30 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 								Letters[letterSelect].color = Color.black;
 								arrows[0].SetActive(false);
 								arrows[1].SetActive(false);
+								okButton.onClick.Invoke();
 								readyToMove = false;
 								Invoke ("ResetReadyToMove", moveDelayRightLeft);
 							}
-						m_isAxisInUse = true;
-					}
+					//	m_isAxisInUse = true;
+					
                     
                 }
-				if (Input.GetKey("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove || Input.GetAxisRaw("Vertical2") < -0.6) { //next Letter
+				if (Input.GetKey("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove || Input.GetAxisRaw("Vertical2") < -0.6  && readyToMove) { //next Letter
                     
- 					if(m_isAxisInUse == false)
-        				 {
+ 					
 							if (letterSelect > 0) {
 									letterSelect--;
 	
 									Letters[letterSelect].color = textcolor; // selected Letter is white
 							
 									Letters [letterSelect + 1].color = Color.black;
-									arrows[0].transform.position = new Vector3(arrows[0].transform.position.x-18f, arrows[0].transform.position.y, 0);
-									arrows[1].transform.position = new Vector3(arrows[1].transform.position.x-18f, arrows[1].transform.position.y, 0);
+									arrows[0].transform.position = new Vector3(arrows[0].transform.position.x-24f, arrows[0].transform.position.y, 0);
+									arrows[1].transform.position = new Vector3(arrows[1].transform.position.x-24f, arrows[1].transform.position.y, 0);
 									readyToMove = false;
 									Invoke ("ResetReadyToMove", moveDelayRightLeft);
 							}
-						m_isAxisInUse = true;
-					}
+						//m_isAxisInUse = true;
+					
                         
                 }
 				
@@ -137,9 +136,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 					readyToMove = false;
 					Invoke ("ResetReadyToMove", moveDelayRightLeft);
 				}
-				if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return)){
-					okButton.onClick.Invoke();
-				}
+				
 			}	
 
         }
