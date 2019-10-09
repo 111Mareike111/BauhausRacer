@@ -244,7 +244,7 @@ namespace BauhausRacer {
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
 					}
-					if(Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove || Input.GetButton("Backward") && readyToMove){
+					/*if(Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove || Input.GetButton("Backward") && readyToMove){
 						if(manualButtons[0].isActiveAndEnabled && manualButtons[1].isActiveAndEnabled){
 							PreviousButton(manualButtons);
 							readyToMove = false;
@@ -257,7 +257,7 @@ namespace BauhausRacer {
 							readyToMove = false;
 							Invoke("ResetReadyToMove", moveDelay);
 						}	
-					}
+					}*/
 					if(Input.GetButtonDown("Play")||Input.GetKeyDown(KeyCode.Return) || Input.GetAxisRaw("Vertical2") > 0.6){
 
 			 if(m_isAxisInUse == false)
@@ -469,13 +469,16 @@ namespace BauhausRacer {
 		public void Play(){
 			
 			menuPanel.SetActive(false);
-			controlsPanel.SetActive(true);
-			SetActiveScreen(ActiveScreen.CONTROLS);
-			manualButtons[1].Select();
+			//controlsPanel.SetActive(true);
+			//SetActiveScreen(ActiveScreen.CONTROLS);
+			//manualButtons[1].Select();
 			Game.Instance._musicMenu.Stop();
 			backButton.SetActive(false);
 			playButtonClickAudio.Play();
 			carController.GetComponent<Rigidbody>().isKinematic = false;
+			Time.timeScale = 1.5f;
+			Game.Instance.CameraStart = true;
+			notHighScorePanel.SetActive(false);
 		}
 
 		public void PlayAfterManual(){
@@ -549,7 +552,8 @@ namespace BauhausRacer {
 		public void Controls(){
 			//PauseGame();
 			backButton.SetActive(true);
-			manualButtons[1].gameObject.SetActive(true); 
+			manualButtons[0].gameObject.SetActive(true);
+			manualButtons[1].gameObject.SetActive(false); 
 			buttonClickAudio.Play();
 			SetActiveScreen(ActiveScreen.CONTROLS);	
 			controlsPanel.SetActive(true);
@@ -562,6 +566,7 @@ namespace BauhausRacer {
 				manualButtons[1].Select();
 				manualButtons[0].Select();
 				manualButtons[1].gameObject.SetActive(false);
+				manualButtons[0].gameObject.SetActive(true);
 				
 			}
 			
