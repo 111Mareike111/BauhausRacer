@@ -28,6 +28,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 
 		public Button okButton;
 		public Button enterNameButton;
+		private bool m_isAxisInUse = false;
  
         void Start ()
         {
@@ -51,7 +52,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 				Letters[letterSelect].color = textcolor;
 				arrows[0].SetActive(true);
 				arrows[1].SetActive(true);
-                if (Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove) {
+                if (Input.GetKey ("up") && readyToMove || Input.GetAxis("DPadY")>0 && readyToMove || Input.GetButton("Forward") && readyToMove) {
                         if (stepper < alphabet.Length - 1) {
                                 stepper++;
 						}else{
@@ -62,7 +63,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 						readyToMove = false;
 						Invoke("ResetReadyToMove", moveDelay);
                 }
-                if (Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove) {
+                if (Input.GetKey ("down") && readyToMove || Input.GetAxis("DPadY")<0 && readyToMove || Input.GetButton("Backward") && readyToMove) {
                         if (stepper > 0) {
                                 stepper--;
 						}else{
@@ -73,45 +74,55 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 						readyToMove = false;
 						Invoke ("ResetReadyToMove", moveDelay);
                 }
-                if (Input.GetKey("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove) { //next Letter
-                    
-					if (letterSelect < Letters.Length - 1) {
-							letterSelect++;
+                if (Input.GetKey("right") && readyToMove || Input.GetAxis("DPadX")>0 && readyToMove || Input.GetAxisRaw("Vertical2") > 0.6) { //next Letter
 
-							Letters[letterSelect].color = textcolor; // selected Letter is white
-							if(Letters[letterSelect].text==""){
-								stepper=0;
-								Letters[letterSelect].text = alphabet[stepper].ToString();
-							}							
-							Letters [letterSelect - 1].color = Color.black;
-							arrows[0].transform.position = new Vector3(arrows[0].transform.position.x+18f, arrows[0].transform.position.y, 0);
-							arrows[1].transform.position = new Vector3(arrows[1].transform.position.x+18f, arrows[1].transform.position.y, 0);
-							readyToMove = false;
-							Invoke ("ResetReadyToMove", moveDelayRightLeft);
-					} else {
-						isEnteringName = false;
-						enterNameButton.Select();
-						okButton.Select();
-						Letters[letterSelect].color = Color.black;
-						arrows[0].SetActive(false);
-						arrows[1].SetActive(false);
-						readyToMove = false;
-						Invoke ("ResetReadyToMove", moveDelayRightLeft);
+		
+ 					if(m_isAxisInUse == false)
+        				 {
+                    
+							if (letterSelect < Letters.Length - 1) {
+									letterSelect++;
+
+									Letters[letterSelect].color = textcolor; // selected Letter is white
+									if(Letters[letterSelect].text==""){
+										stepper=0;
+										Letters[letterSelect].text = alphabet[stepper].ToString();
+									}							
+									Letters [letterSelect - 1].color = Color.black;
+									arrows[0].transform.position = new Vector3(arrows[0].transform.position.x+18f, arrows[0].transform.position.y, 0);
+									arrows[1].transform.position = new Vector3(arrows[1].transform.position.x+18f, arrows[1].transform.position.y, 0);
+									readyToMove = false;
+									Invoke ("ResetReadyToMove", moveDelayRightLeft);
+							} else {
+								isEnteringName = false;
+								enterNameButton.Select();
+								okButton.Select();
+								Letters[letterSelect].color = Color.black;
+								arrows[0].SetActive(false);
+								arrows[1].SetActive(false);
+								readyToMove = false;
+								Invoke ("ResetReadyToMove", moveDelayRightLeft);
+							}
+						m_isAxisInUse = true;
 					}
                     
                 }
-				if (Input.GetKey("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove) { //next Letter
+				if (Input.GetKey("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove || Input.GetAxisRaw("Vertical2") < -0.6) { //next Letter
                     
-					if (letterSelect > 0) {
-							letterSelect--;
-
-							Letters[letterSelect].color = textcolor; // selected Letter is white
+ 					if(m_isAxisInUse == false)
+        				 {
+							if (letterSelect > 0) {
+									letterSelect--;
+	
+									Letters[letterSelect].color = textcolor; // selected Letter is white
 							
-							Letters [letterSelect + 1].color = Color.black;
-							arrows[0].transform.position = new Vector3(arrows[0].transform.position.x-18f, arrows[0].transform.position.y, 0);
-							arrows[1].transform.position = new Vector3(arrows[1].transform.position.x-18f, arrows[1].transform.position.y, 0);
-							readyToMove = false;
-							Invoke ("ResetReadyToMove", moveDelayRightLeft);
+									Letters [letterSelect + 1].color = Color.black;
+									arrows[0].transform.position = new Vector3(arrows[0].transform.position.x-18f, arrows[0].transform.position.y, 0);
+									arrows[1].transform.position = new Vector3(arrows[1].transform.position.x-18f, arrows[1].transform.position.y, 0);
+									readyToMove = false;
+									Invoke ("ResetReadyToMove", moveDelayRightLeft);
+							}
+						m_isAxisInUse = true;
 					}
                         
                 }
