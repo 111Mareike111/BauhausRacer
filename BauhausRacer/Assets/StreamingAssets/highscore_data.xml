@@ -2,11 +2,11 @@
 <HighscoreDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Highscore>
     <HighScoreEntry>
-      <name>ZXW</name>
+      <name />
       <time>2.49643087</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name />
+      <name>ZXW</name>
       <time>2.49643087</time>
     </HighScoreEntry>
     <HighScoreEntry>
@@ -36,10 +36,6 @@
     <HighScoreEntry>
       <name>A-A</name>
       <time>11.2296467</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>AFL</name>
-      <time>14.0470552</time>
     </HighScoreEntry>
   </Highscore>
   <maxHighscoreEntries>10</maxHighscoreEntries>

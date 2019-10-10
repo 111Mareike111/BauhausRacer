@@ -369,62 +369,62 @@ namespace BauhausRacer {
 
             switch (Game.Instance.ColorManager.CurrentColor.ColorName){
 				case "Red":
-					carColorDisplay[0].color = red_h;
-					carColorDisplay[1].color = Color.white;
-					carColorDisplay[2].color = Color.white;
+					//carColorDisplay[0].color = red_h;
+					//carColorDisplay[1].color = Color.white;
+					//carColorDisplay[2].color = Color.white;
                     inGameBackground[0].color = Color.Lerp(inGameBackground[0].color,red_h,1);
                     inGameBackground[1].color = red_h;
                     break;
 
 				case "Yellow":
-					carColorDisplay[1].color = yellow_h;
-					carColorDisplay[0].color = Color.white;
-					carColorDisplay[2].color = Color.white;
+					//carColorDisplay[1].color = yellow_h;
+					//carColorDisplay[0].color = Color.white;
+					//carColorDisplay[2].color = Color.white;
                     inGameBackground[0].color = yellow_h;
                     inGameBackground[1].color = yellow_h;
                     break;
 
 				case "Blue":
-					carColorDisplay[1].color = Color.white;
-					carColorDisplay[2].color = Color.white;
-					carColorDisplay[0].color = blue_h;
+					//carColorDisplay[1].color = Color.white;
+					//carColorDisplay[2].color = Color.white;
+					//carColorDisplay[0].color = blue_h;
                     inGameBackground[0].color = blue_h;
                     inGameBackground[1].color = blue_h;
                     break;
 
 				case "Orange":
-					carColorDisplay[0].color = red;
-					carColorDisplay[1].color = yellow;
-					carColorDisplay[2].color = orange_h;
+					//carColorDisplay[0].color = red;
+					//carColorDisplay[1].color = yellow;
+					//carColorDisplay[2].color = orange_h;
                     inGameBackground[0].color = orange_h;
                     inGameBackground[1].color = orange_h;
                     break;
 
 				case "Green":
-					carColorDisplay[0].color = blue;
-					carColorDisplay[2].color = green_h;
-					carColorDisplay[1].color = yellow;
+					//carColorDisplay[0].color = blue;
+					//carColorDisplay[2].color = green_h;
+					//carColorDisplay[1].color = yellow;
                     inGameBackground[0].color = green_h;
                     inGameBackground[1].color = green_h;
                     break;
 
 				case "Violet":
-					if(carColorDisplay[0].color == red_h){
-						carColorDisplay[0].color = red;
-						carColorDisplay[1].color = blue;
-					} else {
-						carColorDisplay[1].color = red;
-						carColorDisplay[0].color = blue;
-					}
+					//if(carColorDisplay[0].color == red_h){
+					//	carColorDisplay[0].color = red;
+					//	carColorDisplay[1].color = blue;
+					//} else {
+					//	carColorDisplay[1].color = red;
+					//	carColorDisplay[0].color = blue;
+					//}
                     inGameBackground[0].color = violet_h;
                     inGameBackground[1].color = violet_h;
 
                     carColorDisplay[2].color = violet_h;
 					break;
 				case "NoColor":
-					carColorDisplay[0].color = Color.white;
-					carColorDisplay[1].color = Color.white;
-					carColorDisplay[2].color = Color.white;
+					//carColorDisplay[0].color = Color.white;
+					//carColorDisplay[1].color = Color.white;
+					//carColorDisplay[2].color = Color.white;
                     inGameBackground[0].color = Color.gray;
                     inGameBackground[1].color = Color.gray;
                     break;
