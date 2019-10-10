@@ -99,7 +99,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 								Letters[letterSelect].color = Color.black;
 								arrows[0].SetActive(false);
 								arrows[1].SetActive(false);
-								okButton.onClick.Invoke();
+								
 								readyToMove = false;
 								Invoke ("ResetReadyToMove", moveDelayRightLeft);
 							}
@@ -135,6 +135,9 @@ public class ArcadeHighscoreEntry : MonoBehaviour
 					enterNameButton.Select();
 					readyToMove = false;
 					Invoke ("ResetReadyToMove", moveDelayRightLeft);
+				}
+				if(Input.GetButtonDown("Play") || Input.GetKeyDown(KeyCode.Return) || Input.GetAxisRaw("Vertical2") > 0.6 && readyToMove) {
+					okButton.onClick.Invoke();
 				}
 				
 			}	
