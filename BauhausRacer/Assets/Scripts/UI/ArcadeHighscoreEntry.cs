@@ -127,7 +127,7 @@ public class ArcadeHighscoreEntry : MonoBehaviour
                 }
 				
 			}	else {
-				if (Input.GetKey("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove) {
+				if (Input.GetKey("left") && readyToMove || Input.GetAxis("DPadX")<0 && readyToMove || Input.GetAxisRaw("Vertical2") < -0.6 && readyToMove) {
 					isEnteringName = true;
 					Letters[letterSelect].color = textcolor;
 					arrows[0].SetActive(true);

@@ -2,44 +2,44 @@
 <HighscoreDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Highscore>
     <HighScoreEntry>
-      <name>CA.</name>
-      <time>2.55983782</time>
+      <name>AAB</name>
+      <time>2.84641719</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>CBA</name>
-      <time>2.5802412</time>
+      <name />
+      <time>2.84641719</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>ZXU</name>
-      <time>2.7727344</time>
+      <name>AAB</name>
+      <time>2.84641719</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>AAJ</name>
+      <time>2.87445474</time>
+    </HighScoreEntry>
+    <HighScoreEntry>
+      <name>AAJ</name>
+      <time>2.87445474</time>
     </HighScoreEntry>
     <HighScoreEntry>
       <name>.YZ</name>
-      <time>2.777714</time>
+      <time>2.905044</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>YWS</name>
-      <time>2.86585164</time>
+      <name />
+      <time>2.905044</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>ED-</name>
-      <time>2.99517822</time>
+      <name>.YZ</name>
+      <time>2.905044</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>ZWA</name>
-      <time>2.99822021</time>
+      <name>HAM</name>
+      <time>2.968512</time>
     </HighScoreEntry>
     <HighScoreEntry>
-      <name>.AZ</name>
-      <time>3.49333119</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>YUS</name>
-      <time>3.52826834</time>
-    </HighScoreEntry>
-    <HighScoreEntry>
-      <name>USA</name>
-      <time>4.60358429</time>
+      <name>HAM</name>
+      <time>2.968512</time>
     </HighScoreEntry>
   </Highscore>
   <maxHighscoreEntries>10</maxHighscoreEntries>
