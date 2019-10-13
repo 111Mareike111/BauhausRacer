@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 23482937883544928}
   - component: {fileID: 95019627866881022}
   - component: {fileID: 64297076096534934}
+  - component: {fileID: 64681773820942512}
   m_Layer: 8
   m_Name: checkpointv2 (1)
   m_TagString: Untagged
@@ -101,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1446006096835198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.037, y: 19.9, z: 3.24}
+  m_LocalPosition: {x: -0.031, y: 20, z: -3.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4324609675400522}
@@ -115,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 1685092041905242}
   m_LocalRotation: {x: 0.008103702, y: -0.3995049, z: -0.011765907, w: 0.9166197}
   m_LocalPosition: {x: 432.83945, y: 152.36, z: 285.57776}
-  m_LocalScale: {x: 67.63887, y: 0.7340617, z: 4.973662}
+  m_LocalScale: {x: 70.02586, y: 0.7599666, z: 5.1491795}
   m_Children:
   - {fileID: 4221249309678834}
   - {fileID: 4809415548637218}
@@ -123,7 +124,7 @@ Transform:
   - {fileID: 4423365450973972}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0.31300002, y: -47.104004, z: -1.6070001}
+  m_LocalEulerAnglesHint: {x: -1.079, y: 4.031, z: 0.71500003}
 --- !u!4 &4423365450973972
 Transform:
   m_ObjectHideFlags: 1
@@ -157,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1764948991541718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.093, y: 19.8, z: 10.59}
+  m_LocalPosition: {x: -0.024, y: 19.8, z: 4.65}
   m_LocalScale: {x: 1.0000011, y: 0.9999999, z: 1.0000008}
   m_Children: []
   m_Father: {fileID: 4324609675400522}
@@ -224,6 +225,20 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: efea8ce898d09e84f8f0b02385416a43, type: 3}
+--- !u!64 &64681773820942512
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1577151153359308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: efea8ce898d09e84f8f0b02385416a43, type: 3}
 --- !u!65 &65512942624881434
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -234,8 +249,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5511314, y: 18.743563, z: 0.89025015}
-  m_Center: {x: 0.15628268, y: 0.000000032473192, z: -0.31388357}
+  m_Size: {x: 1.2697655, y: 17.934353, z: 0.89025015}
+  m_Center: {x: 0.083002545, y: -3.4828444, z: -1.3318235e-11}
 --- !u!95 &95019627866881022
 Animator:
   serializedVersion: 3
@@ -268,7 +283,7 @@ MonoBehaviour:
   _spawn: {fileID: 4221249309678834}
   nextCheckpoints:
   - {fileID: 0}
-  CheckpointIndex: 2
+  CheckpointIndex: 4
 --- !u!212 &212430392086538782
 SpriteRenderer:
   m_ObjectHideFlags: 1
