@@ -113,7 +113,6 @@ namespace BauhausRacer {
 			activeScreen = ActiveScreen.MENU;
 			buttonClickAudio.Stop();
 			isInMainMenu = true;
-			Debug.Log(isInMainMenu);
 			LoadHighscore();
 			menuButtons[0].Select();
 			arcadeHighscoreEntry = wheelInput.GetComponent<ArcadeHighscoreEntry>();
@@ -167,8 +166,6 @@ namespace BauhausRacer {
 		void Update ()
         {
 
-
-			Debug.Log(Input.GetAxisRaw("Vertical2"));
 
 			//GaspedalEingabeNoInput
 			 if( Input.GetAxisRaw("Vertical2") == 0)

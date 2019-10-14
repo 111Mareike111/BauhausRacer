@@ -183,7 +183,6 @@ namespace UnityStandardAssets.Vehicles.Car
         }
 
         void OnCollisionEnter(Collision col){
-            Debug.Log("ldjf");
             if(col.gameObject.tag == "World"){
                 GetComponents<AudioSource>()[1].Play();
             }

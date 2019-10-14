@@ -53,7 +53,6 @@ namespace BauhausRacer{
 				//color of the car was mixed with color of barrier
 				if(colorManager.CurrentColor.MixingParents != null){
 					foreach(ColorData c in colorManager.CurrentColor.MixingParents){
-						Debug.Log("c "+ c.ColorName);
 						if(c == colorBarrier){
 							collider.enabled = false;
 							return;

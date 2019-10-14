@@ -34,7 +34,6 @@ namespace BauhausRacer{
             if (isNextCheckpoint)
             {
                 CheckpointManager.Instance.NextCheckpointArrived(this, nextCheckpoints);
-                Debug.Log("nextCheckpoint");
                 CheckpointManager.Instance.HideWrongDirection();
                 _carColor = Game.Instance.ColorManager.CurrentColor;
             }
@@ -43,13 +42,11 @@ namespace BauhausRacer{
             {
                 if(CheckpointManager.Instance.WrongDirection){
                     CheckpointManager.Instance.HideWrongDirection();
-                    Debug.Log("to right");
                     foreach(Checkpoint cp in nextCheckpoints){
                         cp.isNextCheckpoint = true;
                     }
                 } else {
                     CheckpointManager.Instance.ShowWrongDirection();
-                    Debug.Log("wrong");
                 }
             } else {
                  CheckpointManager.Instance.ShowWrongDirection();

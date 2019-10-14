@@ -34,8 +34,6 @@ namespace BauhausRacer
                         ((c.Equals("Green") || c.Equals("Orange") || c.Equals("Violet")) && colorManager.CurrentColor.ColorName.Equals("NoColor"))
                     || (c.Equals("Blue") || c.Equals("Yellow") || c.Equals("Red") || c.Equals("NoColor")))
                     {
-                        Debug.Log("C "+colorManager.CurrentColor.ColorName);
-                        Debug.Log("m "+colorShower.ColorName);
                         //Color[] colors = MixColor(colorManager.GetColorByName(selectColor.ToString()).CarTexture;
                         
 

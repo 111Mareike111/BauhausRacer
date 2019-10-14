@@ -36,7 +36,6 @@ namespace BauhausRacer
         public void ChangeCurrentTrackpoints(TrackPoints trackPoints)
         {
             currentTrackpoints = trackPoints;
-            Debug.Log("CurrentTackpoint " + currentTrackpoints.name);
             GetNextTrackpoints();
         }
 

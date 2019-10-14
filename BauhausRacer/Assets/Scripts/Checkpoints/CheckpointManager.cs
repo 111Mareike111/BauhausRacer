@@ -95,7 +95,6 @@ namespace BauhausRacer {
             {
                 cp.SetNextCheckpoint(true);
             }
-            Debug.Log("Round: "+_currentRound);
             CurrentCheckpointIndex = currentCheckpoint.CheckpointIndex;
         }
 
@@ -118,7 +117,6 @@ namespace BauhausRacer {
             }
            
             HideWrongDirection();
-            Debug.Log("CHECK");
         }
         
         private void visualAid(bool value)
@@ -145,7 +143,6 @@ namespace BauhausRacer {
         {
                 _wrongDirection = true;
                 //turnBack_img.SetActive(true);
-                Debug.Log("wrong direction");
         }
 
         public void HideWrongDirection(){

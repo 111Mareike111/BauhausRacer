@@ -40,7 +40,6 @@ public class Boost : MonoBehaviour {
 				//color of the car was mixed with color of barrier
 				if(colorManager.CurrentColor.MixingParents != null){
 					foreach(ColorData c in colorManager.CurrentColor.MixingParents){
-						Debug.Log("c "+ c.ColorName);
 						if(c == colorBoost){
 							car.GetComponent<Rigidbody>().AddForce(car.transform.forward*accleration, ForceMode.Acceleration);
 							GetComponent<AudioSource>().Play();
